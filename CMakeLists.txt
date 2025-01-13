@@ -1,9 +1,6 @@
 cmake_minimum_required (VERSION 3.22)
 
-project(ftxui-starter
-  LANGUAGES CXX
-  VERSION 1.0.0
-)
+project(twol LANGUAGES CXX VERSION 1.0.0)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -26,21 +23,24 @@ FetchContent_Declare(ftxui
 FetchContent_MakeAvailable(ftxui)
 # ------------------------------------------------------------------------------
 
-add_executable(ftxui-starter src/main.cpp)
-target_include_directories(ftxui-starter PRIVATE src)
+set(TWOL_SOURCES
+  src/twol.cpp
+  src/wake_on_lan.cpp
+  src/twol_list.cpp
+  src/tui.cpp
+  src/dbg_log.cpp
+  src/config.cpp
+  src/utils.cpp
+  src/tests.cpp
+)
 
-target_link_libraries(ftxui-starter
+
+
+add_executable(twol ${TWOL_SOURCES})
+target_include_directories(twol PRIVATE src)
+
+target_link_libraries(twol
   PRIVATE ftxui::screen
   PRIVATE ftxui::dom
   PRIVATE ftxui::component  # Not needed for this example.
 )
-
-if (EMSCRIPTEN)
-  string(APPEND CMAKE_CXX_FLAGS " -s USE_PTHREADS")
-  string(APPEND CMAKE_EXE_LINKER_FLAGS " -s ASYNCIFY")
-  string(APPEND CMAKE_EXE_LINKER_FLAGS " -s PROXY_TO_PTHREAD")
-
-  foreach(file "index.html" "run_webassembly.py")
-    configure_file("src/${file}" ${file})
-  endforeach(file)
-endif()
