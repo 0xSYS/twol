@@ -6,7 +6,7 @@
 
 
 
-inline std::string twol_msg_stat[19] =
+inline std::string twol_msg_stat[21] =
 {
 	"Magick Packet parse error!\n",
 	"Wake On Lan failed!\n",
@@ -26,10 +26,12 @@ inline std::string twol_msg_stat[19] =
   "Failed to send magick packet!\n",
   "No status response from ",
   "Failed to write log file!\n",
-  "Writing to log file failed!\n"
+  "Writing to log file failed!\n",
+  "Failed to get home user directory!\n",
+  "Failed to create 'twol' directory in '.config'!\n"
 };
 
-int log_init_stat;
+// int log_init_stat;
 
 
 // To be implemented...

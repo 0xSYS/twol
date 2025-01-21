@@ -1313,6 +1313,7 @@ CMakeFiles/twol.dir/src/twol_list.cpp.o: /home/0xsys/twol/src/twol_list.cpp \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
 
 CMakeFiles/twol.dir/src/utils.cpp.o: /home/0xsys/twol/src/utils.cpp \
+  /home/0xsys/twol/src/err_list.hpp \
   /home/0xsys/twol/src/utils.hpp \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \

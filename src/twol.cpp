@@ -25,10 +25,10 @@ int main(int argc, char **argv)
     // std::string mac_addres_cli = argv[1];
     // std::string broadcast_ip_cli = argv[2];
     // send_magic_pack(mac_addres_cli, broadcast_ip_cli);
-    // tui_main();
+    tui_main();
     // tui_tests();
     // test_stuff();
-    twol_init();
+    // twol_init();
    
    return 0;
 }
