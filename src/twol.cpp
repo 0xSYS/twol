@@ -53,4 +53,13 @@ Todo:
 # List restriction (Only specific users can manage the servers or computers by being prompt with a password)
 # Wake on lan time schedule
 # IPMI Support
+# CLI Support:
+  Example usage: twol [options] <pc name / pc number>
+  options:
+  -on    --power_on
+  -off   --power_off
+  -ls    --list
+  -pstat --power_status
+  -rm    --remove
+  -add
 */
