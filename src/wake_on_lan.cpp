@@ -13,7 +13,7 @@
 
 
 
-
+// Parse and verify the mac addres
 bool parse_mac_addr(const std::string& mac, std::vector<uint8_t>& mac_bytes)
 {
   mac_bytes.clear();
@@ -46,6 +46,8 @@ bool parse_mac_addr(const std::string& mac, std::vector<uint8_t>& mac_bytes)
 
 
 
+
+// This is the function that triggers wake on lan
 void send_magic_pack(const std::string& mac_address, const std::string& broadcast_ip, int port = 9)
 {
   std::vector<uint8_t> mac_bytes;

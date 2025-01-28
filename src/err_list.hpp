@@ -5,7 +5,7 @@
 
 
 
-
+// All possible errors and warnings to be used for loging into file and into the tui status bar
 inline std::string twol_msg_stat[21] =
 {
 	"Magick Packet parse error!\n",

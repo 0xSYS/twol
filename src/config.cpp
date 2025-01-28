@@ -10,6 +10,11 @@
 //Some boring functions that parse the config lol
 //NotSoImportant tbh XDD
 
+
+/*
+Todo:
+- Use .config directory to store the settings(/home/user/.config/twol/twol.conf)
+*/
 void twol_cfg_write(cfg cfg_out)
 {
   ini::IniFile config;

@@ -6,10 +6,23 @@
 
 #include "ext_deps/inifile-cpp/inicpp.h"
 
+/*
+This is where the assigned computers will get parsed with all necessary parameters (Mac addres, broadcast ip, name and the rest of the stuff)
+It also contains function to write out the wake on lan list
+*/
 
 
+// This will usually get called in the init functions to parse the wake on lan pc list
 twol_list Read_PC_List()
 {
+
+	/*
+	Todo:
+	- Use the home directory for storing the lists
+	- Update the config structure
+
+	All this aplies to Write_PC_List() function (line 48)
+	*/
 	twol_list input_list;
 	ini::IniFile ini_list;
 

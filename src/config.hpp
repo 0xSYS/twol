@@ -2,6 +2,9 @@
 
 
 
+
+
+// Global structure used for storing the app settings (io)
 typedef struct
 {
   bool pc_status_mpack;

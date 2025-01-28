@@ -10,7 +10,8 @@
 
 
 
-
+// Used for testing code.
+// Some macros should be used instead
 void test_stuff()
 {
   // blah blah
