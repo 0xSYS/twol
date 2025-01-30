@@ -6,7 +6,7 @@
 
 
 // All possible errors and warnings to be used for loging into file and into the tui status bar
-inline std::string twol_msg_stat[21] =
+inline std::string twol_msg_stat[24] =
 {
 	"Magick Packet parse error!\n",
 	"Wake On Lan failed!\n",
@@ -28,7 +28,10 @@ inline std::string twol_msg_stat[21] =
   "Failed to write log file!\n",
   "Writing to log file failed!\n",
   "Failed to get home user directory!\n",
-  "Failed to create 'twol' directory in '.config'!\n"
+  "Failed to create 'twol' directory in '.config'!\n",
+  "Invalid configuration!\n",
+  "No configuration found\n",
+  "No pc list found\n"
 };
 
 // int log_init_stat;

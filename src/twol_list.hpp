@@ -13,6 +13,7 @@ typedef struct twol_list
   std::string broadcast_ip; // Required
 	std::string pcIp;         // Optional
 	int pc_count;             // Not for user!
+	bool restricted_pc;       // Optional (only qualified users can control those pcs)
 };
 
 

@@ -70,6 +70,11 @@ void twol_init()
 	  	std::cout << "failed to create logs dir\n";
 	  }
 	}
+
+	/*
+	Todo:
+	- After checking for the required directories check the settings for CLI mode or tui mode
+	*/
 }
 
 
