@@ -37,11 +37,29 @@ int main(int argc, char **argv)
     // std::string mac_addres_cli = argv[1];
     // std::string broadcast_ip_cli = argv[2];
     // send_magic_pack(mac_addres_cli, broadcast_ip_cli); // Triggers power on event trough the lan (wake on lan function which relies on the magick packet thing)
-    tui_main();      // Render the ascii "gui"
+    // tui_main();      // Render the ascii "gui"
     // tui_tests();  // Used for developing the tui
     // test_stuff(); // Used only for testing most of the backend
-    // twol_init();  // Initialise twol (read config and computer lists)
-   
+    twol_init();  // Initialise twol (read config and computer lists)
+
+    
+    cfg test_cfg;
+    /*
+    test_cfg.cli_mode = true;
+    test_cfg.restrict_mode = false;
+    test_cfg.restrict_autolink = false;
+    test_cfg.debug_log = true;
+    test_cfg.pc_status_mpack = true;
+
+    twol_cfg_write(test_cfg);
+    */
+    test_cfg = twol_cfg_read();
+
+    std::cout << "CLI mode: " << test_cfg.cli_mode << "\n";
+    std::cout << "Debug Log: " << test_cfg.debug_log << "\n";
+    std::cout << "PC Status: " << test_cfg.pc_status_mpack << "\n";
+    std::cout << "Restrict Autolink: " << test_cfg.restrict_autolink << "\n";
+    std::cout << "Restrict Mode: " << test_cfg.restrict_mode << "\n";
    return 0;
 }
 

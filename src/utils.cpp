@@ -32,8 +32,8 @@ void twol_init()
   // No longer needed bc it was moved to utils.hpp
   struct stat dir_st; // Not sure but I think this is for storing the output return of the stat() function
 
-  // Merge the home directory path with the .config/twol directory (The location where the settings and the lists are stored on linux)
-  twol_dir << homeDir << "/.config/twol";
+  // Merge the home directory path with the /home/user/.twol (The location where the settings and the lists are stored on linux)
+  twol_dir << homeDir << "/.twol";
 
   // Here's a funny string conversion
   std::string temp_conv = twol_dir.str(); // String stream -> c++ string -> c string so it can be used with some C api too XDD
