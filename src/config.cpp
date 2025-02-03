@@ -39,12 +39,14 @@ void twol_cfg_write(cfg cfg_out)
 cfg twol_cfg_read()
 {
   cfg cfg_in;
-  ini::IniFile config;
+  ini::IniFile in_config;
   std::ostringstream in_path;
-  // config.load(in_path.str());
+  in_config.setMultiLineValues(true);
+  in_config.setFieldSep('=');
+  in_config.load(in_path.str());
   
-  cfg_in.pc_status_mpack = config["settings"]["pcStat"].as<bool>();
-  // cfg_in.cli_mode = config["settings"]["CLIMode"].as<bool>();
+  cfg_in.pc_status_mpack = in_config["settings"]["pcStat"].as<bool>();
+  cfg_in.cli_mode = in_config["settings"]["CLIMode"].as<bool>();
   // cfg_in.restrict_mode = config["settings"]["restrictMode"].as<bool>();
   // cfg_in.restrict_autolink = config["settings"]["restrictAutolink"].as<bool>();
   // cfg_in.debug_log = config["settings"]["dbgLog"].as<bool>();
