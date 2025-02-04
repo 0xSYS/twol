@@ -38,23 +38,20 @@ void twol_cfg_write(cfg cfg_out)
 
 cfg twol_cfg_read()
 {
-  cfg cfg_in;
+  cfg cfg_in; // Configuration structure
   ini::IniFile in_config;
   std::ostringstream in_path;
-  in_config.setMultiLineValues(true);
-  in_config.setFieldSep('=');
-  in_config.load(in_path.str());
   
-  cfg_in.pc_status_mpack = in_config["settings"]["pcStat"].as<bool>();
-  cfg_in.cli_mode = in_config["settings"]["CLIMode"].as<bool>();
-  // cfg_in.restrict_mode = config["settings"]["restrictMode"].as<bool>();
-  // cfg_in.restrict_autolink = config["settings"]["restrictAutolink"].as<bool>();
-  // cfg_in.debug_log = config["settings"]["dbgLog"].as<bool>();
+  in_path << homeDir << "/.twol/twol.conf"; // Create the file location of the config file
+  in_config.setMultiLineValues(true); // Allow the ini parser to load the sections and fields line by line
+  in_config.load(in_path.str()); // Then open the config file
 
-  in_path << homeDir << "/.twol/twol.conf"; // Same thing as before
+  // Parse the specific fields from the settings section.
+  cfg_in.pc_status_mpack   = in_config["settings"]["pcStat"].as<bool>();
+  cfg_in.cli_mode          = in_config["settings"]["CLIMode"].as<bool>();
+  cfg_in.restrict_mode     = in_config["settings"]["restrictMode"].as<bool>();
+  cfg_in.restrict_autolink = in_config["settings"]["restrictAutolink"].as<bool>();
+  cfg_in.debug_log         = in_config["settings"]["dbgLog"].as<bool>(); 
 
-  // config.decode();
-
-  // config.load(in_path.str()); // But now load the configuration file
   return cfg_in; // And return the structure containing the configuration options
 }
