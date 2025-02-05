@@ -23,11 +23,11 @@ void twol_cfg_write(cfg cfg_out)
   std::ostringstream out_path;
 
   // Structure filling
-  config["settings"]["pcStat"] = cfg_out.pc_status_mpack;
-  config["settings"]["CLIMode"] = cfg_out.cli_mode;
-  config["settings"]["dbgLog"] = cfg_out.debug_log;
+  config["settings"]["pcStat"]           = cfg_out.pc_status_mpack;
+  config["settings"]["CLIMode"]          = cfg_out.cli_mode;
+  config["settings"]["dbgLog"]           = cfg_out.debug_log;
   config["settings"]["restrictAutolink"] = cfg_out.restrict_autolink;
-  config["settings"]["restrictMode"] = cfg_out.restrict_mode;
+  config["settings"]["restrictMode"]     = cfg_out.restrict_mode;
 
   out_path << homeDir << "/.twol/twol.conf"; // Concatenate strings to create the file path where the config is stored
   
