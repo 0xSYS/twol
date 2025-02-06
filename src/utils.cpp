@@ -5,7 +5,9 @@
 #include <string>
 #include <sstream>
 #include "err_list.hpp"
+#include "config.hpp"
 #include <sys/stat.h>
+
 
 
 
@@ -31,6 +33,8 @@ void twol_init()
   // std::string homeDir = std::getenv("HOME");
   // No longer needed bc it was moved to utils.hpp
   struct stat dir_st; // Not sure but I think this is for storing the output return of the stat() function
+
+  cfg default_config;
 
   // Merge the home directory path with the /home/user/.twol (The location where the settings and the lists are stored on linux)
   twol_dir << homeDir << "/.twol";
@@ -70,6 +74,16 @@ void twol_init()
 	  	std::cout << "failed to create logs dir\n";
 	  }
 	}
+
+
+	// Assign the default configuration
+
+	default_config.cli_mode = false;
+	default_config.restrict_mode = true;
+	default_config.restrict_timeout = true;
+	default_config.pc_status_mpack = true;
+	default_config.debug_log = false;
+	default_config.rescrict_time_span = 8;
 
 	/*
 	Todo:

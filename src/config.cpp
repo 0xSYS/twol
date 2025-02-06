@@ -23,11 +23,13 @@ void twol_cfg_write(cfg cfg_out)
   std::ostringstream out_path;
 
   // Structure filling
-  config["settings"]["pcStat"]           = cfg_out.pc_status_mpack;
-  config["settings"]["CLIMode"]          = cfg_out.cli_mode;
-  config["settings"]["dbgLog"]           = cfg_out.debug_log;
-  config["settings"]["restrictAutolink"] = cfg_out.restrict_autolink;
-  config["settings"]["restrictMode"]     = cfg_out.restrict_mode;
+  config["Settings"]["pcStat"]  = cfg_out.pc_status_mpack;
+  config["Settings"]["CLIMode"] = cfg_out.cli_mode;
+  config["Settings"]["dbgLog"]  = cfg_out.debug_log;
+  config["Restricted_session"]["autolink"]        = cfg_out.restrict_autolink;
+  config["Restricted_session"]["restrictMode"]    = cfg_out.restrict_mode;
+  config["Restricted_session"]["timeoutSession"]  = cfg_out.restrict_timeout;
+  config["Restricted_session"]["timeoutTimeSpan"] = cfg_out.rescrict_time_span;
 
   out_path << homeDir << "/.twol/twol.conf"; // Concatenate strings to create the file path where the config is stored
   
@@ -47,11 +49,14 @@ cfg twol_cfg_read()
   in_config.load(in_path.str()); // Then open the config file
 
   // Parse the specific fields from the settings section.
-  cfg_in.pc_status_mpack   = in_config["settings"]["pcStat"].as<bool>();
-  cfg_in.cli_mode          = in_config["settings"]["CLIMode"].as<bool>();
-  cfg_in.restrict_mode     = in_config["settings"]["restrictMode"].as<bool>();
-  cfg_in.restrict_autolink = in_config["settings"]["restrictAutolink"].as<bool>();
-  cfg_in.debug_log         = in_config["settings"]["dbgLog"].as<bool>(); 
+  cfg_in.pc_status_mpack = in_config["settings"]["pcStat"].as<bool>();
+  cfg_in.cli_mode        = in_config["settings"]["CLIMode"].as<bool>();
+  cfg_in.debug_log       = in_config["settings"]["dbgLog"].as<bool>();
+  cfg_in.restrict_mode      = in_config["Restricted_session"]["restrictMode"].as<bool>();
+  cfg_in.restrict_autolink  = in_config["Restricted_session"]["autolink"].as<bool>();
+  cfg_in.restrict_timeout   = in_config["Restricted_session"]["timeoutSession"].as<bool>();
+  cfg_in.rescrict_time_span = in_config["Restricted_session"]["timeoutTimeSpan"].as<int>();
+ 
 
   return cfg_in; // And return the structure containing the configuration options
 }

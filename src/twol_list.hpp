@@ -6,7 +6,7 @@
 
 // Global structure for 1 wake on lan pc
 // This structure should be turned into an array so that more computers can be processed (io list as well as frontend list in the tui)
-typedef struct twol_list
+struct twol_list
 {
   std::string pcName;       // Optional
   std::string mac_addr;     // Required
