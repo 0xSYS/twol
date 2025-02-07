@@ -1,5 +1,7 @@
 #include "utils.hpp"
 
+#include <chrono>
+#include <iomanip>
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -25,6 +27,18 @@ void get_wol_pcs()
 	// return the global structure used for the pcs
 }
 
+// Simple function that returns a string only the current date
+// Pattern: Day - Month - Year
+// Todo: (Optional) Allow custom patterns of the current date
+std::string get_current_date()
+{
+  std::ostringstream temp;
+  auto cd = std::chrono::system_clock::now();
+  std::time_t current_dt = std::chrono::system_clock::to_time_t(cd);
+  std::tm local_tm =*std::localtime(&current_dt);
+  temp << std::put_time(&local_tm, "%d.%m.%Y");
+  return temp.str();
+}
 
 // When called it looks for the configuration file and the wake on lan list as well as the restricted wake on lan list
 void twol_init()

@@ -11,6 +11,7 @@
 
 
 inline std::string homeDir = std::getenv("HOME");
+std::string get_current_date();
 
 
 

@@ -1,4 +1,5 @@
 #include "err_list.hpp"
+#include "utils.hpp"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -14,8 +15,9 @@
 // Initialize log stuff before writing to the same log file
 void log_init()
 {
-  // Do stuff here
-  std::ofstream out_log_init("twol_log");
+  std::ostringstream log_name;
+  log_name << homeDir << "/.twol/logs/twol_log - " << get_current_date(); // Create the log filename containing the current date
+  std::ofstream out_log_init(log_name.str());
   time_t t_stamp_init;
   time(&t_stamp_init);
   out_log_init << "[ " << ctime(&t_stamp_init) << " ] - log_init().\n";
@@ -31,13 +33,16 @@ Then close it
 
 
 // Pretty simple tbh lol
+// !!!IMPORTANT!!! The last log filename must be saved somewhere to avoid splitting the log when the current date changes
 int write_log(std::string s, int flags)
 {
   std::ofstream out_log;
   time_t log_time_stamp;
   std::stringstream log_str;
+  std::ostringstream log_name;
+  log_name << homeDir << "/.twol/logs/twol_log - " << get_current_date();
 
-  out_log.open("twol_log", std::ios::app);
+  out_log.open(log_name.str(), std::ios::app);
 
   if(!out_log)
     return 1;
