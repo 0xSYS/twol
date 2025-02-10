@@ -198,73 +198,64 @@ void tui_main()
 
 
 // Dev only
-
-// void tui_tests()
-// {
-//   // Table data
-//     std::vector<std::vector<std::string>> table_data = {
-//         {"Version", "Marketing name", "Release date", "API level", "Runtime"},
-//         {"2.3", "Gingerbread", "February 9 2011", "10", "Dalvik 1.4.0"},
-//         {"4.0", "Ice Cream Sandwich", "October 19 2011", "15", "Dalvik"},
-//         {"4.1", "Jelly Bean", "July 9 2012", "16", "Dalvik"},
-//         {"4.2", "Jelly Bean", "November 13 2012", "17", "Dalvik"},
-//         {"4.3", "Jelly Bean", "July 24 2013", "18", "Dalvik"},
-//         {"4.4", "KitKat", "October 31 2013", "19", "Dalvik and ART"},
-//         {"5.0", "Lollipop", "November 3 2014", "21", "ART"},
-//         {"5.1", "Lollipop", "March 9 2015", "22", "ART"},
-//         {"6.0", "Marshmallow", "October 5 2015", "23", "ART"},
-//         {"7.0", "Nougat", "August 22 2016", "24", "ART"},
-//         {"7.1", "Nougat", "October 4 2016", "25", "ART"},
-//         {"8.0", "Oreo", "August 21 2017", "26", "ART"},
-//         {"8.1", "Oreo", "December 5 2017", "27", "ART"},
-//         {"9", "Pie", "August 6 2018", "28", "ART"},
-//         {"10", "10", "September 3 2019", "29", "ART"},
-//         {"11", "11", "September 8 2020", "30", "ART"},
-//     };
-
-//     // State to track selected row
-//     int selected_row = 1;  // Start with the first row after the header
-
-//     auto screen = ScreenInteractive::Fullscreen();
-
-//     // Renderer for the table
-//     auto table_renderer = Renderer([&] {
-//         auto table = Table(table_data);
-
-//         // Decorate the table
-//         table.SelectAll().Border(DOUBLE);
-//         table.SelectColumn(0).Border(DOUBLE);
-//         table.SelectColumn(1).Border(DOUBLE);
-//         table.SelectColumn(2).Border(DOUBLE);
-//         table.SelectRow(0).Decorate(bold);
-//         table.SelectRow(0).SeparatorVertical(DOUBLE);
-//         table.SelectRow(0).Border(DOUBLE);
-//         table.SelectColumn(2).DecorateCells(align_right);
-
-//         // Highlight the selected row
-//         table.SelectRow(selected_row).DecorateCells(bgcolor(Color::DodgerBlue1));
-        
-
-//         // Render the table
-//         return table.Render() | border | vscroll_indicator;
-//     });
-
-//     // Main component for handling keyboard navigation
-//     auto main_component = CatchEvent(table_renderer, [&](Event event) {
-//         if (event == Event::ArrowUp) {
-//             selected_row = std::max(1, selected_row - 1);  // Prevent going above the header row
-//             return true;
-//         }
-//         if (event == Event::ArrowDown) {
-//             selected_row = std::min((int)table_data.size() - 1, selected_row + 1);  // Prevent overflow
-//             return true;
-//         }
-//         return false;
-//     });
-
-//   // Make the table scrollable
-//     // auto scrollable_component = Scrollable(main_component);
-
-//     // Start the interactive loop
-//     screen.Loop(main_component);    
-// }
+#ifdef TUI_TESTS
+void tui_tests()
+{
+  // Table data
+    std::vector<std::vector<std::string>> table_data = {
+        {"Version", "Marketing name", "Release date", "API level", "Runtime"},
+        {"2.3", "Gingerbread", "February 9 2011", "10", "Dalvik 1.4.0"},
+        {"4.0", "Ice Cream Sandwich", "October 19 2011", "15", "Dalvik"},
+        {"4.1", "Jelly Bean", "July 9 2012", "16", "Dalvik"},
+        {"4.2", "Jelly Bean", "November 13 2012", "17", "Dalvik"},
+        {"4.3", "Jelly Bean", "July 24 2013", "18", "Dalvik"},
+        {"4.4", "KitKat", "October 31 2013", "19", "Dalvik and ART"},
+        {"5.0", "Lollipop", "November 3 2014", "21", "ART"},
+        {"5.1", "Lollipop", "March 9 2015", "22", "ART"},
+        {"6.0", "Marshmallow", "October 5 2015", "23", "ART"},
+        {"7.0", "Nougat", "August 22 2016", "24", "ART"},
+        {"7.1", "Nougat", "October 4 2016", "25", "ART"},
+        {"8.0", "Oreo", "August 21 2017", "26", "ART"},
+        {"8.1", "Oreo", "December 5 2017", "27", "ART"},
+        {"9", "Pie", "August 6 2018", "28", "ART"},
+        {"10", "10", "September 3 2019", "29", "ART"},
+        {"11", "11", "September 8 2020", "30", "ART"},
+    };
+    // State to track selected row
+    int selected_row = 1;  // Start with the first row after the header
+    auto screen = ScreenInteractive::Fullscreen();
+    // Renderer for the table
+    auto table_renderer = Renderer([&] {
+        auto table = Table(table_data);
+        // Decorate the table
+        table.SelectAll().Border(DOUBLE);
+        table.SelectColumn(0).Border(DOUBLE);
+        table.SelectColumn(1).Border(DOUBLE);
+        table.SelectColumn(2).Border(DOUBLE);
+        table.SelectRow(0).Decorate(bold);
+        table.SelectRow(0).SeparatorVertical(DOUBLE);
+        table.SelectRow(0).Border(DOUBLE);
+        table.SelectColumn(2).DecorateCells(align_right);
+        // Highlight the selected row
+        table.SelectRow(selected_row).DecorateCells(bgcolor(Color::DodgerBlue1));     
+        // Render the table
+        return table.Render() | border | vscroll_indicator;
+    });
+    // Main component for handling keyboard navigation
+    auto main_component = CatchEvent(table_renderer, [&](Event event) {
+        if (event == Event::ArrowUp) {
+            selected_row = std::max(1, selected_row - 1);  // Prevent going above the header row
+            return true;
+        }
+        if (event == Event::ArrowDown) {
+            selected_row = std::min((int)table_data.size() - 1, selected_row + 1);  // Prevent overflow
+            return true;
+        }
+        return false;
+    });
+  // Make the table scrollable
+    // auto scrollable_component = Scrollable(main_component);
+    // Start the interactive loop
+    screen.Loop(main_component);    
+}
+#endif

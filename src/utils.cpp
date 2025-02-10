@@ -15,17 +15,8 @@
 
 
 
-void get_conf()
-{
-	// Do stuf here
-	// return settings struct...
-}
 
-void get_wol_pcs()
-{
-	// Read the twol pc list and
-	// return the global structure used for the pcs
-}
+
 
 // Simple function that returns a string only the current date
 // Pattern: Day - Month - Year
@@ -44,7 +35,6 @@ std::string get_current_date()
 void twol_init()
 {
 	std::ostringstream twol_dir;
-  // std::string homeDir = std::getenv("HOME");
   // No longer needed bc it was moved to utils.hpp
   struct stat dir_st; // Not sure but I think this is for storing the output return of the stat() function
 
