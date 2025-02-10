@@ -1,5 +1,5 @@
 #include "tui.hpp"
-
+#include "modal_dialog.hpp"
 #include <string>
 #include <iostream>
 #include <vector>
@@ -133,11 +133,16 @@ void tui_main()
   int tab_3_selected = 0;
   int value;
   int row = 0;
-  auto button1 = ftxui::Button("Add", [&] { value -= 1; }, Style());
+  auto button1 = ftxui::Button("Add", [&] { modal_shown=true; }, Style());
   auto button2 = ftxui::Button("Remove", [&] { value -= 1; }, Style());
   auto quit_btn = ftxui::Button("Quit", [&] {screen.ExitLoopClosure()();}, Style());
-  
-
+  auto show_modal = [&] { modal_shown = true; };
+  auto hide_modal = [&] { modal_shown = false; };
+  auto exit = screen.ExitLoopClosure();
+  auto do_nothing = [&] {};
+  auto modal_container = ModalComponent(do_nothing, hide_modal);
+  auto main_component = MainComponent(show_modal, exit);
+  main_component |= Modal(modal_container, &modal_shown);
   auto buttons_container = ftxui::Container::Vertical({
         button1,
         button2,
@@ -153,7 +158,9 @@ void tui_main()
                     button2->Render() | size(ftxui::WIDTH, ftxui::EQUAL, 7) | size(ftxui::HEIGHT, ftxui::EQUAL, 3),
                     ftxui::vbox({}) | size(ftxui::HEIGHT, ftxui::EQUAL, 1),
                     quit_btn -> Render() | size(ftxui::WIDTH, ftxui::EQUAL, 7) | size(ftxui::HEIGHT, ftxui::EQUAL, 3),
-                    k_handle -> Render(),      
+                    table_rend -> Render(),
+                    xmain_component -> Render(),
+                        
                     // Separator for the status bar    
                     ftxui::separator(),
                 }) | ftxui::xflex_grow,  // Align the buttons to the left
@@ -168,7 +175,8 @@ void tui_main()
   auto tab_container = ftxui::Container::Tab(
       {
           tab_content1 ,
-          ftxui::Radiobox(&tab_2_entries, &tab_2_selected)
+          ftxui::Radiobox(&tab_2_entries, &tab_2_selected),
+          
       },
       &tab_selected);
 
@@ -185,7 +193,8 @@ void tui_main()
            }) |
            ftxui::border;
   });
-  screen.Loop(renderer);
+  
+  
 }
 
 /*
