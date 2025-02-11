@@ -1,10 +1,9 @@
 #include <sstream>
 
-
+#include "ext_deps/inifile-cpp/inicpp.h"
 
 #include "twol_list.hpp"
 #include "utils.hpp"
-#include "ext_deps/inifile-cpp/inicpp.h"
 
 /*
 This is where the assigned computers will get parsed with all necessary parameters (Mac addres, broadcast ip, name and the rest of the stuff)
