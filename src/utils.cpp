@@ -96,5 +96,17 @@ void twol_init()
 }
 
 
+// Power on a pc by entering only the custom name or the automatic name
+// Use case in CLI mode 
+void twol_power_on(std::string name)
+{
+	/*
+	Steps:
+	1) Check if the name is custom or automatic (automatic names will be assigned with this naming pattern: pc_<indexed number>)
+	2) Get mac addres and broadcast ip
+	3) Send wake on lan magick packet
+	*/
+} 
+
 // That's it
 // Not much going on lol
