@@ -1,0 +1,8 @@
+Needed depencencies
+
+
+
+All AUR packages should be installed using yay
+- - - - Arch Linux - - - -
+- liboping (AUR)
+- openssl (Normally preinstalled by default)

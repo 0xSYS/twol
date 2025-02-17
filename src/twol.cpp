@@ -16,6 +16,7 @@
   #include "tests.h"
 #endif
 #include "utils.hpp"
+#include "ping.hpp"
 
 
 
@@ -41,13 +42,14 @@ int main(int argc, char **argv)
     #ifdef TUI_TESTS
       tui_tests();  // Used for developing the tui
     #else
-      tui_main();
+      // tui_main();
     #endif
 
     #ifdef DEVEL
       test_stuff(); // Used only for testing most of the backend
     #else
-     twol_init();  // Initialise twol (read config and computer lists)
+     // twol_init();  // Initialise twol (read config and computer lists)
+     twol_ping("192.168.1.15");
     #endif
 
 
@@ -88,4 +90,14 @@ Todo:
   -pstat --power_status
   -rm    --remove
   -add
+
+  Todo:
+  [Restricted session]
+  - At startup get all available PCs or servers
+  - Ask for list creation (A prompt) containing all servers / or discovered pcs available for remote connections via SSH
+  - Get available users with the right permissions
+  - Verify all power permissions for specific users
+  - (Option / Feature) Provide ip or ip s from all servers / computers
+  - Verify specific server  / computer if it's available for connections (Check if a pc / server is online of offline)
+  - Separated component of the software: A linux service that monitors the activity of each signed server or computer
 */

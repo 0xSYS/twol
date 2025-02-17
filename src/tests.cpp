@@ -3,7 +3,7 @@
 #include <numeric>
 
 #include "config.hpp"
-
+#include "ping.hpp"
 
 
 
@@ -33,7 +33,8 @@ void test_stuff()
   | Configuration assign test |
   |---------------------------|
   */
-  writeCfgTest.cli_mode = true;
+  
+  /*writeCfgTest.cli_mode = true;
   writeCfgTest.restrict_mode = false;
   writeCfgTest.restrict_autolink = false;
   writeCfgTest.restrict_timeout = true;
@@ -43,14 +44,14 @@ void test_stuff()
   writeCfgTest.restr_users = { "Someone", "SomeoneElse", "A dude"};
   writeCfgTest.restr_list_path = "/home/someone/get/the/path/to/file/lol";
 
-  twol_cfg_write(writeCfgTest);
+  twol_cfg_write(writeCfgTest);*/
 
   /*
   |-----------------------|
   | Configuration Reading |
   |-----------------------|
   */
-  readCfgTest = twol_cfg_read(); // Read and assign the contents of the configuration file to this structure
+  /*readCfgTest = twol_cfg_read(); // Read and assign the contents of the configuration file to this structure
 
 
   int restrUsrsIndex = sizeof(readCfgTest.restr_users);
@@ -68,5 +69,7 @@ void test_stuff()
   for(int i = 0; i < restrUsrsIndex; i++)
   {
     std::cout << readCfgTest.restr_users[i] << "\n";
-  }
+  }*/
+
+  twol_ping("8.8.8.8");
 }

@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+find_library(OPING_LIBRARY NAMES oping REQUIRED)
+
 # --- Fetch FTXUI --------------------------------------------------------------
 include(FetchContent)
 
@@ -31,6 +33,7 @@ set(TWOL_SOURCES
   src/dbg_log.cpp
   src/config.cpp
   src/utils.cpp
+  src/ping.cpp
   src/tests.cpp
 )
 
@@ -43,4 +46,5 @@ target_link_libraries(twol
   PRIVATE ftxui::screen
   PRIVATE ftxui::dom
   PRIVATE ftxui::component  # Not needed for this example.
+  PRIVATE ${OPING_LIBRARY}
 )

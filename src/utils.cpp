@@ -12,7 +12,10 @@
 #include "utils.hpp"
 
 
-
+#if defined(_WIN32) || defined(_WIN64)
+  #include <Windows.h>
+  #include <direct.h>
+#endif
 
 
 
@@ -48,16 +51,28 @@ void twol_init()
 
   // Next step: Directory setup
   if(stat(temp_conv.c_str(), &dir_st) != 0) // Check if the "twol" directory exists.
-  {	
-  	if(mkdir(temp_conv.c_str(), 0777) == 0) // If not create the "twol" directory and also check for success or failure
-  	{
-  		// Todo: the string array from err_list.hpp should be used for both writing the log to file and for frontend debug in the status bar
-  		std::cout << "twol dir created\n";
-  	}
-  	else
-  	{
-  		std::cout << "twol dir failed!\n";
-  	}
+  {
+  	#if defined(_linux_)
+  	  if(mkdir(temp_conv.c_str(), 0777) == 0) // If not create the "twol" directory and also check for success or failure
+  	  {
+  	  	// Todo: the string array from err_list.hpp should be used for both writing the log to file and for frontend debug in the status bar
+  	  	std::cout << "twol dir created\n";
+  	  }
+  	  else
+  	  {
+  	  	std::cout << "twol dir failed!\n";
+  	  }
+  	#elif defined(_WIN32) || defined(_WIN64)
+  	  if(mkdir(temp_conv.c_str()) == 0) // If not create the "twol" directory and also check for success or failure
+  	  {
+  	  	// Todo: the string array from err_list.hpp should be used for both writing the log to file and for frontend debug in the status bar
+  	  	std::cout << "twol dir created\n";
+  	  }
+  	  else
+  	  {
+  	  	std::cout << "twol dir failed!\n";
+  	  }
+  	#endif
   }
   
   // Use the same directory path formed earlier (at line 36) to create the logs directory.
@@ -69,14 +84,25 @@ void twol_init()
   // From here are pretty much the same steps as earlier on line 42
   if(stat(temp_str.c_str(), &dir_st) != 0) // Check for the "logs" directory
   {
-	  if(mkdir(temp_str.c_str(), 0777) == 0) // If it dosen't exist create it and check for success or failure
-	  {
-	  	std::cout << "logs dir created\n";
-	  }
-	  else
-	  {
-	  	std::cout << "failed to create logs dir\n";
-	  }
+  	#if defined(_linux_)
+	    if(mkdir(temp_str.c_str(), 0777) == 0) // If it dosen't exist create it and check for success or failure
+	    {
+	    	std::cout << "logs dir created\n";
+	    }
+	    else
+	    {
+	    	std::cout << "failed to create logs dir\n";
+	    }
+	  #elif defined(_WIN32) || defined(_WIN64)
+	    if(mkdir(temp_str.c_str()) == 0) // If it dosen't exist create it and check for success or failure
+	    {
+	    	std::cout << "logs dir created\n";
+	    }
+	    else
+	    {
+	    	std::cout << "failed to create logs dir\n";
+	    }
+	  #endif
 	}
 
 
@@ -102,9 +128,10 @@ void twol_power_on(std::string name)
 {
 	/*
 	Steps:
-	1) Check if the name is custom or automatic (automatic names will be assigned with this naming pattern: pc_<indexed number>)
-	2) Get mac addres and broadcast ip
-	3) Send wake on lan magick packet
+	1) Check if the pc exists in one of the lists (Both restructed and nom-restricted)
+	2) Check if the name is custom or automatic (automatic names will be assigned with this naming pattern: pc_<indexed number>)
+	3) Get mac addres and broadcast ip
+	4) Send wake on lan magick packet
 	*/
 } 
 
