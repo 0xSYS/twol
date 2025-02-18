@@ -93,6 +93,10 @@ Todo:
 
   Todo:
   [Restricted session]
+  !!! IMPORTANT !!! Working on full IPMI support
+  - Custom lan packet (bidirectional transmission on local network area) used to get all available pc / servers and creating temporarry list on the host controller server
+  * Packet pattern: (From host sender)"isSPM" Checks if the SPM daemon runs.
+                    (From available host) "isSPM isIPMI isWOL" Checks for IPMI support or Wake On Lan Support
   - At startup get all available PCs or servers
   - Ask for list creation (A prompt) containing all servers / or discovered pcs available for remote connections via SSH
   - Get available users with the right permissions
@@ -100,4 +104,5 @@ Todo:
   - (Option / Feature) Provide ip or ip s from all servers / computers
   - Verify specific server  / computer if it's available for connections (Check if a pc / server is online of offline)
   - Separated component of the software: A linux service that monitors the activity of each signed server or computer
+  ** Possible total rename to SPM (Server Power Management)
 */
