@@ -8,7 +8,7 @@
 
 // Send ping to a computer
 // Use case: Check if the computer has booted the OS and connects to the internet
-void twol_ping(const std::string& ip)
+void spm_ping(const std::string& ip)
 {
   // stuff
   pingobj_t *p;

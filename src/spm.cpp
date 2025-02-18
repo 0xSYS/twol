@@ -5,7 +5,7 @@
 
 
 
-// #define DEVEL
+ #define DEVEL
 // #define TUI_TESTS
 
 
@@ -48,8 +48,8 @@ int main(int argc, char **argv)
     #ifdef DEVEL
       test_stuff(); // Used only for testing most of the backend
     #else
-     // twol_init();  // Initialise twol (read config and computer lists)
-     twol_ping("192.168.1.15");
+      spm_init();  // Initialise twol (read config and computer lists)
+    // spm_ping("192.168.1.15");
     #endif
 
 
@@ -97,6 +97,7 @@ Todo:
   - Custom lan packet (bidirectional transmission on local network area) used to get all available pc / servers and creating temporarry list on the host controller server
   * Packet pattern: (From host sender)"isSPM" Checks if the SPM daemon runs.
                     (From available host) "isSPM isIPMI isWOL" Checks for IPMI support or Wake On Lan Support
+  - Secure the transmission between servers / computers when sending custom eth packet (Requires openSSL)                    
   - At startup get all available PCs or servers
   - Ask for list creation (A prompt) containing all servers / or discovered pcs available for remote connections via SSH
   - Get available users with the right permissions

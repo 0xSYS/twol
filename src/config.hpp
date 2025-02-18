@@ -22,5 +22,5 @@ typedef struct
 } cfg;
 
 
-void twol_cfg_write(cfg cfg_out);
-cfg twol_cfg_read();
+void spm_cfg_write(cfg cfg_out);
+cfg spm_cfg_read();

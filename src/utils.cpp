@@ -35,7 +35,7 @@ std::string get_current_date()
 }
 
 // When called it looks for the configuration file and the wake on lan list as well as the restricted wake on lan list
-void twol_init()
+void spm_init()
 {
 	std::ostringstream twol_dir;
   // No longer needed bc it was moved to utils.hpp
@@ -124,7 +124,7 @@ void twol_init()
 
 // Power on a pc by entering only the custom name or the automatic name
 // Use case in CLI mode 
-void twol_power_on(std::string name)
+void spm_power_on(std::string name)
 {
 	/*
 	Steps:

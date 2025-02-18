@@ -17,7 +17,7 @@
 void log_init()
 {
   std::ostringstream log_name;
-  log_name << homeDir << "/.twol/logs/twol_log - " << get_current_date(); // Create the log filename containing the current date
+  log_name << homeDir << "/.spm/logs/spm_log - " << get_current_date(); // Create the log filename containing the current date
   std::ofstream out_log_init(log_name.str());
   time_t t_stamp_init;
   time(&t_stamp_init);
@@ -41,7 +41,7 @@ int write_log(std::string s, int flags)
   time_t log_time_stamp;
   std::stringstream log_str;
   std::ostringstream log_name;
-  log_name << homeDir << "/.twol/logs/twol_log - " << get_current_date();
+  log_name << homeDir << "/.spm/logs/spm_log - " << get_current_date();
 
   out_log.open(log_name.str(), std::ios::app);
 

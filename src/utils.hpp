@@ -15,5 +15,5 @@ std::string get_current_date();
 
 
 
-void twol_init();
-void twol_power_on(std::string name);
+void spm_init();
+void spm_power_on(std::string name);

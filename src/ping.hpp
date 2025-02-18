@@ -9,4 +9,4 @@
 
 
 
-void twol_ping(const std::string& ip);
+void spm_ping(const std::string& ip);

@@ -6,7 +6,7 @@
 
 
 // All possible errors and warnings to be used for loging into file and into the tui status bar
-inline std::string twol_msg_stat[26] =
+inline std::string spm_msg_stat[26] =
 {
 	"Magick Packet parse error!\n",
 	"Wake On Lan failed!\n",

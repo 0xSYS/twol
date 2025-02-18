@@ -19,7 +19,7 @@
 Todo:
 - Use .config directory to store the settings(/home/user/.twol/twol.conf)
 */
-void twol_cfg_write(cfg cfg_out)
+void spm_cfg_write(cfg cfg_out)
 {
   ini::IniFile config;
   std::ostringstream out_path;
@@ -33,20 +33,20 @@ void twol_cfg_write(cfg cfg_out)
   config["Restricted_session"]["timeoutSession"]  = cfg_out.restrict_timeout;
   config["Restricted_session"]["timeoutTimeSpan"] = cfg_out.rescrict_time_span;
 
-  out_path << homeDir << "/.twol/twol.conf"; // Concatenate strings to create the file path where the config is stored
+  out_path << homeDir << "/.spm/spm.conf"; // Concatenate strings to create the file path where the config is stored
   
   config.save(out_path.str()); // And save it with the file path and name formed earlier.
   //Do stuff here
 }
 
 
-cfg twol_cfg_read()
+cfg spm_cfg_read()
 {
   cfg cfg_in; // Configuration structure
   ini::IniFile in_config;
   std::ostringstream in_path;
   
-  in_path << homeDir << "/.twol/twol.conf"; // Create the file location of the config file
+  in_path << homeDir << "/.spm/spm.conf"; // Create the file location of the config file
   in_config.setMultiLineValues(true); // Allow the ini parser to load the sections and fields line by line
   in_config.load(in_path.str()); // Then open the config file
 

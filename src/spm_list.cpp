@@ -2,7 +2,7 @@
 
 #include "ext_deps/inifile-cpp/inicpp.h"
 
-#include "twol_list.hpp"
+#include "spm_list.hpp"
 #include "utils.hpp"
 
 /*
@@ -25,7 +25,7 @@ twol_list Read_PC_List()
 	twol_list input_list;
 	ini::IniFile ini_list;
 	std::ostringstream list_path;
-	list_path << homeDir << "/.twol/list.twol"; // The path to the list of computers
+	list_path << homeDir << "/.spm/list.twol"; // The path to the list of computers
 
 	ini_list.load(list_path.str());
 
@@ -51,7 +51,7 @@ void Write_PC_List(twol_list out_pc_list)
 	ini::IniFile out_list;
 	ini::IniFile temp_read;
 	std::ostringstream list_path;
-	list_path << homeDir << "/.twol/list.twol"; // Same as before
+	list_path << homeDir << "/.spm/list.twol"; // Same as before
 
   // Temporary reading of pc list to ensure that each new section is ordered by number. (This helps to prevent the same section names to be written)
 	out_pc_list.pc_count = temp_read["main"]["count"].as<int>();
