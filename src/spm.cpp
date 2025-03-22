@@ -26,16 +26,16 @@
 
 int main(int argc, char **argv) 
 {
-    #ifdef DEVEL
-      if(argc != 1) 
-      {
-          std::cout << argv[0] <<  "No Args!\n";
-          return 1;
-      }
+    #ifdef SPM_CLI
+       if(argc != 1) 
+       {
+           std::cout << argv[0] <<  "No Args!\n";
+           return 1;
+       }
 
-      std::string mac_addres_cli = argv[1];
-      std::string broadcast_ip_cli = argv[2];
-      send_magic_pack(mac_addres_cli, broadcast_ip_cli); // Triggers power on event trough the lan (wake on lan function which relies on the magick packet thing)
+       std::string mac_addres_cli = argv[1];
+       std::string broadcast_ip_cli = argv[2];
+       send_magic_pack(mac_addres_cli, broadcast_ip_cli); // Triggers power on event trough the lan (wake on lan function which relies on the magick packet thing)
     #endif
     
 
@@ -47,9 +47,8 @@ int main(int argc, char **argv)
 
     #ifdef DEVEL
       test_stuff(); // Used only for testing most of the backend
-    #else
+   // #else
       spm_init();  // Initialise twol (read config and computer lists)
-    // spm_ping("192.168.1.15");
     #endif
 
 
@@ -104,6 +103,6 @@ Todo:
   - Verify all power permissions for specific users
   - (Option / Feature) Provide ip or ip s from all servers / computers
   - Verify specific server  / computer if it's available for connections (Check if a pc / server is online of offline)
-  - Separated component of the software: A linux service that monitors the activity of each signed server or computer
+  - Separated component of the software: A linux service (Daemon) that monitors the activity of each signed server or computer
   ** Possible total rename to SPM (Server Power Management)
 */

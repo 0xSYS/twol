@@ -1,9 +1,6 @@
-# Terminal (Or text user interface) wake on lan utility
+# Server Power Management
 
-It's an easy to use wake on lan utility which inspires from wake me on lan.
+A software and library for managing power on / off computers or server over the internet
 
 
 ### This project is in early development...
-
-
-Powered by FTXUI

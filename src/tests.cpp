@@ -17,6 +17,8 @@ cfg readCfgTest;
 void test_stuff()
 {
   // blah blah
+
+  std::cout << "test_stuff()\n";
   /*
   const char * homeDir = std::getenv("HOME");
 
