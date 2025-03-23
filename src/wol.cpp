@@ -10,9 +10,9 @@
 #ifdef __linux__
  #include <arpa/inet.h>
  #include <sys/socket.h>
+ #include <unistd.h>
 #endif
 
-#include <unistd.h>
 
 #ifdef __WIN32
   #include <netdb.h>
