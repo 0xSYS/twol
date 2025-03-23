@@ -22,7 +22,7 @@
 
 #ifdef _WIN32
   DWORD WINAPI recvdata(LPVOID);
-  #define close closesocket
+  #define close closesocket      // Used to resemble the linux close socket function on windows
 #else
   void* recvdata(void*);
 #endif
@@ -37,7 +37,6 @@
 
 
 // Parse and verify the mac addres
-
 bool SPMWakeOnLan::parse_mac_addr(const std::string& mac, std::vector<uint8_t>& mac_bytes)
 {
   mac_bytes.clear();
@@ -68,11 +67,12 @@ bool SPMWakeOnLan::parse_mac_addr(const std::string& mac, std::vector<uint8_t>& 
   return mac_bytes.size() == 6;
 }
 
+// This is where the Wake on LAN takes place
 void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::string& broadcast_ip, int port)
 {
   std::vector<uint8_t> mac_bytes;
   
-
+  // Verify the MAC addres
   if(!parse_mac_addr(mac_address, mac_bytes))
   {
     dbg.Log(SPMDebug::Err, "Invalid MAC Address!!");
@@ -87,14 +87,14 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
     std::vector<char> magic_packet;
 #endif
 
-  magic_packet.insert(magic_packet.end(), 6, 0xFF);
+  magic_packet.insert(magic_packet.end(), 6, 0xFF); // Byte insertion
 
   for(int i = 0; i < 16; i++)
   {
     magic_packet.insert(magic_packet.end(), mac_bytes.begin(), mac_bytes.end());
   }
 
-  int sockt = socket(AF_INET, SOCK_DGRAM, 0);
+  int sockt = socket(AF_INET, SOCK_DGRAM, 0); // Create socket
 
   if(sockt < 0)
   {

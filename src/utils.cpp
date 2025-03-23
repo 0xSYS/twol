@@ -24,7 +24,10 @@
 
 
 
-
+/*
+Use Cases:
+Writig log files containing the date on the filename
+*/
 std::string SPMUtils::GetCurrentDate()
 {
   std::ostringstream temp;
@@ -35,7 +38,7 @@ std::string SPMUtils::GetCurrentDate()
   return temp.str();
 }
 
-
+// The rest of the functions are crucial for managing files and directories
 std::string SPMUtils::GetHomeDir()
 {
 #ifdef __linux
