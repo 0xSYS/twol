@@ -6,7 +6,11 @@
 #include <vector>
 #include <sstream>
 #include <stdexcept>
-#include <arpa/inet.h>
+
+#ifdef __linux__
+ #include <arpa/inet.h>
+#endif
+
 #include <sys/socket.h>
 #include <unistd.h>
 
