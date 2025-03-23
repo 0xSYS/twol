@@ -9,9 +9,9 @@
 
 #ifdef __linux__
  #include <arpa/inet.h>
+ #include <sys/socket.h>
 #endif
 
-#include <sys/socket.h>
 #include <unistd.h>
 
 #ifdef __WIN32
