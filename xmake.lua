@@ -1,8 +1,11 @@
 add_rules("mode.debug", "mode.release")
 
 target("spm")
-    set_kind("binary")
+    set_kind("shared")
     add_files("src/*.cpp")
+    if is_plat("windows") then
+        add_links("ws2_32")
+    end
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
