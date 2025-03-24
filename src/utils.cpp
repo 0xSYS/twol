@@ -63,9 +63,11 @@ void SPMUtils::makeDir(std::string d)
 #endif
 
 #if defined (_WIN32) || defined (_WIN64)
-  if(CreateDirectory(d.c_str(), NULL) || ERROR_ALREADY_EXISTS == GetLastError())
+  std::wstring wstr(d.begin(), d.end());
+  LPCWSTR temp = wstr.c_str();
+  if(CreateDirectory(temp, NULL) || ERROR_ALREADY_EXISTS == GetLastError())
   {
-    dbg.Log(SPMDEbug::Err, "CreateDirectory() failed !! Err Code: " GetLastError());
+    dbg.Log(SPMDebug::Err, "CreateDirectory() failed !! Err Code: ", GetLastError());
   }
 #endif
 }
@@ -82,7 +84,9 @@ bool SPMUtils::checkDir(std::string d)
 #endif
 
 #if defined(_WIN32) || defined(_WIN64)
-  DWORD attributes = GetFileAttributes(d.c_str());
+  std::wstring wstr(d.begin(), d.end());
+  LPCWSTR temp = wstr.c_str();
+  DWORD attributes = GetFileAttributes(temp);
   return (attributes != INVALID_FILE_ATTRIBUTES && (attributes & FILE_ATTRIBUTE_DIRECTORY));
 #endif
 }
@@ -94,7 +98,9 @@ bool SPMUtils::checkDir(std::string d)
 #endif
 
 #if defined(_WIN32) || defined(_WIN64)
-  DWORD fileAttr = GetFileAttributes(filename);
+  std::wstring wstr(f.begin(), f.end());
+  LPCWSTR temp = wstr.c_str();
+  DWORD fileAttr = GetFileAttributes(temp);
   return (fileAttr != INVALID_FILE_ATTRIBUTES && !(fileAttr & FILE_ATTRIBUTE_DIRECTORY));
 #endif
  }
