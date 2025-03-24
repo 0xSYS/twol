@@ -10,7 +10,7 @@
 
 
 
-inline SPMList::computer MainList;
-inline SPMDebug dbg;
+static SPMList::computer MainList;
+static SPMDebug dbg;
 
 
