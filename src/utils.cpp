@@ -14,8 +14,13 @@
 #include <sys/stat.h>
 
 #if defined(_WIN32) || defined(_WIN64)
+  #define VC_EXTRALEAN
   #include <Windows.h>
   #include <direct.h>
+
+  #ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
+    #define ENABLE_VIRTUAL_TERMINAL_PROCESSING  0x0004
+  #endif
 #endif
 
 
@@ -104,3 +109,39 @@ bool SPMUtils::checkDir(std::string d)
   return (fileAttr != INVALID_FILE_ATTRIBUTES && !(fileAttr & FILE_ATTRIBUTE_DIRECTORY));
 #endif
  }
+
+ #if defined(_WIN32) || defined(_WIN64)
+ void SPMUtils::SetWinTerm()
+ {
+   HANDLE stdoutHandle, stdinHandle;
+   DWORD outModeInit, inModeInit;
+   DWORD outMode = 0, inMode = 0;
+   stdoutHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+   stdinHandle = GetStdHandle(STD_INPUT_HANDLE);
+
+   if(stdoutHandle == INVALID_HANDLE_VALUE || stdinHandle == INVALID_HANDLE_VALUE) 
+   {
+       exit(GetLastError());
+   }
+    
+   if(!GetConsoleMode(stdoutHandle, &outMode) || !GetConsoleMode(stdinHandle, &inMode)) 
+   {
+       exit(GetLastError());
+   }
+
+   outModeInit = outMode;
+   inModeInit = inMode;
+    
+   // Enable ANSI escape codes
+   outMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+
+   // Set stdin as no echo and unbuffered
+   inMode = (ENABLE_ECHO_INPUT | ENABLE_LINE_INPUT | ENABLE_PROCESSED_INPUT);
+
+   if(!SetConsoleMode(stdoutHandle, outMode) || !SetConsoleMode(stdinHandle, inMode)) 
+   {
+       exit(GetLastError());
+   }
+   SetConsoleOutputCP(CP_UTF8); //Enabling unicode charset on windows console
+ }
+ #endif
