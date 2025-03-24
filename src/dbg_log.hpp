@@ -41,7 +41,7 @@ class SPMDebug
     }
     else if(logType == 4)
     {
-      std::cout << "libspm: [\033[38;5;196mErr\033[0m] -> " << mainStr << "\n";
+      std::cerr << "libspm: [\033[38;5;196mErr\033[0m] -> " << mainStr << "\n";
     }
     else if(logType == 0)
     {
