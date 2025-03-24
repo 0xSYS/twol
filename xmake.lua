@@ -5,6 +5,7 @@ target("spm")
     add_files("src/*.cpp")
     if is_plat("windows") then
         add_syslinks("ws2_32")
+        add_defines("WIN32_LEAN_AND_MEAN")
     end
 
 --
