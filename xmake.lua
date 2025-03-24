@@ -4,7 +4,7 @@ target("spm")
     set_kind("shared")
     add_files("src/*.cpp")
     if is_plat("windows") then
-        add_links("ws2_32")
+        add_syslinks("ws2_32")
     end
 
 --
