@@ -6,7 +6,10 @@
 #include <cstdlib>
 #include <string>
 #include <sstream>
-#include <unistd.h>
+
+#ifdef __linux__
+  #include <unistd.h>
+#endif
 
 #include <sys/stat.h>
 
