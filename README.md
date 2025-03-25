@@ -19,20 +19,20 @@ A set software components designed for managing computers / servers with support
 
 * Features
 - [X] Basic wake on lan function
-- [] Power off along side wake on lan
-- [] Automatic detection of avaialble computers / servers
-- [] Power Status Check
-- [] Frontend GUI (Already in rpogress)
-- [] Restricted session
-- [] Linux daemon service
-- [] Command Line interface
-- [] Local web page setup
-- [] C/C++ API examples (In progress)
+- [ ] Power off along side wake on lan
+- [ ] Automatic detection of avaialble computers / servers
+- [ ] Power Status Check
+- [ ] Frontend GUI (Already in rpogress)
+- [ ] Restricted session
+- [ ] Linux daemon service
+- [ ] Command Line interface
+- [ ] Local web page setup
+- [ ] C/C++ API examples (In progress)
 
 * Compatibility
 - [X] Wake On LAN protocol
-- [] IPMI
-- [] Security features via OpenSSL
+- [ ] IPMI
+- [ ] Security features via OpenSSL
 
 
 ### This project is still in early development...
