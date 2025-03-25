@@ -8,6 +8,12 @@ target("spm")
         add_defines("WIN32_LEAN_AND_MEAN")
     end
 
+target("test")
+    -- set_enabled(false)
+    set_kind("binary")
+    add_files("src/*.cpp")
+    add_files("src/test/main.cpp")
+
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --

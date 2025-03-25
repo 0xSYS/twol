@@ -25,6 +25,11 @@ extern "C"
     spm_exp.Init();
   }
 
+  const char * API_EXPORT SPM_GetVersion()
+  {
+    return "Version 1.0.0";
+  }
+
   void API_EXPORT SPM_SafeExit()
   {
     spm_exp.Terminate();

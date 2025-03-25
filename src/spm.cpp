@@ -53,6 +53,15 @@ void SPM::Init()
   spmUtils.SetWinTerm();
 #endif
 
+  // Basic Logging test to stdout
+  dbg.Log(SPMDebug::noType, "Log Test");
+  dbg.Log(SPMDebug::Info, "Info Test");
+  dbg.Log(SPMDebug::Success, "Success Test");
+  dbg.Log(SPMDebug::Warn, "Warn Test");
+  dbg.Log(SPMDebug::Err, "Err Test");
+
+  std::cout << "\n\n\n\n";
+
   std::ostringstream mainDir;
 
   mainDir << SPMUtils::GetHomeDir() << "/.spm";
@@ -63,14 +72,22 @@ void SPM::Init()
     spmUtils.makeDir(mainDir.str());
     dbg.Log(SPMDebug::Info, "'.spm' directory created");
   }
+  else
+  {
+    dbg.Log(SPMDebug::Success, "'.spm' directory found'");
+  }
 
-  mainDir << "./spm/lists";
+  mainDir << "/lists";
 
   dbg.Log(SPMDebug::Info, "Checking for '.spm/lists' directory...");
   if(spmUtils.checkDir(mainDir.str()) == false)
   {
     dbg.Log(SPMDebug::Info, "'.spm/lists' directory created");
     spmUtils.makeDir(mainDir.str());
+  }
+  else
+  {
+    dbg.Log(SPMDebug::Success, "'.spm/list' directory found");
   }
   mainDir.str(""); // Reset the string content so it dosen't retain the previous directories
   mainDir.clear(); // And clear any lefrover errors
@@ -85,6 +102,10 @@ void SPM::Init()
   {
     dbg.Log(SPMDebug::Info, "'.spm/logs' directory created");
     spmUtils.makeDir(mainDir.str());
+  }
+  else
+  {
+    dbg.Log(SPMDebug::Success, "'.spm/logs' directory found");
   }
 
   mainDir.str("");
@@ -102,15 +123,25 @@ void SPM::Init()
 
 	  spmConf.Write(defaultConfig);
 	}
+	else
+	{
+	  dbg.Log(SPMDebug::Success, "'.spm/spm.ini' found");
+	}
 
 	mainDir.str("");
 	mainDir.clear();
 
+  /*
+
+  Temportarly deprecated due to future change of the list system
+  
 	mainDir << SPMUtils::GetHomeDir() << "/.spm/lists/main_list.ini";
+	dbg.Log(SPMDebug::noType, "File path to list: ", mainDir.str());
 	if(spmUtils.checkFile(mainDir.str()) == false)
 	{
 	  dbg.Log(SPMDebug::Warn, "No list has been found");
 	}
+	*/
   
 }
 
