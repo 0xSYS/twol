@@ -185,7 +185,7 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
     }
     else
     {
-      dbg.Log(SPMDebug::Success, "Magic packet send successfully to ", mac_address, " via ", broadcast_ip);
+      dbg.Log(SPMDebug::Success, "Magic packet send successfully to \033[38;5;94m", mac_address, "\033[0m via \033[38;5;94m", broadcast_ip, "\033[0m");
     }
     close(sockt);
 #endif

@@ -5,7 +5,22 @@
 
 
 
+#include <vector>
+#include <cstring>
+#include <string>
 #include <iostream>
+#include <sstream>
+
+#ifdef __linux__
+  #include <unistd.h>
+  #include <sys/wait.h>
+  #include <sys/types.h>
+  #include <stdio.h>
+#endif
+
+#if defined (_WIN32) || defined(_WIN64)
+  #include <windows.h>
+#endif
 
 
 
@@ -17,6 +32,44 @@ inline void PrintArgs(T first, Args... rest)
 {
   std::cout << first; // Print the first argument
   PrintArgs(rest...);        // Recurse for remaining arguments
+}
+
+
+inline void AppendToStream(std::ostringstream&) {}
+
+template <typename T, typename... Args>
+inline void AppendToStream(std::ostringstream& oss, T first, Args... rest)
+{
+    oss << first;
+    AppendToStream(oss, rest...);
+}
+
+
+inline std::vector<std::string> parseCommand(const std::string& command) {
+    std::vector<std::string> args;
+    std::istringstream stream(command);
+    std::string arg;
+    bool inQuotes = false;
+    std::string temp;
+
+    while (stream) {
+        char c = stream.get();
+        if (stream.eof()) break;
+
+        if (c == '"' || c == '\'') {  // Handle both single and double quotes
+            inQuotes = !inQuotes;
+        } else if (c == ' ' && !inQuotes) {  // Space outside quotes
+            if (!temp.empty()) {
+                args.push_back(temp);
+                temp.clear();
+            }
+        } else {
+            temp += c;
+        }
+    }
+
+    if (!temp.empty()) args.push_back(temp);
+    return args;
 }
 
 
@@ -60,5 +113,88 @@ class SPMDebug
     
     PrintArgs(r...); // Process remaining arguments
     std::cout << std::endl;
+  }
+  template<typename T, typename... Args >
+  inline void MsgBoxLog(int logType, T mainStr, Args... r)
+  {
+    // safasf
+    std::ostringstream text;
+
+    text << mainStr;
+
+    
+    AppendToStream(text, r...);
+
+// For security reasons there's a lot of code below
+// !!! PLS DO NOT EVER TOUCH THIS !!!
+// 🡇 🡇 🡇
+#ifdef __linux__
+    std::ostringstream cmd;
+    pid_t p = fork();
+    if(logType == 1)
+    {
+      cmd << "zenity --info --title='Server Power Management - Information' --text='" << text.str() << "'";
+    }
+    else if(logType == 2)
+    {
+      cmd << "zenity --info --title='Server Power Management - Success' --text='" << text.str() << "'";
+    }
+    else if(logType == 3)
+    {
+      cmd << "zenity --warning --title='Server Power Management - Warning' --text='" << text.str() << "'";
+    }
+    else if(logType == 4)
+    {
+      cmd << "zenity --error --title='Server Power Management - Error' --text='" << text.str() << "'";
+    }
+
+
+    std::string command = cmd.str();
+    std::vector<std::string> args = parseCommand(command);
+
+    std::vector<char*> c_args;
+    for (auto& s : args) {
+        c_args.push_back(s.data());  // Convert std::string to char*
+    }
+    c_args.push_back(nullptr);  // Null-terminate
+
+    if(p == 0)
+    {
+      execvp(c_args[0], c_args.data());
+      perror("execlp failed");
+      _exit(1);
+    }
+    else if(p > 0)
+    {
+      int stat;
+      waitpid(p, &stat, 0);
+    }
+    else
+    {
+      perror("fork failed");
+    }
+#endif
+// 🡅 🡅 🡅
+// !!! DO NOT EVER TOUCH THIS !!!
+
+#if defined(_WIN32) || defined(_WIN64)
+    // wefedsfewf
+    if(logType == 1)
+    {
+      // ewfwefwedf
+    }
+    else  if(logType == 2)
+    {
+      // dfdfdsfdsf
+    }
+    else if(logType == 3)
+    {
+      // dssdfs
+    }
+    else if(logType == 4)
+    {
+      // sdfsdfds
+    }
+#endif
   }
 };
