@@ -3,9 +3,11 @@ add_rules("mode.debug", "mode.release")
 target("spm")
     set_kind("shared")
     add_files("src/*.cpp")
+    set_languages("c++17")
     if is_plat("windows") then
+        toolchain("mingw")
         add_syslinks("ws2_32")
-        add_defines("WIN32_LEAN_AND_MEAN")
+        -- add_defines("WIN32_LEAN_AND_MEAN")
     end
 
 target("test")

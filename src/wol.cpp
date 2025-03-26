@@ -94,20 +94,20 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
     // Initialize Winsock
     WSADATA wsa;
     if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0) {
-        std::cout << "Failed to initialize Winsock!\n";
+        dbg.Log(SPMDebug::Err, "Failed to initialize Winsock!");
         return;
     }
 
     SOCKET sockt = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (sockt == INVALID_SOCKET) {
-        std::cout << "Failed to create socket!\n";
+        dbg.Log(SPMDebug::Err, "Failed to create socket !");
         WSACleanup();
         return;
     }
 
     int optval = 1;
     if (setsockopt(sockt, SOL_SOCKET, SO_BROADCAST, (char*)&optval, sizeof(optval)) == SOCKET_ERROR) {
-        std::cout << "Failed to set socket options!!!\n";
+        dbg.Log(SPMDebug::Err, "Failed to set socket options !");
         closesocket(sockt);
         WSACleanup();
         return;
@@ -119,7 +119,7 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
     dest_addr.sin_port = htons(port);
     
     if (inet_pton(AF_INET, broadcast_ip.c_str(), &dest_addr.sin_addr) != 1) {
-        std::cout << "Invalid broadcast IP address!\n";
+        dbg.Log(SPMDebug::Err, "Invalid broadcast IP !");
         closesocket(sockt);
         WSACleanup();
         return;
@@ -129,9 +129,9 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
                             (struct sockaddr*)&dest_addr, sizeof(dest_addr));
 
     if (sent_bytes == SOCKET_ERROR) {
-        std::cout << "Failed to send magic packet!\n";
+        dbg.Log(SPMDebug::Err, "Failed to send magic packet !");
     } else {
-        std::cout << "Magic packet sent successfully to " << mac_address << " via " << broadcast_ip << "\n";
+        dbg.Log(SPMDebug::Success, "Magic packet successfully sent to \033[38;5;94m", mac_address, "\033[0m via \033[38;5;94m", broadcast_ip, "\033[0m");
     }
 
     closesocket(sockt);

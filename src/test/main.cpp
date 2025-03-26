@@ -43,12 +43,19 @@ void Test3()
 	}
 }
 
+void Test4()
+{
+	std::cout << "Test4() -> Log testing\n";
+	dbg.Log(SPMDebug::Info, "Some info", " And another string");
+}
+
 
 int main(int argc, char * argv[])
 {
 	std::cout << "- - - - SPM BACKEND TESTS - - - - \n\n\n\n";
 	// Test1(); // Linux Pass
-	// Test2(); // Linux Pass
-	Test3(); // 
+	Test2(); // Linux, Windows Pass
+	// Test3(); // 
+	// Test4(); // All pass
 	return 0;
 }
