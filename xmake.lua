@@ -1,28 +1,3 @@
-set_toolchains("mingw")
-
-if is_plat("windows") then
-    
-
-    add_cflags("-fpermissive", {force = true})
-    add_cxxflags("-fpermissive", {force = true})
-
-    set_toolset("cc", "x86_64-w64-mingw32-gcc")
-    set_toolset("cxx", "x86_64-w64-mingw32-g++")
-    set_toolset("ld", "x86_64-w64-mingw32-ld")
-
-    -- Ensure correct Windows SDK directories are included
-    add_includedirs("C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um", {force = true})
-    add_includedirs("C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/shared", {force = true})
-    add_ldflags("-L/C:/Program Files (x86)/Windows Kits/10/Lib/10.0.22621.0/um/x64", {force = true})
-    add_ldflags("-lws2_32", {force = true})
-    add_ldflags("-lIphlpapi", {force = true})
-end
-
-
-
-
-
-
 add_rules("mode.debug", "mode.release")
 
 target("spm")
@@ -30,14 +5,9 @@ target("spm")
     add_files("src/*.cpp")
     set_languages("c++17")
     if is_plat("windows") then
-        --toolchain("mingw")
-        -- add_syslinks("ws2_32")
-        -- add_syslinks("user32")
-        add_ldflags("-luser32", {force = true}) -- Ensure user32 is linked in MinGW
-        add_ldflags("-lws2_32", {force = true}) -- Link WS2_32.lib
-        -- add_ldflags("User32.lib", {force = true}) -- Forces linking User32.lib
-        -- add_ldflags("-lu user32")
-        -- add_defines("WIN32_LEAN_AND_MEAN")
+        set_toolchains("msvc")
+        add_syslinks("ws2_32")
+        add_syslinks("user32")
     end
 
 target("test")
@@ -45,6 +15,11 @@ target("test")
     set_kind("binary")
     add_files("src/*.cpp")
     add_files("src/test/main.cpp")
+    if is_plat("windows") then
+        set_toolchains("msvc")
+        add_syslinks("ws2_32")
+        add_syslinks("user32")
+    end
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io

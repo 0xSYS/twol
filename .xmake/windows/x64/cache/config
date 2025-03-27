@@ -1,16 +1,16 @@
 {
     recheck = false,
-    mtimes = {
-        ["xmake.lua"] = 1743015761
-    },
     options = {
-        sh = "g++",
-        cxx = "g++",
-        plat = "windows",
-        arch = "x64",
-        ld = "g++",
-        cc = "gcc",
         clean = true,
-        toolchain = "mingw"
+        toolchain = "mingw",
+        arch = "x64",
+        plat = "windows",
+        cxx = "g++",
+        ld = "g++",
+        sh = "g++",
+        cc = "gcc"
+    },
+    mtimes = {
+        ["xmake.lua"] = 1743085226
     }
 }
