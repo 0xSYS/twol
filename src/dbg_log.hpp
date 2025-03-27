@@ -18,8 +18,8 @@
   #include <stdio.h>
 #endif
 
-#if defined (_WIN32) || defined(_WIN64)
-  #include <windows.h>
+#if defined(_WIN32) || defined(_WIN64)
+  #include <Windows.h>
 #endif
 
 
@@ -178,22 +178,28 @@ class SPMDebug
 // !!! DO NOT EVER TOUCH THIS !!!
 
 #if defined(_WIN32) || defined(_WIN64)
+    int msgBoxID;
     // wefedsfewf
+    std::string cppStr = text.str();
+    std::wstring wstr(cppStr.begin(), cppStr.end());
+    LPCWSTR temp = wstr.c_str();
+
+
     if(logType == 1)
     {
-      // ewfwefwedf
+      msgBoxID = MessageBoxW(NULL, (LPCWSTR)temp, (LPCWSTR)L"Server Power Management - Info", MB_ICONINFORMATION | MB_OK);
     }
-    else  if(logType == 2)
+    else if(logType == 2)
     {
-      // dfdfdsfdsf
+      msgBoxID = MessageBoxW(NULL, (LPCWSTR)temp, (LPCWSTR)L"Server Power Management - Sucess", MB_ICONINFORMATION | MB_OK);
     }
     else if(logType == 3)
     {
-      // dssdfs
+      msgBoxID = MessageBoxW(NULL, (LPCWSTR)temp, (LPCWSTR)L"Server Power Management - Warning", MB_ICONEXCLAMATION | MB_OK);
     }
     else if(logType == 4)
     {
-      // sdfsdfds
+      msgBoxID = MessageBoxW(NULL, (LPCWSTR)temp, (LPCWSTR)L"Server Power Management - Error", MB_ICONERROR | MB_OK);
     }
 #endif
   }

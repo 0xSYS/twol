@@ -26,6 +26,9 @@
 #ifdef _WIN32
   DWORD WINAPI recvdata(LPVOID);
   #define close closesocket      // Used to resemble the linux close socket function on windows
+
+
+  
 #else
   void* recvdata(void*);
 #endif

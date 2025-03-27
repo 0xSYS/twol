@@ -1,27 +1,62 @@
 {
+    ["core.tools.gcc.has_cflags"] = {
+        ["x86_64-w64-mingw32-g++_10.3.0"] = {
+            ["-save-temps"] = true,
+            ["-pie"] = true,
+            ["-shared"] = true,
+            ["-pipe"] = true,
+            ["--help"] = true,
+            ["-print-search-dirs"] = true,
+            ["-Xpreprocessor"] = true,
+            ["-print-multi-directory"] = true,
+            ["-no-canonical-prefixes"] = true,
+            ["-print-multi-os-directory"] = true,
+            ["-S"] = true,
+            ["-o"] = true,
+            ["-pass-exit-codes"] = true,
+            ["-c"] = true,
+            ["-print-sysroot"] = true,
+            ["-print-sysroot-headers-suffix"] = true,
+            ["-v"] = true,
+            ["-dumpversion"] = true,
+            ["-x"] = true,
+            ["-dumpmachine"] = true,
+            ["-dumpspecs"] = true,
+            ["-Xassembler"] = true,
+            ["--param"] = true,
+            ["-print-libgcc-file-name"] = true,
+            ["--target-help"] = true,
+            ["--version"] = true,
+            ["-print-multiarch"] = true,
+            ["-Xlinker"] = true,
+            ["-E"] = true,
+            ["-time"] = true,
+            ["-print-multi-lib"] = true,
+            ["-B"] = true
+        }
+    },
     ["lib.detect.has_flags"] = {
-        ["windows_x64_C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe_19.39.33523_cxx_cxflags_-nologo_cl_sourceDependencies"] = true,
-        ["windows_x64_C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe_19.39.33523_cxx_cxflags_-nologo_-DNDEBUG"] = true,
-        ["windows_x64_C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe_19.39.33523_cxx__-nologo_-O2"] = true
-    },
-    find_program_msvc_arch_x64_plat_windows_checktoolsh = {
-        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\link.exe]]
-    },
-    find_program_msvc_arch_x64_plat_windows_checktoolcxx = {
-        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]]
+        ["windows_x64_x86_64-w64-mingw32-g++_10.3.0_cxx_cxflags__-MMD -MF"] = true,
+        ["windows_x64_x86_64-w64-mingw32-g++_10.3.0_cxx___-O3"] = true,
+        ["windows_x64_x86_64-w64-mingw32-g++_10.3.0_cxx_cxflags__-DNDEBUG"] = true,
+        ["windows_x64_x86_64-w64-mingw32-g++_10.3.0_cxx_cxflags__-fvisibility-inlines-hidden"] = true,
+        ["windows_x64_x86_64-w64-mingw32-g++_10.3.0_cxx_cxflags__-Wno-gnu-line-marker -Werror"] = true,
+        ["windows_x64_x86_64-w64-mingw32-g++_10.3.0_cxx_cxflags__-fdiagnostics-color=always"] = true
     },
     find_programver = {
-        ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe"] = "19.39.33523"
+        ["x86_64-w64-mingw32-g++"] = "10.3.0"
     },
     find_program = {
-        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]],
-        ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]],
-        nim = false
+        ["x86_64-w64-mingw32-g++"] = "x86_64-w64-mingw32-g++"
     },
-    find_program_msvc_arch_x64_plat_windows_checktoolld = {
-        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\link.exe]]
+    ["detect.sdks.find_mingw"] = {
+        mingw = {
+            sdkdir = [[C:\msys64\mingw64]],
+            cross = "x86_64-w64-mingw32-",
+            bindir = [[C:\msys64\mingw64\bin]]
+        }
     },
-    find_program_msvc_arch_x64_plat_windows_checktoolcc = {
-        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]]
+    find_program_mingw_arch_x64_plat_windows_checktoolsh = {
+        ["x86_64-w64-mingw32-g++"] = [[C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++]]
     }
 }
