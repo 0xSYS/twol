@@ -179,7 +179,6 @@ class SPMDebug
 
 #if defined(_WIN32) || defined(_WIN64)
     int msgBoxID;
-    // wefedsfewf
     std::string cppStr = text.str();
     std::wstring wstr(cppStr.begin(), cppStr.end());
     LPCWSTR temp = wstr.c_str();

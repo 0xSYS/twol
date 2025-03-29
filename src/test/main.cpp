@@ -7,6 +7,7 @@
 #include "../spm.hpp"
 #include "../config.hpp"
 #include "../wol.hpp"
+#include "../dev_detect.hpp"
 #include "../utils.hpp"
 #include "../dbg_log.hpp"
 #include "../globals.hpp"
@@ -16,6 +17,7 @@
 
 SPM spm_cls;
 SPMWakeOnLan wol;
+SPMDetect sdetect;
 
 void Test1()
 {
@@ -57,14 +59,20 @@ void Test5()
 	dbg.MsgBoxLog(SPMDebug::Err, "This is some error ", " things work ok ig ", 196);
 }
 
+void Test6()
+{
+	std::vector<std::string> dummy = sdetect.CreateIP_Table();
+}
+
 
 int main(int argc, char * argv[])
 {
 	std::cout << "- - - - SPM BACKEND TESTS - - - - \n\n\n\n";
 	// Test1(); // Linux Pass
-	Test2(); // Linux, Windows Pass
+	// Test2(); // Linux, Windows Pass
 	// Test3(); // 
 	// Test4(); // All pass
 	// Test5();
+	Test6();
 	return 0;
 }
