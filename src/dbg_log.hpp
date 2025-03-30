@@ -44,7 +44,7 @@ inline void AppendToStream(std::ostringstream& oss, T first, Args... rest)
     AppendToStream(oss, rest...);
 }
 
-
+#ifdef __linux__
 inline std::vector<std::string> parseCommand(const std::string& command) {
     std::vector<std::string> args;
     std::istringstream stream(command);
@@ -71,7 +71,7 @@ inline std::vector<std::string> parseCommand(const std::string& command) {
     if (!temp.empty()) args.push_back(temp);
     return args;
 }
-
+#endif
 
 class SPMDebug
 {
@@ -117,12 +117,8 @@ class SPMDebug
   template<typename T, typename... Args >
   inline void MsgBoxLog(int logType, T mainStr, Args... r)
   {
-    // safasf
     std::ostringstream text;
-
     text << mainStr;
-
-    
     AppendToStream(text, r...);
 
 // For security reasons there's a lot of code below

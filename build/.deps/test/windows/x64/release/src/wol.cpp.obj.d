@@ -1,4 +1,16 @@
 {
+    files = {
+        [[src\wol.cpp]]
+    },
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]],
+        {
+            "-nologo",
+            "-O2",
+            "/EHsc",
+            "-DNDEBUG"
+        }
+    },
     depfiles = "{\
     \"Version\": \"1.2\",\
     \"Data\": {\
@@ -235,18 +247,5 @@
         \"ImportedHeaderUnits\": []\
     }\
 }",
-    files = {
-        [[src\wol.cpp]]
-    },
-    depfiles_format = "cl_json",
-    values = {
-        [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]],
-        {
-            "-nologo",
-            "-O2",
-            "-DWIN32_LEAN_AND_MEAN",
-            "/EHsc",
-            "-DNDEBUG"
-        }
-    }
+    depfiles_format = "cl_json"
 }

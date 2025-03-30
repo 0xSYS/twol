@@ -19,13 +19,10 @@
 SPM spm_cls;
 SPMWakeOnLan wol;
 SPMDetect sdetect;
-SPMList adsf;
+SPMList spm_lst;
 
 
-void cv()
-{
-	adsf.ReadComputerList();
-}
+
 
 void Test1()
 {
@@ -72,6 +69,17 @@ void Test6()
 	std::vector<std::string> dummy = sdetect.CreateIP_Table();
 }
 
+void Test7()
+{
+	std::vector<SPMList::computer> someList = spm_lst.ReadComputerList();
+
+	for(int i = 0; i < someList.size(); i++)
+	{
+		std::cout << someList[i].name << " " << someList[i].broadcastIP << " " << someList[i].broadcastIP << " " << someList[i].macAddr << "\n";
+
+	}
+}
+
 
 int main(int argc, char * argv[])
 {
@@ -81,6 +89,7 @@ int main(int argc, char * argv[])
 	// Test3(); // 
 	// Test4(); // All pass
 	// Test5();
-	Test6();
+	// Test6();
+	Test7();
 	return 0;
 }

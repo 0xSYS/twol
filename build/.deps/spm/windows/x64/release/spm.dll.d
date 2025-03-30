@@ -1,6 +1,7 @@
 {
     files = {
         [[build\.objs\spm\windows\x64\release\src\config.cpp.obj]],
+        [[build\.objs\spm\windows\x64\release\src\dev_detect.cpp.obj]],
         [[build\.objs\spm\windows\x64\release\src\spm.cpp.obj]],
         [[build\.objs\spm\windows\x64\release\src\spm_api.cpp.obj]],
         [[build\.objs\spm\windows\x64\release\src\spm_list.cpp.obj]],

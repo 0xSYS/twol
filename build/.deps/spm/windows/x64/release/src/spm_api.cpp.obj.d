@@ -1,7 +1,16 @@
 {
-    depfiles_format = "cl_json",
     files = {
         [[src\spm_api.cpp]]
+    },
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]],
+        {
+            "-nologo",
+            "-O2",
+            "-std:c++17",
+            "/EHsc",
+            "-DNDEBUG"
+        }
     },
     depfiles = "{\
     \"Version\": \"1.2\",\
@@ -118,21 +127,12 @@
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\clocale\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\ucrt\\\\locale.h\",\
             \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\api_utils.h\",\
-            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\wol.hpp\"\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\wol.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\dev_detect.hpp\"\
         ],\
         \"ImportedModules\": [],\
         \"ImportedHeaderUnits\": []\
     }\
 }",
-    values = {
-        [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]],
-        {
-            "-nologo",
-            "-O2",
-            "-std:c++17",
-            "-DWIN32_LEAN_AND_MEAN",
-            "/EHsc",
-            "-DNDEBUG"
-        }
-    }
+    depfiles_format = "cl_json"
 }

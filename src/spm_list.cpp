@@ -1,17 +1,12 @@
-
-
 #include <sstream>
 #include <vector>
-
-
-
-
 #include "inc/inifile-cpp/inicpp.h"
 #include "spm_list.hpp"
 #include "utils.hpp"
 #include "globals.hpp"
 
 
+SPMUtils temp;
 
 
 std::vector <SPMList::computer> SPMList::ReadComputerList()
@@ -22,25 +17,45 @@ std::vector <SPMList::computer> SPMList::ReadComputerList()
 
 	ini::IniFile ini_list;
 	std::ostringstream list_path;
+	#ifdef __linux__
 	list_path << SPMUtils::GetHomeDir() << "/.spm/list.ini"; // The path to the list of computers
+	#endif
+
+	#if defined(_WIN32) || defined(_WIN64)
+	list_path << SPMUtils::GetHomeDir() << "\\.spm\\lists\\list.ini"; // The path to the list of computers
+	#endif
+
+	std::cout << "PATH: " << list_path.str() << "\n";
+
+	if(!temp.checkFile(list_path.str()))
+	{
+		dbg.Log(SPMDebug::Err, "File not foun d errg");
+	}
+	else
+	{
 
 	ini_list.load(list_path.str());
 
-	in.index = ini_list["main"]["pcCount"].as<int>();
+//	in.index = ini_list["main"]["pcCount"].as<int>();
 
 	std::ostringstream incrementalPcName;
 
-	for(int i = 1; i < in.index; i++)
+	for(int i = 0; i < 3; i++)
 	{
+		incrementalPcName.str("");
+		incrementalPcName.clear();
 	  incrementalPcName << "PC_" << i;
-		ini_list[incrementalPcName.str()]["macAddres"] = in.macAddr;
-		ini_list[incrementalPcName.str()]["BroadcastIP"] = in.broadcastIP;
-		ini_list[incrementalPcName.str()]["Name"] = in.name;
-		ini_list[incrementalPcName.str()]["IP"] = in.defaultIP;
+		in.macAddr = ini_list[incrementalPcName.str()]["macAddres"].as<std::string>();
+		in.broadcastIP = ini_list[incrementalPcName.str()]["BroadcastIP"].as<std::string>();
+		in.name = ini_list[incrementalPcName.str()]["Name"].as<std::string>();
+		in.defaultIP=ini_list[incrementalPcName.str()]["IP"].as<std::string>();
+		//std::cout << "for " << incrementalPcName.str() << " " << in.defaultIP << " " << in.macAddr << "\n";
 		inList.push_back(in);
 	}
-
+	}
   return inList;
+
+
 }
 
 
