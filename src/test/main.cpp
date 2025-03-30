@@ -11,6 +11,7 @@
 #include "../utils.hpp"
 #include "../dbg_log.hpp"
 #include "../globals.hpp"
+#include "../spm_list.hpp"
 
 
 
@@ -18,6 +19,13 @@
 SPM spm_cls;
 SPMWakeOnLan wol;
 SPMDetect sdetect;
+SPMList adsf;
+
+
+void cv()
+{
+	adsf.ReadComputerList();
+}
 
 void Test1()
 {

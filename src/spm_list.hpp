@@ -2,6 +2,7 @@
 
 
 #include <string>
+#include <vector>
 
 
 class SPMList
@@ -27,7 +28,7 @@ class SPMList
       bool restricted;
     }server;
 
-    computer ReadComputerList();
+    std::vector <computer> ReadComputerList();
     server ReadServerList();
 
     void WriteComputerList();

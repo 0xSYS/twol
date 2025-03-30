@@ -1,6 +1,7 @@
 
 
 #include <sstream>
+#include <vector>
 
 
 
@@ -13,10 +14,11 @@
 
 
 
-
-SPMList::computer SPMList::ReadComputerList()
+std::vector <SPMList::computer> SPMList::ReadComputerList()
 {
   computer in;
+
+  std::vector<computer> inList;
 
 	ini::IniFile ini_list;
 	std::ostringstream list_path;
@@ -35,9 +37,10 @@ SPMList::computer SPMList::ReadComputerList()
 		ini_list[incrementalPcName.str()]["BroadcastIP"] = in.broadcastIP;
 		ini_list[incrementalPcName.str()]["Name"] = in.name;
 		ini_list[incrementalPcName.str()]["IP"] = in.defaultIP;
+		inList.push_back(in);
 	}
 
-  return in;
+  return inList;
 }
 
 
