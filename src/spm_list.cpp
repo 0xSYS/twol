@@ -64,7 +64,7 @@ void SPMList::WriteComputerList()
   ini::IniFile out_list;
 	ini::IniFile temp_read;
 	std::ostringstream list_path;
-	list_path << SPMUtils::GetHomeDir() << "/.spm/list.ini"; // Same as before
+	list_path << SPMUtils::GetHomeDir() << "/.spm/list/list.ini"; // Same as before
 
   // Temporary reading of pc list to ensure that each new section is ordered by number. (This helps to prevent the same section names to be written)
 	MainList.index = temp_read["main"]["count"].as<int>();
