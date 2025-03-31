@@ -10,6 +10,8 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <fstream>
+#include <ctime>
 
 #ifdef __linux__
   #include <unistd.h>
@@ -21,6 +23,9 @@
 #if defined(_WIN32) || defined(_WIN64)
   #include <Windows.h>
 #endif
+
+
+#include "utils.hpp"
 
 
 
@@ -89,21 +94,27 @@ class SPMDebug
   template <typename T, typename... Args>
   inline void Log(int logType, T mainStr, Args... r)
   {
+    /*
+    \033[38;5;123mInfo\033[0m
+    \033[38;5;41mSuccess\033[0m
+    \033[38;5;178mWarn\033[0m
+    \033[38;5;196mErr\033[0m
+    */
     if(logType == 1)
     {
-      std::cout << "libspm: [\033[38;5;123mInfo\033[0m] -> " << mainStr;
+      std::cout << "libspm: [Info] -> " << mainStr;
     }
     else if(logType == 2)
     {
-      std::cout << "libspm: [\033[38;5;41mSuccess\033[0m !] - > " << mainStr;
+      std::cout << "libspm: [Success !] -> " << mainStr;
     }
     else if(logType == 3)
     {
-      std::cout << "libspm: [\033[38;5;178mWarn\033[0m] -> " << mainStr;
+      std::cout << "libspm: [Warn] -> " << mainStr;
     }
     else if(logType == 4)
     {
-      std::cerr << "libspm: [\033[38;5;196mErr\033[0m] -> " << mainStr;
+      std::cerr << "libspm: [Err] -> " << mainStr;
     }
     else if(logType == 0)
     {
@@ -113,6 +124,31 @@ class SPMDebug
     
     PrintArgs(r...); // Process remaining arguments
     std::cout << std::endl;
+
+    if(globalConf.debug_log)
+    {
+      std::ostringstream logName;
+
+// Create the log filename containing the current date
+#ifdef __linux__
+      logName << SPMUtils::GetHomeDir() << "/.spm/logs/spm_log - " << get_current_date();
+#endif
+
+#if defined(_WIN32) || defined(_WIN64)
+      logName << SPMUtils::GetHomeDir() << "\\.spm\\logs\\spm_log - " << spmUtils.GetCurrentDate() << ".txt";
+#endif 
+
+      std::ofstream out_log_init(logName.str());
+      time_t t_stamp_init;
+      time(&t_stamp_init);
+      std::ostringstream logText;
+      //AppendToStream(logText, r...);
+      logText << "[ " << ctime(&t_stamp_init) << " ] -> " << mainStr << "\n";
+      AppendToStream(logText, r...);
+
+      out_log_init << logText.str();
+      out_log_init.close();
+    }
   }
   template<typename T, typename... Args >
   inline void MsgBoxLog(int logType, T mainStr, Args... r)

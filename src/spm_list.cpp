@@ -17,13 +17,13 @@ std::vector <SPMList::computer> SPMList::ReadComputerList()
 
 	ini::IniFile ini_list;
 	std::ostringstream list_path;
-	#ifdef __linux__
+#ifdef __linux__
 	list_path << SPMUtils::GetHomeDir() << "/.spm/list.ini"; // The path to the list of computers
-	#endif
+#endif
 
-	#if defined(_WIN32) || defined(_WIN64)
+#if defined(_WIN32) || defined(_WIN64)
 	list_path << SPMUtils::GetHomeDir() << "\\.spm\\lists\\list.ini"; // The path to the list of computers
-	#endif
+#endif
 
 	std::cout << "PATH: " << list_path.str() << "\n";
 
@@ -64,7 +64,13 @@ void SPMList::WriteComputerList()
   ini::IniFile out_list;
 	ini::IniFile temp_read;
 	std::ostringstream list_path;
-	list_path << SPMUtils::GetHomeDir() << "/.spm/list/list.ini"; // Same as before
+#ifdef __linux__
+	list_path << SPMUtils::GetHomeDir() << "/.spm/list/list.ini";
+#endif
+
+#if defined(_WIN32) || defined(_WIN64)
+  list_path << SPMUtils::GetHomeDir() << "\\.spm\\lists\\list.ini"; // The path to the list of computers
+#endif
 
   // Temporary reading of pc list to ensure that each new section is ordered by number. (This helps to prevent the same section names to be written)
 	MainList.index = temp_read["main"]["count"].as<int>();

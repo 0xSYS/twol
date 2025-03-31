@@ -2,16 +2,6 @@
     files = {
         [[src\wol.cpp]]
     },
-    values = {
-        [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]],
-        {
-            "-nologo",
-            "-O2",
-            "-std:c++17",
-            "/EHsc",
-            "-DNDEBUG"
-        }
-    },
     depfiles = "{\
     \"Version\": \"1.2\",\
     \"Data\": {\
@@ -89,8 +79,6 @@
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\__msvc_iter_core.hpp\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\utility\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\initializer_list\",\
-            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\xpolymorphic_allocator.h\",\
-            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\tuple\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\cctype\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\ucrt\\\\ctype.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\iostream\",\
@@ -243,12 +231,26 @@
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\shared\\\\in6addr.h\",\
             \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\wol.hpp\",\
             \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\dbg_log.hpp\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\fstream\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\__msvc_filebuf.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\utils.hpp\",\
             \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\globals.hpp\",\
-            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\spm_list.hpp\"\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\spm_list.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\config.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\spm.hpp\"\
         ],\
         \"ImportedModules\": [],\
         \"ImportedHeaderUnits\": []\
     }\
 }",
-    depfiles_format = "cl_json"
+    depfiles_format = "cl_json",
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]],
+        {
+            "-nologo",
+            "-O2",
+            "/EHsc",
+            "-DNDEBUG"
+        }
+    }
 }

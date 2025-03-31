@@ -50,6 +50,21 @@ std::vector<std::string> SPMDetect::CreateIP_Table()
   }
   freeifaddrs(interfaces);
 #endif
+
+#if defined(_WIN32) || defined(_WIN64)
+DWORD size = 0;
+GetIpNetTable(nullptr, &size, false);
+PMIB_IPNETTABLE ipNetTable = (PMIB_IPNETTABLE)malloc(size);
+
+if (GetIpNetTable(ipNetTable, &size, false) == NO_ERROR) {
+    for (DWORD i = 0; i < ipNetTable->dwNumEntries; i++) {
+        in_addr ipAddr;
+        ipAddr.S_un.S_addr = ipNetTable->table[i].dwAddr;
+        std::cout << "IP: " << inet_ntoa(ipAddr) << std::endl;
+    }
+}
+free(ipNetTable);
+#endif
   
   return ipTable;
 }

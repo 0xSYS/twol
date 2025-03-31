@@ -3,7 +3,7 @@ add_rules("mode.debug", "mode.release")
 target("spm")
     set_kind("shared")
     add_files("src/*.cpp")
-    set_languages("c++17")
+    -- set_languages("c++17")
     if is_plat("windows") then
         set_toolchains("msvc")
         add_syslinks("ws2_32", "user32")

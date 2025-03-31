@@ -21,9 +21,9 @@ void SPMConfig::Write(cfgStruct cfg_out)
 
   // Structure filling
   config["Settings"]["pcStat"]  = cfg_out.pc_status_mpack;
-  config["Settings"]["CLIMode"] = cfg_out.cli_mode;
+  // config["Settings"]["CLIMode"] = cfg_out.cli_mode; // No longer needed
   config["Settings"]["dbgLog"]  = cfg_out.debug_log;
-  config["Restricted_session"]["autolink"]        = cfg_out.restrict_autolink;
+  // config["Restricted_session"]["autolink"]        = cfg_out.restrict_autolink; // Still no ideea what that is lmaooo
   config["Restricted_session"]["restrictMode"]    = cfg_out.restrict_mode;
   config["Restricted_session"]["timeoutSession"]  = cfg_out.restrict_timeout;
   config["Restricted_session"]["timeoutTimeSpan"] = cfg_out.rescrict_time_span;

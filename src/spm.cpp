@@ -31,7 +31,7 @@ Main Source file of SPM library
 #include "spm_list.hpp"
 
 
-SPMUtils spmUtils;
+// SPMUtils spmUtils; // Moved to globals.hpp
 SPMConfig spmConf;
 SPMList spmLst;
 
@@ -110,8 +110,13 @@ void SPM::Init()
 
   mainDir.str("");
   mainDir.clear();
-
+#ifdef __linux__
   mainDir << SPMUtils::GetHomeDir() << "/.spm/spm.ini";
+#endif
+
+#if defined(_WIN32) || defined(_WIN64)
+  mainDir << SPMUtils::GetHomeDir() << "\\.spm\\spm.ini";
+#endif
   if(spmUtils.checkFile(mainDir.str()) == false)
   {
     defaultConfig.cli_mode = false;
@@ -126,6 +131,9 @@ void SPM::Init()
 	else
 	{
 	  dbg.Log(SPMDebug::Success, "'.spm/spm.ini' found");
+
+    // Once found read its settings and store them into the config structure
+    globalConf = spmConf.Read();
 	}
 
 	mainDir.str("");
