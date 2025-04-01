@@ -6,7 +6,7 @@ target("spm")
     -- set_languages("c++17")
     if is_plat("windows") then
         set_toolchains("msvc")
-        add_syslinks("ws2_32", "user32")
+        add_syslinks("ws2_32", "user32", "iphlpapi")
     end
 
 target("test")
@@ -16,7 +16,7 @@ target("test")
     add_files("src/test/main.cpp")
     if is_plat("windows") then
         set_toolchains("msvc")
-        add_syslinks("ws2_32", "user32")
+        add_syslinks("ws2_32", "user32", "iphlpapi")
     end
 
 --

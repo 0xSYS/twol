@@ -125,9 +125,11 @@ class SPMDebug
     PrintArgs(r...); // Process remaining arguments
     std::cout << std::endl;
 
-    if(globalConf.debug_log)
+    if(!globalConf.debug_log)
     {
       std::ostringstream logName;
+
+      std::cout << "DBG LOG\n";
 
 // Create the log filename containing the current date
 #ifdef __linux__
@@ -143,7 +145,9 @@ class SPMDebug
       time(&t_stamp_init);
       std::ostringstream logText;
       //AppendToStream(logText, r...);
-      logText << "[ " << ctime(&t_stamp_init) << " ] -> " << mainStr << "\n";
+      char *t = ctime(&t_stamp_init);
+      t[strlen(t)-1] = '\0';
+      logText << "[ " << t << " ] -> " << mainStr << "\n";
       AppendToStream(logText, r...);
 
       out_log_init << logText.str();

@@ -20,12 +20,9 @@ class SPMConfig
     public:
 	      typedef struct
 	      {
-	          bool pc_status_mpack;                 // Enable / disable pc status globally
-            bool cli_mode;                        // Enable / disable cli arguments while tui is disabled
+	          bool pc_status_mpack;               // Enable / disable pc status globally
             bool msgBox_log;                      // Enable / disable message boxes
-            bool debug_log;                       // Enable / disable debug log to file (logs are stored in /home/user/twol_logs)
-            // Why did I made this -_-
-            bool restrict_autolink;               // Enable linking the protected list files (linux only for now)
+            bool debug_log;                       // Enable / disable debug log to file (logs are stored in /home/user/.spm/logs)
             bool restrict_mode;                   // Enable / disable restriction mode
             bool restrict_timeout;                // Enable / disable restrict mode timeout
             int rescrict_time_span;               // Set ammount of time a rescricted session can last (in minutes)

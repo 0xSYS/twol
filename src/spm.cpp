@@ -117,21 +117,18 @@ void SPM::Init()
 #if defined(_WIN32) || defined(_WIN64)
   mainDir << SPMUtils::GetHomeDir() << "\\.spm\\spm.ini";
 #endif
-  if(spmUtils.checkFile(mainDir.str()) == false)
+  if(!spmUtils.checkFile(mainDir.str()))
   {
-    defaultConfig.cli_mode = false;
 	  defaultConfig.restrict_mode = true;
 	  defaultConfig.restrict_timeout = true;
 	  defaultConfig.pc_status_mpack = true;
 	  defaultConfig.debug_log = false;
 	  defaultConfig.rescrict_time_span = 8;
-
 	  spmConf.Write(defaultConfig);
 	}
 	else
 	{
 	  dbg.Log(SPMDebug::Success, "'.spm/spm.ini' found");
-
     // Once found read its settings and store them into the config structure
     globalConf = spmConf.Read();
 	}

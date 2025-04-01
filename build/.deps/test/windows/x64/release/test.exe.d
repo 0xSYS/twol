@@ -19,7 +19,8 @@
             "/opt:ref",
             "/opt:icf",
             "ws2_32.lib",
-            "user32.lib"
+            "user32.lib",
+            "iphlpapi.lib"
         }
     }
 }

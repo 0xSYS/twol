@@ -34,6 +34,9 @@ void Test2()
 {
 	std::cout << "Test2() -> SPMWakeOnLan::SndMagicPack()\n";
 	wol.SndMagicPack("1c:6f:65:c2:e8:2f", "192.168.1.255");
+	wol.SndMagicPack("6c:f0:49:a1:d9:e6", "192.168.1.255");
+	// Previous: 1c:6f:65:c2:e8:2f
+	//6c:f0:49:a1:d9:e6
 }
 
 void Test3()
@@ -80,16 +83,25 @@ void Test7()
 	}
 }
 
+void Test8()
+{
+	for(int i = 0; i < 5; i++)
+	{
+		dbg.Log(SPMDebug::Info, "Updating stuff");
+	}
+}
+
 
 int main(int argc, char * argv[])
 {
 	std::cout << "- - - - SPM BACKEND TESTS - - - - \n\n\n\n";
-	// Test1(); // Linux Pass
-	Test2(); // Linux, Windows Pass
+	Test1(); // Linux Pass
+	// Test2(); // Linux, Windows Pass
 	// Test3(); // 
 	// Test4(); // All pass
 	// Test5();
-  Test6();
+  // Test6();
 	// Test7();
+	Test8();
 	return 0;
 }

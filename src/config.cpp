@@ -11,6 +11,7 @@
 
 #include "config.hpp"
 #include "utils.hpp"
+#include "globals.hpp"
 
 
 
@@ -36,23 +37,36 @@ void SPMConfig::Write(cfgStruct cfg_out)
 
 SPMConfig::cfgStruct SPMConfig::Read()
 {
-   cfgStruct cfg_in; // Configuration structure
+  cfgStruct cfg_in; // Configuration structure
   ini::IniFile in_config;
   std::ostringstream in_path;
-  
-  in_path << SPMUtils::GetHomeDir() << "/.spm/spm.conf"; // Create the file location of the config file
-  in_config.setMultiLineValues(true); // Allow the ini parser to load the sections and fields line by line
-  in_config.load(in_path.str()); // Then open the config file
+#ifdef __linux__
+  in_path << SPMUtils::GetHomeDir() << "/.spm/spm.ini"; // Create the file location of the config file
+#endif
 
-  // Parse the specific fields from the settings section.
-  cfg_in.pc_status_mpack = in_config["settings"]["pcStat"].as<bool>();
-  cfg_in.cli_mode        = in_config["settings"]["CLIMode"].as<bool>();
-  cfg_in.debug_log       = in_config["settings"]["dbgLog"].as<bool>();
-  cfg_in.restrict_mode      = in_config["Restricted_session"]["restrictMode"].as<bool>();
-  cfg_in.restrict_autolink  = in_config["Restricted_session"]["autolink"].as<bool>();
-  cfg_in.restrict_timeout   = in_config["Restricted_session"]["timeoutSession"].as<bool>();
-  cfg_in.rescrict_time_span = in_config["Restricted_session"]["timeoutTimeSpan"].as<int>();
- 
+#if defined(_WIN32) || defined(_WIN64)
+  in_path << SPMUtils::GetHomeDir() << "\\.spm\\spm.ini"; // Create the file location of the config file
+#endif
 
-  return cfg_in; // And return the structure containing the configuration options
+std::cout << "READ PAth: " << in_path.str() << "\n";
+
+  if(!spmUtils.checkFile(in_path.str()))
+  {
+    dbg.Log(SPMDebug::Err, "spm.ini not found !");
+  }
+  else
+  {
+    in_config.setMultiLineValues(true); // Allow the ini parser to load the sections and fields line by line
+
+    in_config.load(in_path.str()); // Then open the config file
+
+    cfg_in.debug_log = in_config["Settings"]["dbgLog"].as<bool>();
+    cfg_in.pc_status_mpack = in_config["Settings"]["pcStat"].as<bool>();
+    cfg_in.rescrict_time_span = in_config["Restricted_session"]["timeoutTimeSpan"].as<int>();
+    cfg_in.restrict_timeout = in_config["Restricted_session"]["timeoutSession"].as<bool>();
+    cfg_in.restrict_mode = in_config["Restricted_session"]["restrictMode"].as<bool>();
+
+  }
+
+  return cfg_in;
 }
