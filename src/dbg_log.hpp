@@ -133,7 +133,7 @@ class SPMDebug
 
 // Create the log filename containing the current date
 #ifdef __linux__
-      logName << SPMUtils::GetHomeDir() << "/.spm/logs/spm_log - " << get_current_date();
+      logName << SPMUtils::GetHomeDir() << "/.spm/logs/spm_log - " << spmUtils.GetCurrentDate();
 #endif
 
 #if defined(_WIN32) || defined(_WIN64)
