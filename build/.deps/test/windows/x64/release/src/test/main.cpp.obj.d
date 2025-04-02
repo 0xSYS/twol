@@ -1,8 +1,8 @@
 {
+    depfiles_format = "cl_json",
     files = {
         [[src\test\main.cpp]]
     },
-    depfiles_format = "cl_json",
     depfiles = "{\
     \"Version\": \"1.2\",\
     \"Data\": {\
@@ -111,15 +111,11 @@
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\ucrt\\\\ctype.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\clocale\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\ucrt\\\\locale.h\",\
-            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\spm.hpp\",\
-            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\config.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\globals.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\dbg_log.hpp\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\vector\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\__msvc_bit_utils.hpp\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\string\",\
-            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\wol.hpp\",\
-            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\dev_detect.hpp\",\
-            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\utils.hpp\",\
-            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\dbg_log.hpp\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\sstream\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\fstream\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.39.33519\\\\include\\\\__msvc_filebuf.hpp\",\
@@ -335,8 +331,12 @@
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\um\\\\mcx.h\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\um\\\\imm.h\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\um\\\\ime_cmodes.h\",\
-            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\globals.hpp\",\
-            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\spm_list.hpp\"\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\utils.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\spm_list.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\config.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\spm.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\wol.hpp\",\
+            \"c:\\\\users\\\\acer\\\\desktop\\\\codeing\\\\spm\\\\src\\\\dev_detect.hpp\"\
         ],\
         \"ImportedModules\": [],\
         \"ImportedHeaderUnits\": []\

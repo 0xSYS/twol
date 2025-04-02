@@ -1,5 +1,7 @@
 add_rules("mode.debug", "mode.release")
 
+add_requires("wxwidgets", {system = false}) -- Forces using package manager
+
 target("spm")
     set_kind("shared")
     add_files("src/*.cpp")
@@ -8,6 +10,18 @@ target("spm")
         set_toolchains("msvc")
         add_syslinks("ws2_32", "user32", "iphlpapi")
     end
+
+-- target("spm-ui")
+--     -- set_enabled(false)
+--     set_kind("binary")
+--     add_files("src/*.cpp", "src/frontend/frontend.cpp")
+--     -- Add wxWidgets include path
+--     
+--     add_packages("wxwidgets")
+--     if is_plat("windows") then
+--         set_toolchains("msvc")
+--         add_syslinks("ws2_32", "user32", "iphlpapi")
+--     end
 
 target("test")
     -- set_enabled(false)
@@ -18,6 +32,7 @@ target("test")
         set_toolchains("msvc")
         add_syslinks("ws2_32", "user32", "iphlpapi")
     end
+
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io

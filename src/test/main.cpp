@@ -3,14 +3,13 @@
 
 
 
-
+#include "../globals.hpp"
 #include "../spm.hpp"
 #include "../config.hpp"
 #include "../wol.hpp"
 #include "../dev_detect.hpp"
 #include "../utils.hpp"
 #include "../dbg_log.hpp"
-#include "../globals.hpp"
 #include "../spm_list.hpp"
 
 
@@ -95,13 +94,13 @@ void Test8()
 int main(int argc, char * argv[])
 {
 	std::cout << "- - - - SPM BACKEND TESTS - - - - \n\n\n\n";
-	Test1(); // Linux Pass
-	// Test2(); // Linux, Windows Pass
+	// Test1(); // Linux Pass
+	Test2(); // Linux, Windows Pass
 	// Test3(); // 
 	// Test4(); // All pass
 	// Test5();
   // Test6();
 	// Test7();
-	Test8();
+	// Test8();
 	return 0;
 }

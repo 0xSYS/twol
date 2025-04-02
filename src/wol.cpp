@@ -36,12 +36,12 @@
 
 
 
-
+#include "globals.hpp"
 #include "wol.hpp"
 #include "dbg_log.hpp"
-#include "globals.hpp"
 
 
+//static SPMDebug dbg;
 
 // Parse and verify the mac addres
 bool SPMWakeOnLan::parse_mac_addr(const std::string& mac, std::vector<uint8_t>& mac_bytes)

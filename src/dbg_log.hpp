@@ -26,6 +26,7 @@
 
 
 #include "utils.hpp"
+//#include "globals.hpp"
 
 
 
@@ -129,7 +130,7 @@ class SPMDebug
     {
       std::ostringstream logName;
 
-      std::cout << "DBG LOG\n";
+      //std::cout << "DBG LOG\n";
 
 // Create the log filename containing the current date
 #ifdef __linux__

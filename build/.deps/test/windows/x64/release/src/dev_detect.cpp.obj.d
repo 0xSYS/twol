@@ -8,10 +8,6 @@
             "-DNDEBUG"
         }
     },
-    depfiles_format = "cl_json",
-    files = {
-        [[src\dev_detect.cpp]]
-    },
     depfiles = "{\
     \"Version\": \"1.2\",\
     \"Data\": {\
@@ -366,5 +362,9 @@
         \"ImportedModules\": [],\
         \"ImportedHeaderUnits\": []\
     }\
-}"
+}",
+    depfiles_format = "cl_json",
+    files = {
+        [[src\dev_detect.cpp]]
+    }
 }

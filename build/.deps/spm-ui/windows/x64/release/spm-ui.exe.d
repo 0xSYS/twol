@@ -1,0 +1,50 @@
+{
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\link.exe]],
+        {
+            "-nologo",
+            "-dynamicbase",
+            "-nxcompat",
+            "-machine:x64",
+            [[-libpath:C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib]],
+            "/opt:ref",
+            "/opt:icf",
+            "wxbase32u.lib",
+            "wxbase32u_net.lib",
+            "wxbase32u_xml.lib",
+            "wxexpat.lib",
+            "wxjpeg.lib",
+            "wxmsw32u_adv.lib",
+            "wxmsw32u_aui.lib",
+            "wxmsw32u_core.lib",
+            "wxmsw32u_gl.lib",
+            "wxmsw32u_html.lib",
+            "wxmsw32u_media.lib",
+            "wxmsw32u_propgrid.lib",
+            "wxmsw32u_qa.lib",
+            "wxmsw32u_ribbon.lib",
+            "wxmsw32u_richtext.lib",
+            "wxmsw32u_stc.lib",
+            "wxmsw32u_webview.lib",
+            "wxmsw32u_xrc.lib",
+            "wxpng.lib",
+            "wxregexu.lib",
+            "wxscintilla.lib",
+            "wxtiff.lib",
+            "wxzlib.lib",
+            "ws2_32.lib",
+            "user32.lib",
+            "iphlpapi.lib"
+        }
+    },
+    files = {
+        [[build\.objs\spm-ui\windows\x64\release\src\config.cpp.obj]],
+        [[build\.objs\spm-ui\windows\x64\release\src\dev_detect.cpp.obj]],
+        [[build\.objs\spm-ui\windows\x64\release\src\spm.cpp.obj]],
+        [[build\.objs\spm-ui\windows\x64\release\src\spm_api.cpp.obj]],
+        [[build\.objs\spm-ui\windows\x64\release\src\spm_list.cpp.obj]],
+        [[build\.objs\spm-ui\windows\x64\release\src\utils.cpp.obj]],
+        [[build\.objs\spm-ui\windows\x64\release\src\wol.cpp.obj]],
+        [[build\.objs\spm-ui\windows\x64\release\src\frontend\frontend.cpp.obj]]
+    }
+}

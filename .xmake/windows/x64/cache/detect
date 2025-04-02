@@ -1,33 +1,137 @@
 {
+    find_program_msvc_arch_x64_plat_windows_checktoolld = {
+        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\link.exe]]
+    },
+    find_package_windows_x64_fetch_package_xmake = {
+        ["xmake::wxwidgets_589336ce76a047088ba772010c86800d_release_3.2.4_external"] = {
+            shared = true,
+            links = {
+                "wxbase32u",
+                "wxbase32u_net",
+                "wxbase32u_xml",
+                "wxexpat",
+                "wxjpeg",
+                "wxmsw32u_adv",
+                "wxmsw32u_aui",
+                "wxmsw32u_core",
+                "wxmsw32u_gl",
+                "wxmsw32u_html",
+                "wxmsw32u_media",
+                "wxmsw32u_propgrid",
+                "wxmsw32u_qa",
+                "wxmsw32u_ribbon",
+                "wxmsw32u_richtext",
+                "wxmsw32u_stc",
+                "wxmsw32u_webview",
+                "wxmsw32u_xrc",
+                "wxpng",
+                "wxregexu",
+                "wxscintilla",
+                "wxtiff",
+                "wxzlib"
+            },
+            defines = {
+                "WXUSINGDLL",
+                "__WXMSW__",
+                "wxSUFFIX=u",
+                "wxMSVC_VERSION=14x"
+            },
+            linkdirs = {
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib]]
+            },
+            libfiles = {
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxbase32u.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxbase32u_net.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxbase32u_xml.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxexpat.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxjpeg.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_adv.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_aui.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_core.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_gl.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_html.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_media.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_propgrid.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_qa.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_ribbon.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_richtext.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_stc.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_webview.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32u_xrc.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxpng.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxregexu.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxscintilla.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxtiff.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxzlib.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxbase32ud.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxbase32ud_net.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxbase32ud_xml.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxexpatd.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxjpegd.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_adv.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_aui.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_core.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_gl.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_html.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_media.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_propgrid.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_qa.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_ribbon.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_richtext.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_stc.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_webview.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxmsw32ud_xrc.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxpngd.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxregexud.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxscintillad.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxtiffd.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\lib\wxzlibd.lib]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxbase32u_net_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxbase32u_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxbase32u_xml_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_adv_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_aui_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_core_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_gl_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_html_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_media_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_propgrid_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_qa_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_ribbon_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_richtext_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_stc_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_webview_vc14x_x64.dll]],
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\bin\wxmsw32u_xrc_vc14x_x64.dll]]
+            },
+            version = "3.2.4",
+            sysincludedirs = {
+                [[C:\Users\acer\AppData\Local\.xmake\packages\w\wxwidgets\3.2.4\589336ce76a047088ba772010c86800d\include]]
+            },
+            static = true
+        }
+    },
+    find_programver = {
+        ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe"] = "19.39.33523"
+    },
     find_program_msvc_arch_x64_plat_windows_checktoolsh = {
         ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\link.exe]]
     },
     find_program_msvc_arch_x64_plat_windows_checktoolcxx = {
         ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]]
     },
-    find_program_msvc_arch_x64_plat_windows_checktoolld = {
-        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\link.exe]]
-    },
     find_program = {
         ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]],
-        ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]]
-    },
-    find_program_msvc_arch_x64_plat_windows_checktoolcc = {
-        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]]
-    },
-    find_programver = {
-        ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe"] = "19.39.33523"
+        ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]],
+        gzip = false,
+        ["7z"] = [[C:\Users\acer\xmake\winenv\bin\7z]],
+        git = "git"
     },
     ["lib.detect.has_flags"] = {
         ["windows_x64_C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe_19.39.33523_cxx__-nologo_-O2"] = true,
         ["windows_x64_C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe_19.39.33523_cxx_cxflags_-nologo_cl_sourceDependencies"] = true,
         ["windows_x64_C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\cl.exe_19.39.33523_cxx_cxflags_-nologo_-DNDEBUG"] = true
     },
-    ["detect.sdks.find_mingw"] = {
-        mingw = {
-            sdkdir = [[C:\msys64\mingw64]],
-            bindir = [[C:\msys64\mingw64\bin]],
-            cross = "x86_64-w64-mingw32-"
-        }
+    find_program_msvc_arch_x64_plat_windows_checktoolcc = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX64\x64\cl.exe]]
     }
 }
