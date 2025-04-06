@@ -26,8 +26,9 @@
 
 
 #include "utils.hpp"
-#include "globals.hpp"
+// #include "globals.hpp"
 #include "dbg_log.hpp"
+
 
 
 
@@ -38,6 +39,8 @@ Writig log files containing the date on the filename
 */
 std::string SPMUtils::GetCurrentDate()
 {
+  SPMDebug dbg;
+  
   std::ostringstream temp;
   auto cd = std::chrono::system_clock::now();
   std::time_t current_dt = std::chrono::system_clock::to_time_t(cd);
@@ -60,6 +63,7 @@ std::string SPMUtils::GetHomeDir()
 
 void SPMUtils::makeDir(std::string d)
 {
+  SPMDebug dbg;
 #ifdef __linux__
   if(mkdir(d.c_str(), 0777))
   {
@@ -79,6 +83,7 @@ void SPMUtils::makeDir(std::string d)
 
 bool SPMUtils::checkDir(std::string d)
 {
+  SPMDebug dbg;
 #ifdef __linux__
   struct stat s;
 
@@ -98,6 +103,7 @@ bool SPMUtils::checkDir(std::string d)
 
  bool SPMUtils::checkFile(std::string f)
  {
+   SPMDebug dbg;
 #ifdef __linux__
   return access(f.c_str(), F_OK);
 #endif

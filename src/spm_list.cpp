@@ -1,5 +1,6 @@
 #include <sstream>
 #include <vector>
+#include "dbg_log.hpp"
 #include "inc/inifile-cpp/inicpp.h"
 #include "spm_list.hpp"
 #include "utils.hpp"
@@ -12,6 +13,7 @@ SPMUtils temp;
 std::vector <SPMList::computer> SPMList::ReadComputerList()
 {
   computer in;
+  SPMDebug dbg;
 
   std::vector<computer> inList;
 

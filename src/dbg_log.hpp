@@ -5,6 +5,7 @@
 
 
 
+// #include "globals.hpp"
 #include <vector>
 #include <cstring>
 #include <string>
@@ -26,7 +27,13 @@
 
 
 #include "utils.hpp"
+#include "spm.hpp"
+// #include "globals.hpp"
 
+
+
+static SPMUtils spmUtils;
+static SPM spm;
 
 
 
@@ -102,19 +109,35 @@ class SPMDebug
     */
     if(logType == 1)
     {
+#ifdef ANSI_ESCAPES
+      std::cout << "libspm: [\033[38;5;123mInfo\033[0m] -> " << mainStr;
+#else
       std::cout << "libspm: [Info] -> " << mainStr;
+#endif
     }
     else if(logType == 2)
     {
+#ifdef ANSI_ESCAPES
+      std::cout << "libspm: [\033[38;5;41mSuccess !\033[0m] -> " << mainStr;
+#else
       std::cout << "libspm: [Success !] -> " << mainStr;
+#endif
     }
     else if(logType == 3)
     {
+#ifdef ANSI_ESCAPES
+      std::cout << "libspm: [\033[38;5;178mWarn\033[0m] -> " << mainStr;
+#else
       std::cout << "libspm: [Warn] -> " << mainStr;
+#endif
     }
     else if(logType == 4)
     {
+#ifdef ANSI_ESCAPES
+      std::cout << "libspm: [\033[38;5;196mErr\033[0m] -> " << mainStr;
+#else
       std::cerr << "libspm: [Err] -> " << mainStr;
+#endif
     }
     else if(logType == 0)
     {
@@ -125,11 +148,11 @@ class SPMDebug
     PrintArgs(r...); // Process remaining arguments
     std::cout << std::endl;
 
-    if(!globalConf.debug_log)
+    if(!spm.globalConf.debug_log)
     {
       std::ostringstream logName;
 
-      std::cout << "DBG LOG\n";
+      // std::cout << "DBG LOG\n";
 
 // Create the log filename containing the current date
 #ifdef __linux__
@@ -158,8 +181,17 @@ class SPMDebug
   inline void MsgBoxLog(int logType, T mainStr, Args... r)
   {
     std::ostringstream text;
+#ifdef NO_MSGBOX
+    text << "{MsgBoxLog off} | " << mainStr;
+#else
     text << mainStr;
+#endif
     AppendToStream(text, r...);
+
+#ifdef NO_MSGBOX
+    std::cout << text.str() << "\n";
+#else
+    
 
 // For security reasons there's a lot of code below
 // !!! PLS DO NOT EVER TOUCH THIS !!!
@@ -209,7 +241,7 @@ class SPMDebug
     {
       perror("fork failed");
     }
-#endif
+#endif // Linux defines
 // 🡅 🡅 🡅
 // !!! DO NOT EVER TOUCH THIS !!!
 
@@ -236,6 +268,8 @@ class SPMDebug
     {
       msgBoxID = MessageBoxW(NULL, (LPCWSTR)temp, (LPCWSTR)L"Server Power Management - Error", MB_ICONERROR | MB_OK);
     }
-#endif
+#endif // Win32 defines
+
+#endif // NO_MSGBOX
   }
 };

@@ -39,7 +39,10 @@
 
 #include "wol.hpp"
 #include "dbg_log.hpp"
-#include "globals.hpp"
+// #include "globals.hpp"
+
+
+
 
 
 
@@ -78,6 +81,7 @@ bool SPMWakeOnLan::parse_mac_addr(const std::string& mac, std::vector<uint8_t>& 
 void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::string& broadcast_ip, int port)
 {
   std::vector<uint8_t> mac_bytes;
+  SPMDebug dbg;
   
   // Verify the MAC addres
   if(!parse_mac_addr(mac_address, mac_bytes))

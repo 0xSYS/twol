@@ -25,7 +25,7 @@ Main Source file of SPM library
 
 #include "spm.hpp"
 #include "utils.hpp"
-#include "globals.hpp"
+// #include "globals.hpp"
 #include "dbg_log.hpp"
 #include "config.hpp"
 #include "spm_list.hpp"
@@ -48,6 +48,7 @@ void SPM::Init()
   */
 
   SPMConfig::cfgStruct defaultConfig;
+  SPMDebug dbg;
 
 #if defined(_WIN32) || defined(_WIN64)
   spmUtils.SetWinTerm();
@@ -124,6 +125,7 @@ void SPM::Init()
 	  defaultConfig.pc_status_mpack = true;
 	  defaultConfig.debug_log = false;
 	  defaultConfig.rescrict_time_span = 8;
+	  defaultConfig.port = 8080;
 	  spmConf.Write(defaultConfig);
 	}
 	else
@@ -152,6 +154,7 @@ void SPM::Init()
 
 void SPM::Terminate()
 {
+  SPMDebug dbg;
   dbg.Log(SPMDebug::Info, "Safe exiting SPM...");
   // This is where variables are freed, files closed and exit processes.
 }

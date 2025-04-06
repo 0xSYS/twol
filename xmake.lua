@@ -1,9 +1,31 @@
 add_rules("mode.debug", "mode.release")
 
+
+
+option("ansi-escapes")
+       set_default(false)
+       set_showmenu(true)
+       set_description("Enable ansi escapes used in coloring the text from stdout.")
+
+option("no-msgbox")
+       set_default(false)
+       set_showmenu(true)
+       set_description("Disable all message boxes for non graphical builds (The strings are redirected to stdout instead)")
+
 target("spm")
     set_kind("shared")
+    set_options("ansi-escapes")
+    set_options("no-msgbox")
+    
+    if has_config("ansi-escapes") then
+			 add_defines("ANSI_ESCAPES")
+		end
+
+		if has_config("no-msgbox") then
+		   add_defines("NO_MSGBOX")
+		end
+
     add_files("src/*.cpp")
-    -- set_languages("c++17")
     if is_plat("windows") then
         set_toolchains("msvc")
         add_syslinks("ws2_32", "user32", "iphlpapi")
@@ -12,79 +34,23 @@ target("spm")
 target("test")
     -- set_enabled(false)
     set_kind("binary")
-    add_files("src/*.cpp")
-    add_files("src/test/main.cpp")
+    set_options("ansi-escapes")
+    set_options("no-msgbox")
+
+    if has_config("no-msgbox") then
+       add_defines("NO_MSGBOX")
+    end
+
+    if has_config("ansi-escapes") then
+       add_defines("ANSI_ESCAPES")
+    end
+    add_files("src/*.cpp", "src/test/main.cpp")
     if is_plat("windows") then
         set_toolchains("msvc")
         add_syslinks("ws2_32", "user32", "iphlpapi")
     end
 
---
--- If you want to known more usage about xmake, please see https://xmake.io
---
--- ## FAQ
---
--- You can enter the project directory firstly before building project.
---
---   $ cd projectdir
---
--- 1. How to build project?
---
---   $ xmake
---
--- 2. How to configure project?
---
---   $ xmake f -p [macosx|linux|iphoneos ..] -a [x86_64|i386|arm64 ..] -m [debug|release]
---
--- 3. Where is the build output directory?
---
---   The default output directory is `./build` and you can configure the output directory.
---
---   $ xmake f -o outputdir
---   $ xmake
---
--- 4. How to run and debug target after building project?
---
---   $ xmake run [targetname]
---   $ xmake run -d [targetname]
---
--- 5. How to install target to the system directory or other output directory?
---
---   $ xmake install
---   $ xmake install -o installdir
---
--- 6. Add some frequently-used compilation flags in xmake.lua
---
--- @code
---    -- add debug and release modes
---    add_rules("mode.debug", "mode.release")
---
---    -- add macro definition
---    add_defines("NDEBUG", "_GNU_SOURCE=1")
---
---    -- set warning all as error
---    set_warnings("all", "error")
---
---    -- set language: c99, c++11
---    set_languages("c99", "c++11")
---
---    -- set optimization: none, faster, fastest, smallest
---    set_optimize("fastest")
---
---    -- add include search directories
---    add_includedirs("/usr/include", "/usr/local/include")
---
---    -- add link libraries and search directories
---    add_links("tbox")
---    add_linkdirs("/usr/local/lib", "/usr/lib")
---
---    -- add system link libraries
---    add_syslinks("z", "pthread")
---
---    -- add compilation and link flags
---    add_cxflags("-stdnolib", "-fno-strict-aliasing")
---    add_ldflags("-L/usr/local/lib", "-lpthread", {force = true})
---
--- @endcode
---
-
+target("spm-ui")
+    set_default(false)
+    set_kind("binary")
+    add_files("src/*.cpp", "src/frontend/frontend.cpp")

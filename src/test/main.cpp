@@ -41,6 +41,7 @@ void Test2()
 
 void Test3()
 {
+	SPMDebug dbg;
 	std::vector<uint8_t> byte_array;
 	std::cout << "Test3() -> SPMWakeOnLan::parse_mac_addr()\n";
 	if(wol.parse_mac_addr("1c:6f:65:c2:e8:2f", byte_array))
@@ -55,12 +56,14 @@ void Test3()
 
 void Test4()
 {
+	SPMDebug dbg;
 	std::cout << "Test4() -> Log testing\n";
-	dbg.Log(SPMDebug::Info, "Some info", " And another string");
+	dbg.Log(SPMDebug::Warn, "Some info", " And another string");
 }
 
 void Test5()
 {
+	SPMDebug dbg;
 	dbg.MsgBoxLog(SPMDebug::Info, "Arg 1 ", "Arg 2 ", 5);
 	dbg.MsgBoxLog(SPMDebug::Success, "Success test " , "And another stringy string ", 48);
 	dbg.MsgBoxLog(SPMDebug::Warn, "Warning test ", "yet anoter text and a number idk ", 152);
@@ -85,6 +88,7 @@ void Test7()
 
 void Test8()
 {
+	SPMDebug dbg;
 	for(int i = 0; i < 5; i++)
 	{
 		dbg.Log(SPMDebug::Info, "Updating stuff");
@@ -95,13 +99,13 @@ void Test8()
 int main(int argc, char * argv[])
 {
 	std::cout << "- - - - SPM BACKEND TESTS - - - - \n\n\n\n";
-	Test1(); // Linux Pass
+	// Test1(); // Linux Pass
 	// Test2(); // Linux, Windows Pass
 	// Test3(); // 
 	// Test4(); // All pass
-	// Test5();
+	Test5();
   // Test6();
 	// Test7();
-	Test8();
+	// Test8();
 	return 0;
 }

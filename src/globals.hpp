@@ -12,7 +12,7 @@
 
 
 static SPMList::computer MainList;
-static SPMDebug dbg;
-static SPMConfig::cfgStruct globalConf;
-static SPMUtils spmUtils;
+// static SPMDebug dbg;
+// static SPMConfig::cfgStruct globalConf;
+// static SPMUtils spmUtils;
 
