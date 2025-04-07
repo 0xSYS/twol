@@ -1,3 +1,6 @@
+[Original Source](https://github.com/Rookfighter/inifile-cpp)
+
+
 # inifile-cpp
 ![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
 [![CMake](https://github.com/Rookfighter/inifile-cpp/workflows/CMake/badge.svg)](https://github.com/Rookfighter/inifile-cpp/actions/workflows/cmake.yml)
