@@ -44,3 +44,13 @@ API_EXPORT std::vector<std::string> SPM_DeviceDetect()
 {
   return spm_detct.CreateIP_Table();
 }
+
+API_EXPORT void SPM_Snd_Reboot(int mode, std::string ip)
+{
+  // Call c++
+}
+
+API_EXPORT void SPM_SndPowerOff(int mode, std::string ip)
+{
+  // Call c++
+}

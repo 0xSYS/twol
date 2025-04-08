@@ -33,6 +33,7 @@ void SPMConfig::Write(cfgStruct cfg_out)
   config["RestrictedSession"]["timeoutSession"]  = cfg_out.restrict_timeout;
   config["RestrictedSession"]["timeoutTimeSpan"] = cfg_out.rescrict_time_span;
   config["RemotePowerOptions"]["Port"] = cfg_out.port;
+  config["RemotePowerOptions"]["socketCallbacks"] = cfg_out.power_opts_callbacks;
 
   out_path << SPMUtils::GetHomeDir() << "/.spm/spm.ini"; // Concatenate strings to create the file path where the config is stored
   

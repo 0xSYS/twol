@@ -31,6 +31,11 @@ target("spm")
         add_syslinks("ws2_32", "user32", "iphlpapi")
     end
 
+target("spm-serv")
+    set_default(false)
+    set_kind("binary")
+    add_files("src/server/*.c")
+
 target("test")
     -- set_enabled(false)
     set_kind("binary")

@@ -109,3 +109,12 @@ int main(int argc, char * argv[])
 	// Test8();
 	return 0;
 }
+
+
+/*
+Temp stuff
+
+https://github.com/MichaelDipperstein/ezini/blob/master/sample.c
+https://github.com/benhoyt/inih/tree/master
+https://github.com/compuphase/minIni/blob/master/dev/test.c
+*/
