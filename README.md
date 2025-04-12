@@ -19,12 +19,14 @@ A set software components designed for managing computers / servers with support
 
 * Features
 - [X] Basic wake on lan function
-- [ ] Power off along side wake on lan
-- [ ] Automatic detection of avaialble computers / servers
+- [ ] Power off along side wake on lan via server listener (In progress)
+- [ ] Automatic detection of avaialble computers / servers (Works only on windows)
 - [ ] Power Status Check
 - [ ] Frontend GUI (Already in rpogress)
 - [ ] Restricted session
-- [ ] Linux daemon service
+- [ ] Linux daemon service (In progress)
+- [ ] Process black list
+- [ ] Headless Command Line execution
 - [ ] Command Line interface
 - [ ] Local web page setup
 - [ ] C/C++ API examples (In progress)
