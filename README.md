@@ -27,6 +27,7 @@ A set software components designed for managing computers / servers with support
 - [ ] Linux daemon service (In progress)
 - [ ] Process black list
 - [ ] Headless Command Line execution
+- [ ] stdout buffer capture to text file
 - [ ] Command Line interface
 - [ ] Local web page setup
 - [ ] C/C++ API examples (In progress)
