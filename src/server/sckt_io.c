@@ -7,6 +7,8 @@
 
 
 
+#include "power_funcs.h"
+
 
 #ifndef EXIT_FAILURE
   #define EXIT_FAILURE 1
@@ -30,6 +32,7 @@ void StartScktReception()
   // Create socket
   serv_fd = socket(AF_INET, SOCK_STREAM, 0);
   if (serv_fd == 0) {
+    Log(Err, "Failed to create socket !!");
     perror("socket failed");
     exit(EXIT_FAILURE);
   }
@@ -42,12 +45,14 @@ void StartScktReception()
 
   // Bind
   if (bind(serv_fd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
+    Log(Err, "Failed to bind server with address !!");
     perror("bind failed");
     exit(EXIT_FAILURE);
   }
 
   // Listen
   if (listen(serv_fd, 3) < 0) {
+    Log(Err, "Faied to listen to socket !!");
     perror("listen");
     exit(EXIT_FAILURE);
   }
@@ -55,6 +60,7 @@ void StartScktReception()
   // Accept a connection
   sckt = accept(serv_fd, (struct sockaddr *)&addr, (socklen_t *)&addrlen);
   if (sckt < 0) {
+    Log(Err, "Failed to accept connection !!");
     perror("accept");
     exit(EXIT_FAILURE);
   }
@@ -66,6 +72,7 @@ void StartScktReception()
   if(strcmp(buffer, "pwroff") == 0)
   {
     // Call Poweroff
+    SysPowerOff();
   }
   else if(strcmp(buffer, "fpwroff") == 0)
   {
@@ -74,6 +81,7 @@ void StartScktReception()
   else if(strcmp(buffer, "rbt") == 0)
   {
     // Call Reboot
+    SysReboot();
   }
   else if(strcmp(buffer, "frbt") == 0)
   {

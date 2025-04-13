@@ -12,6 +12,7 @@
 #include "../dbg_log.hpp"
 #include "../globals.hpp"
 #include "../spm_list.hpp"
+#include "../sckt_io.hpp"
 
 
 
@@ -20,6 +21,7 @@ SPM spm_cls;
 SPMWakeOnLan wol;
 SPMDetect sdetect;
 SPMList spm_lst;
+SPM_SocketIO sckt_io;
 
 
 
@@ -95,6 +97,12 @@ void Test8()
 	}
 }
 
+void Test9()
+{
+	sckt_io.SndPowerAction(SPM_SocketIO::Reboot, "192.168.1.102");
+	sckt_io.SndPowerAction(SPM_SocketIO::Reboot, "192.168.1.105");
+}
+
 
 int main(int argc, char * argv[])
 {
@@ -103,10 +111,11 @@ int main(int argc, char * argv[])
 	// Test2(); // Linux, Windows Pass
 	// Test3(); // 
 	// Test4(); // All pass
-	Test5();
+	// Test5();
   // Test6();
 	// Test7();
 	// Test8();
+	Test9();
 	return 0;
 }
 

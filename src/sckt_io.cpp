@@ -47,7 +47,7 @@ void SPM_SocketIO::SndPowerAction(int actType, std::string target)
     serv_addr.sin_port = htons(DEFAULT_PORT);
 
 
-    if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0)
+    if(inet_pton(AF_INET, target.c_str(), &serv_addr.sin_addr) <= 0)
     {
       dbg.Log(SPMDebug::Err, "Invalid Address !");
     }

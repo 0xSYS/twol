@@ -21,22 +21,23 @@ pid_t CheckRuningProc(const char * procName)
 	{
 		Log(Err, "Failed to create process table!");
 		perror("openproc");
-		return false;
+		//return false;
 	}
 	else
 	{
 		proc_t *proc;
 
 		while ((proc = readproc(procTable, NULL)) != NULL) {
-      if (strcmp(proc->cmd, procName) == 0) {
+			// printf("Runing proc: %s\n", proc -> cmd);
+      if (strstr(proc->cmd, procName)) {
         Log(Info, "Process '%s' is running (PID: %d)\n", procName, proc->tid);
         return proc -> tid;
         freeproc(proc);
         closeproc(procTable);
-        return true;
+        // return true;
       }
       freeproc(proc);
 	  }
   }
-  return NULL;
+  //return NULL;
 }

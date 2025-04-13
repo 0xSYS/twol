@@ -32,9 +32,11 @@ target("spm")
     end
 
 target("spm-serv")
-    set_default(false)
+    -- set_default(false)
     set_kind("binary")
     add_files("src/server/*.c")
+    add_links("procps")
+    add_links("systemd")
 
 target("test")
     -- set_enabled(false)
