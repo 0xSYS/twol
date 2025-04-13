@@ -4,6 +4,7 @@
 #include "dbg.h"
 #include "proc_manager.h"
 #include "power_funcs.h"
+#include "sckt_io.h"
 
 
 
@@ -23,12 +24,13 @@ int main(int argc, char * argv[])
 {
     // Do stuff here
     TestingStuff();
+    StartScktReception();
     /*
     CheckRuningProc("helix");
     CheckRuningProc("zsh");
     CheckRuningProc("tmux");
     */
     // SysReboot();
-    SysPowerOff();
+    // SysPowerOff();
 	return 0;
 }
