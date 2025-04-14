@@ -59,7 +59,7 @@ std::cout << "READ PAth: " << in_path.str() << "\n";
 
   if(!spmUtils.checkFile(in_path.str()))
   {
-    dbg.Log(SPMDebug::Err, "spm.ini not found !");
+    dbg.Log(SPMDebug::Err, "SPMConfig::Read", "spm.ini not found !");
   }
   else
   {

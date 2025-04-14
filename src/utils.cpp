@@ -67,7 +67,7 @@ void SPMUtils::makeDir(std::string d)
 #ifdef __linux__
   if(mkdir(d.c_str(), 0777))
   {
-    dbg.Log(SPMDebug::Err, "mkdir() failed !!");
+    dbg.Log(SPMDebug::Err, "makeDir", "mkdir() failed !!");
   }
 #endif
 
@@ -76,7 +76,7 @@ void SPMUtils::makeDir(std::string d)
   LPCWSTR temp = wstr.c_str();
   if(CreateDirectoryW(temp, NULL) || ERROR_ALREADY_EXISTS == GetLastError())
   {
-    dbg.Log(SPMDebug::Err, "CreateDirectory() failed !! Err Code: ", GetLastError());
+    dbg.Log(SPMDebug::Err, "makeDir", "CreateDirectory() failed !! Err Code: ", GetLastError());
   }
 #endif
 }

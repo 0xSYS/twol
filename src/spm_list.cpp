@@ -31,7 +31,7 @@ std::vector <SPMList::computer> SPMList::ReadComputerList()
 
 	if(!temp.checkFile(list_path.str()))
 	{
-		dbg.Log(SPMDebug::Err, "File not foun d errg");
+		dbg.Log(SPMDebug::Err, "ReadComputerList", "File not foun d errg");
 	}
 	else
 	{

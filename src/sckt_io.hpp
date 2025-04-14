@@ -33,6 +33,7 @@ class SPM_SocketIO
     bool debugLog;                 // Enable / disable general debuging (This also includes sending minimal debug information from server to frontend)
     bool writeLogFiles;            // Enable / disable writing to log files
     bool alowSysInfo;              // Enable / disable sending system information trough the socket
+    bool stdoutCapture;            // Enable / disable stdout buffer capture to text file when runing headles cli commands
     std::string terminateProceses; // Values: Never, Always, Always first
     int listenPort;                // Use different port for sending / recepting the packets
   }ServerSettings;
@@ -45,14 +46,15 @@ class SPM_SocketIO
     ForceReboot
   };
   
-    void SndPowerAction(int actType, std::string target);    // Send power action to a device (Poweroff / reboot)
-    sysInfo GetSysInfo();                                    // Retrieve system information of a specific device
-    std::vector <sysInfo> GetSysInfoArr(std::string target); // Retrieve system information from multiple devices into an aray
-    void SetCustomProcBlaclist(std::string ProcName);        // Add specific process to the black list (When executing power action it checks if the process and prevents reboot or poweroff if runing)
-    void SndCustomSettings(ServerSettings);                  // Send custom configuration for the server via sockets
-    void SndResetSettings(std::string target);               // Reset server to default settings
-    void SndClearLogs(std::string target);                   // Send clearance of the log files
-    void SndStopServer(std::string target);                  // Stops the server from listening
-    void SndResumeServer(std::string target);                // Resume the server
-    void SndKillServer(std::string target);                  // Kill the server process
+    void SndPowerAction(int actType, std::string target);                  // Send power action to a device (Poweroff / reboot)
+    sysInfo GetSysInfo();                                                  // Retrieve system information of a specific device
+    std::vector <sysInfo> GetSysInfoArr(std::string target);               // Retrieve system information from multiple devices into an aray
+    void SetCustomProcBlacklist(std::string target, std::string ProcName); // Add specific process to the black list (When executing power action it checks if the process and prevents reboot or poweroff if runing)
+    void SndUnauthorizedProcess(std::string target, std::string ProcName); // Add unauthorized process (Prevents a specific process from being send to headless CLI execution) 
+    void SndCustomSettings(std::string target, ServerSettings);            // Send custom configuration for the server via sockets
+    void SndResetSettings(std::string target);                             // Reset server to default settings by removing the configuration file
+    void SndClearLogs(std::string target);                                 // Send clearance of the log files
+    void SndStopServer(std::string target);                                // Stops the server from listening
+    void SndResumeServer(std::string target);                              // Resume the server
+    void SndKillServer(std::string target);                                // Kill the server process
 };

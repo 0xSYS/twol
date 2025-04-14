@@ -99,7 +99,7 @@ class SPMDebug
 
 
   template <typename T, typename... Args>
-  inline void Log(int logType, T mainStr, Args... r)
+  inline void Log(int logType, std::string fnCall, T mainStr, Args... r)
   {
     /*
     \033[38;5;123mInfo\033[0m
@@ -110,38 +110,38 @@ class SPMDebug
     if(logType == 1)
     {
 #ifdef ANSI_ESCAPES
-      std::cout << "libspm: [\033[38;5;123mInfo\033[0m] -> " << mainStr;
+      std::cout << "libspm: [\033[38;5;123mInfo\033[0m] \033[1;36m" << fnCall << "()\033[0m -> " << mainStr;
 #else
-      std::cout << "libspm: [Info] -> " << mainStr;
+      std::cout << "libspm: [Info] " << fnCall <<  "() -> " << mainStr;
 #endif
     }
     else if(logType == 2)
     {
 #ifdef ANSI_ESCAPES
-      std::cout << "libspm: [\033[38;5;41mSuccess !\033[0m] -> " << mainStr;
+      std::cout << "libspm: [\033[38;5;41mSuccess !\033[0m] \033[1;36m" << fnCall << "()\033[0m -> " << mainStr;
 #else
-      std::cout << "libspm: [Success !] -> " << mainStr;
+      std::cout << "libspm: [Success !] " << fnCall << "() -> " << mainStr;
 #endif
     }
     else if(logType == 3)
     {
 #ifdef ANSI_ESCAPES
-      std::cout << "libspm: [\033[38;5;178mWarn\033[0m] -> " << mainStr;
+      std::cout << "libspm: [\033[38;5;178mWarn\033[0m] \033[1;36m" << fnCall << "()\033[0m -> " << mainStr;
 #else
-      std::cout << "libspm: [Warn] -> " << mainStr;
+      std::cout << "libspm: [Warn] " << fnCall << "() -> " << mainStr;
 #endif
     }
     else if(logType == 4)
     {
 #ifdef ANSI_ESCAPES
-      std::cout << "libspm: [\033[38;5;196mErr\033[0m] -> " << mainStr;
+      std::cout << "libspm: [\033[38;5;196mErr\033[0m] \033[1;36m" << fnCall << "()\033[0m -> " << mainStr;
 #else
-      std::cerr << "libspm: [Err] -> " << mainStr;
+      std::cerr << "libspm: [Err] " << fnCall << "() -> " << mainStr;
 #endif
     }
     else if(logType == 0)
     {
-      std::cout << "libspm: [ - ] -> " << mainStr;
+      std::cout << "libspm: [ - ] " << fnCall << "() -> " << mainStr;
     }
     // Forgor to print the rest of the args XD
     
