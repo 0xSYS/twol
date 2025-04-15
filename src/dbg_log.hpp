@@ -1,3 +1,18 @@
+/*
+!!! DO NOT EVER TOUCH THIS FILE OR I'LL HAUNT YOU !!!
+*/
+
+
+
+
+
+
+
+
+
+
+
+
 #pragma once
 
 
@@ -5,7 +20,7 @@
 
 
 
-// #include "globals.hpp"
+
 #include <vector>
 #include <cstring>
 #include <string>
@@ -34,6 +49,11 @@
 
 static SPMUtils spmUtils;
 static SPM spm;
+
+
+
+
+#define SPM_LOG(logType, ...) SPMDebug::Log(logType, __PRETTY_FUNCTION__, __FILE__, __LINE__, __VA_ARGS__)
 
 
 
@@ -99,49 +119,79 @@ class SPMDebug
 
 
   template <typename T, typename... Args>
-  inline void Log(int logType, std::string fnCall, T mainStr, Args... r)
+  static inline void Log(int logType, std::string fnCall, std::string file, int line, T mainStr, Args... r)
   {
-    /*
-    \033[38;5;123mInfo\033[0m
-    \033[38;5;41mSuccess\033[0m
-    \033[38;5;178mWarn\033[0m
-    \033[38;5;196mErr\033[0m
-    */
     if(logType == 1)
     {
 #ifdef ANSI_ESCAPES
-      std::cout << "libspm: [\033[38;5;123mInfo\033[0m] \033[1;36m" << fnCall << "()\033[0m -> " << mainStr;
+#ifdef DEBUG_FN_CALLS
+      std::cout << "libspm: {" << file << ":" << line << " | \033[38;5;245m" << fnCall << "\033[0m} [\033[38;5;123mInfo\033[0m] -> " << mainStr;
 #else
-      std::cout << "libspm: [Info] " << fnCall <<  "() -> " << mainStr;
+      std::cout << "libspm: [\033[38;5;123mInfo\033[0m] -> " << mainStr;
+#endif
+#else
+#ifdef DEBUG_FN_CALLS
+      std::cout << "libspm: {" << file << ":" << line << " | " << fnCall <<  " [Info] -> " << mainStr;
+#else
+      std::cout << "libspm: [Info] -> " << mainStr;
+#endif
 #endif
     }
     else if(logType == 2)
     {
 #ifdef ANSI_ESCAPES
-      std::cout << "libspm: [\033[38;5;41mSuccess !\033[0m] \033[1;36m" << fnCall << "()\033[0m -> " << mainStr;
+#ifdef DEBUG_FN_CALLS
+      std::cout << "libspm: {" << file << ":" << line << " | \033[38;5;245m" << fnCall << "\033[0m} [\033[38;5;41mSuccess !\033[0m] -> " << mainStr;
 #else
-      std::cout << "libspm: [Success !] " << fnCall << "() -> " << mainStr;
+      std::cout << "libspm: [\033[38;5;41mSuccess !\033[0m] -> " << mainStr;
+#endif
+#else
+#ifdef DEBUG_FN_CALLS
+      std::cout << "libspm: {" << file << ":" << line << " | " << fnCall <<  " [Success !] -> " << mainStr;
+#else
+      std::cout << "libspm: [Success !] -> " << mainStr;
+#endif
 #endif
     }
     else if(logType == 3)
     {
 #ifdef ANSI_ESCAPES
-      std::cout << "libspm: [\033[38;5;178mWarn\033[0m] \033[1;36m" << fnCall << "()\033[0m -> " << mainStr;
+#ifdef DEBUG_FN_CALLS
+      std::cout << "libspm: {" << file << ":" << line << " | \033[38;5;245m" << fnCall << "\033[0m} [\033[38;5;178mWarn\033[0m] -> " << mainStr;
 #else
-      std::cout << "libspm: [Warn] " << fnCall << "() -> " << mainStr;
+      std::cout << "libspm: [\033[38;5;178mWarn\033[0m] -> " << mainStr;
+#endif
+#else
+#ifdef DEBUG_FN_CALLS
+      std::cout << "libspm: {" << file << ":" << line << " | " << fnCall <<  " [Warn] -> " << mainStr;
+#else
+      std::cout << "libspm: [Warn] -> " << mainStr;
+#endif
 #endif
     }
     else if(logType == 4)
     {
 #ifdef ANSI_ESCAPES
-      std::cout << "libspm: [\033[38;5;196mErr\033[0m] \033[1;36m" << fnCall << "()\033[0m -> " << mainStr;
+#ifdef DEBUG_FN_CALLS
+      std::cout << "libspm: {" << file << ":" << line << " | \033[38;5;245m" << fnCall << "\033[0m} [\033[38;5;196mErr\033[0m] -> " << mainStr;
 #else
-      std::cerr << "libspm: [Err] " << fnCall << "() -> " << mainStr;
+      std::cout << "libspm: [\033[38;5;123mErr\033[0m] -> " << mainStr;
+#endif
+#else
+#ifdef DEBUG_FN_CALLS
+      std::cout << "libspm: {" << file << ":" << line << " | " << fnCall <<  " [Err] -> " << mainStr;
+#else
+      std::cout << "libspm: [Err] -> " << mainStr;
+#endif
 #endif
     }
     else if(logType == 0)
     {
-      std::cout << "libspm: [ - ] " << fnCall << "() -> " << mainStr;
+#ifdef DEBUG_FN_CALLS
+      std::cout << "libspm: {" << file << ":" << line << " | " << fnCall << "} [ - ] -> " << mainStr;
+#else
+      std::cout << "libspm: [ - ] -> " << mainStr;
+#endif
     }
     // Forgor to print the rest of the args XD
     

@@ -48,11 +48,13 @@ void Test3()
 	std::cout << "Test3() -> SPMWakeOnLan::parse_mac_addr()\n";
 	if(wol.parse_mac_addr("1c:6f:65:c2:e8:2f", byte_array))
 	{
-		dbg.Log(SPMDebug::Success, " * ", "Mac address parsed successfully");
+		// dbg.Log(SPMDebug::Success, " * ", "Mac address parsed successfully");
+		SPM_LOG(SPMDebug::Success, "Mac address parsed successfully");
 	}
 	else
 	{
-		dbg.Log(SPMDebug::Err, " * ", "Failed to parse mac address");
+		// dbg.Log(SPMDebug::Err, " * ", "Failed to parse mac address");
+		SPM_LOG(SPMDebug::Err, "Failed to parse mac address");
 	}
 }
 
@@ -60,7 +62,10 @@ void Test4()
 {
 	SPMDebug dbg;
 	std::cout << "Test4() -> Log testing\n";
-	dbg.Log(SPMDebug::Warn, " * ", "Some info", " And another string");
+	SPM_LOG(SPMDebug::Info, "Info Test");
+	SPM_LOG(SPMDebug::Success, "Success Test");
+	SPM_LOG(SPMDebug::Warn, "Warn Test");
+	SPM_LOG(SPMDebug::Err, "Err Test");
 }
 
 void Test5()
@@ -93,7 +98,8 @@ void Test8()
 	SPMDebug dbg;
 	for(int i = 0; i < 5; i++)
 	{
-		dbg.Log(SPMDebug::Info, " * ", "Updating stuff");
+		// dbg.Log(SPMDebug::Info, " * ", "Updating stuff");
+		SPM_LOG(SPMDebug::Info, "Updating stuff");
 	}
 }
 
@@ -109,14 +115,14 @@ int main(int argc, char * argv[])
 {
 	std::cout << "- - - - SPM BACKEND TESTS - - - - \n\n\n\n";
 	// Test1(); // Linux Pass
-	// Test2(); // Linux, Windows Pass
+	Test2(); // Linux, Windows Pass
 	// Test3(); // 
 	// Test4(); // All pass
 	// Test5();
   // Test6();
 	// Test7();
 	// Test8();
-  Test9();
+  // Test9();
 	return 0;
 }
 

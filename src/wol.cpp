@@ -86,7 +86,7 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
   // Verify the MAC addres
   if(!parse_mac_addr(mac_address, mac_bytes))
   {
-    dbg.Log(SPMDebug::Err, "SndMagicPack", "Invalid MAC Address!!");
+    SPM_LOG(SPMDebug::Err, "Invalid MAC address");
     return;
   }
   else
@@ -101,21 +101,24 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
 
     // Initialize Winsock
     WSADATA wsa;
-    if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0) {
-        dbg.Log(SPMDebug::Err, "SndMagicPack", "Failed to initialize Winsock!");
+    if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
+    {
+        SPM_LOG(SPMDebuf::Err, "Failed to initialise Winsock !");
         return;
     }
 
     SOCKET sockt = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-    if (sockt == INVALID_SOCKET) {
-        dbg.Log(SPMDebug::Err, "SndMagicPack", "Failed to create socket !");
+    if (sockt == INVALID_SOCKET)
+    {
+        SPM_LOG(SPMDebug::Err, "Failed to create socket !");
         WSACleanup();
         return;
     }
 
     int optval = 1;
-    if (setsockopt(sockt, SOL_SOCKET, SO_BROADCAST, (char*)&optval, sizeof(optval)) == SOCKET_ERROR) {
-        dbg.Log(SPMDebug::Err, "SndMagicPack", "Failed to set socket options !");
+    if (setsockopt(sockt, SOL_SOCKET, SO_BROADCAST, (char*)&optval, sizeof(optval)) == SOCKET_ERROR)
+    {
+        SPM_LOG(SPMDebug::Err, "Failed to set socket options !");
         closesocket(sockt);
         WSACleanup();
         return;
@@ -126,8 +129,9 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
     dest_addr.sin_family = AF_INET;
     dest_addr.sin_port = htons(port);
     
-    if (inet_pton(AF_INET, broadcast_ip.c_str(), &dest_addr.sin_addr) != 1) {
-        dbg.Log(SPMDebug::Err, "SndMagicPack", "Invalid broadcast IP !");
+    if (inet_pton(AF_INET, broadcast_ip.c_str(), &dest_addr.sin_addr) != 1)
+    {
+        SPM_LOG(SPMDebug::Err, "Ivalid broadcast IP !");
         closesocket(sockt);
         WSACleanup();
         return;
@@ -136,13 +140,16 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
     int sent_bytes = sendto(sockt, (char*)magic_packet.data(), magic_packet.size(), 0,
                             (struct sockaddr*)&dest_addr, sizeof(dest_addr));
 
-    if (sent_bytes == SOCKET_ERROR) {
-        dbg.Log(SPMDebug::Err, "SndMagicPack", "Failed to send magic packet !");
-    } else {
+    if (sent_bytes == SOCKET_ERROR)
+    {
+        SPM_LOG(SPMDebug::Err, "Failed to send magic packet !");
+    }
+    else
+    {
 #ifdef ANSI_ESCAPES
-        dbg.Log(SPMDebug::Success, "SndMagicPack", "Magic packet successfully sent to \033[38;5;94m", mac_address, "\033[0m via \033[38;5;94m", broadcast_ip, "\033[0m");
+        SPM_LOG(SPMDebud::Success, "Magic packet send successfully to \033[38;5;94m", mac_address, "\033[0m via \033[38;5;94m", broadcast_ip, "\033[0m");
 #else
-        dbg.Log(SPMDebug::Success, "SndMagicPack", "Magic packet sent successfully to ", mac_address, " via ", broadcast_ip);
+        SPM_LOG(SPMDebug::Success, "Magic packet sent successfully to ", mac_address, " via ", broadcast_ip);
 #endif        
     }
 
@@ -164,14 +171,14 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
 
     if(sockt < 0)
     {
-      dbg.Log(SPMDebug::Err, "SndMagicPack", "Failed to create socket !");
+      SPM_LOG(SPMDebug::Err, "Failed to create socket !");
       return;
     }
 
     int optval = 1;
     if(setsockopt(sockt, SOL_SOCKET, SO_BROADCAST, &optval, sizeof(optval)) < 0)
     {
-      dbg.Log(SPMDebug::Err, "SndMagicPack", "Failed to set socket options !");
+      SPM_LOG(SPMDebug::Err, "Failed to set socket options !");
       return;
     }
 
@@ -183,7 +190,7 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
 
     if(inet_pton(AF_INET, broadcast_ip.c_str(), &dest_addr.sin_addr) <= 0)
     {
-      dbg.Log(SPMDebug::Err, "SndMagicPack", "Invalid broadcast address !");
+      SPM_LOG(SPMDebug::Err, "Invalid broadcast address !");
       close(sockt);
       return;
     }
@@ -192,14 +199,14 @@ void SPMWakeOnLan::SndMagicPack(const std::string& mac_address, const std::strin
 
     if(sent_bytes < 0)
     {
-      dbg.Log(SPMDebug::Err, "SndMagicPack", "Failes to send magic pakcet !");
+      SPM_LOG(SPMDebug::Err, "Failed to send magick packet !");
     }
     else
     {
 #ifdef ANSI_ESCAPES
-      dbg.Log(SPMDebug::Success, "SndMagicPack", "Magic packet send successfully to \033[38;5;94m", mac_address, "\033[0m via \033[38;5;94m", broadcast_ip, "\033[0m");
+      SPM_LOG(SPMDebug::Success, "Magic packet sent successfully to \033[38;5;94m", mac_address, "\033[0m via \033[38;5;94m", broadcast_ip, "\033[0m");
 #else
-      dbg.Log(SPMDebug::Success, "SndMagicPack", "Magic packet successfully sent to ", mac_address, " via ", broadcast_ip);
+      SPM_LOG(SPMDebug::Success, "Magic packet sent successfully to ", mac_address, " via ", broadcast_ip);
 #endif            
     }
     close(sockt);

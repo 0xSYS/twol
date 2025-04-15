@@ -55,11 +55,10 @@ void SPM::Init()
 #endif
 
   // Basic Logging test to stdout
-  dbg.Log(SPMDebug::noType, "Init", "Log Test");
-  dbg.Log(SPMDebug::Info, "Init", "Info Test");
-  dbg.Log(SPMDebug::Success, "Init", "Success Test");
-  dbg.Log(SPMDebug::Warn, "Init", "Warn Test");
-  dbg.Log(SPMDebug::Err, "Init", "Err Test");
+  SPM_LOG(SPMDebug::Info, "Info Test");
+  SPM_LOG(SPMDebug::Success, "Success Test");
+  SPM_LOG(SPMDebug::Warn, "Warning Test");
+  SPM_LOG(SPMDebug::Err, "Error test");
 
   std::cout << "\n\n\n\n";
 
@@ -67,28 +66,27 @@ void SPM::Init()
 
   mainDir << SPMUtils::GetHomeDir() << "/.spm";
 
-  dbg.Log(SPMDebug::Info, "Init", "Checking for '.spm' directory...");
+  SPM_LOG(SPMDebug::Info, "Checking for '.spm' directory");
   if(spmUtils.checkDir(mainDir.str()) == false)
   {
     spmUtils.makeDir(mainDir.str());
-    dbg.Log(SPMDebug::Info, "Init", "'.spm' directory created");
+    SPM_LOG(SPMDebug::Info, "'.spm' directory created");
   }
   else
   {
-    dbg.Log(SPMDebug::Success, "Init", "'.spm' directory found'");
+    SPM_LOG(SPMDebug::Success, "'.spm' directory found");
   }
 
   mainDir << "/lists";
 
-  dbg.Log(SPMDebug::Info, "Init", "Checking for '.spm/lists' directory...");
+  SPM_LOG(SPMDebug::Info, "Checking for '.spm/lists' directory...");
   if(spmUtils.checkDir(mainDir.str()) == false)
   {
-    dbg.Log(SPMDebug::Info, "Init", "'.spm/lists' directory created");
     spmUtils.makeDir(mainDir.str());
   }
   else
   {
-    dbg.Log(SPMDebug::Success, "Init", "'.spm/list' directory found");
+    SPM_LOG(SPMDebug::Success, "'.spm/lists' directory found");
   }
   mainDir.str(""); // Reset the string content so it dosen't retain the previous directories
   mainDir.clear(); // And clear any lefrover errors
@@ -98,15 +96,15 @@ void SPM::Init()
   // Todo: This should be done based on the settings
   mainDir << SPMUtils::GetHomeDir() << "/.spm/logs";
 
-  dbg.Log(SPMDebug::Info, "Init", "Checking for '.spm/logs' directory ...");
+  SPM_LOG(SPMDebug::Info, "Checking for '.spm/logs' directory");
   if(spmUtils.checkDir(mainDir.str()) == false)
   {
-    dbg.Log(SPMDebug::Info, "Init", "'.spm/logs' directory created");
+    SPM_LOG(SPMDebug::Info, "'.spm/logs' directory created");
     spmUtils.makeDir(mainDir.str());
   }
   else
   {
-    dbg.Log(SPMDebug::Success, "Init", "'.spm/logs' directory found");
+    SPM_LOG(SPMDebug::Success, "'.spm/logs' directory found");
   }
 
   mainDir.str("");
@@ -130,7 +128,7 @@ void SPM::Init()
 	}
 	else
 	{
-	  dbg.Log(SPMDebug::Success, "Init", "'.spm/spm.ini' found");
+	  SPM_LOG(SPMDebug::Success, "'.spm/spm.conf' found");
     // Once found read its settings and store them into the config structure
     globalConf = spmConf.Read();
 	}
@@ -154,8 +152,7 @@ void SPM::Init()
 
 void SPM::Terminate()
 {
-  SPMDebug dbg;
-  dbg.Log(SPMDebug::Info,"Terminate", "Safe exiting SPM...");
+  SPM_LOG(SPMDebug::Info, "Safe exiting SPM");
   // This is where variables are freed, files closed and exit processes.
 }
 

@@ -27,11 +27,10 @@ std::vector <SPMList::computer> SPMList::ReadComputerList()
 	list_path << SPMUtils::GetHomeDir() << "\\.spm\\lists\\list.ini"; // The path to the list of computers
 #endif
 
-	// std::cout << "PATH: " << list_path.str() << "\n";
 
 	if(!temp.checkFile(list_path.str()))
 	{
-		dbg.Log(SPMDebug::Err, "ReadComputerList", "File not foun d errg");
+		SPM_LOG(SPMDebug::Err, "'.spm/lists/main_list.ini' not found !");
 	}
 	else
 	{
