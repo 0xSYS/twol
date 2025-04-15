@@ -197,7 +197,8 @@ class SPMDebug
     
     PrintArgs(r...); // Process remaining arguments
     std::cout << std::endl;
-
+    
+    // Setting parsing needs to be fixed to get this to work 
     if(!spm.globalConf.debug_log)
     {
       std::ostringstream logName;
