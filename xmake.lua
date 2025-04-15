@@ -32,7 +32,9 @@ target("spm")
     end
 
 target("spm-serv")
-    -- set_default(false)
+    if is_plat("windows") then
+        set_default(false)
+    end
     set_kind("binary")
     add_files("src/server/*.c")
     add_links("procps")

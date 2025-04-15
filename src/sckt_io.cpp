@@ -7,6 +7,27 @@
   #include <unistd.h>
 #endif
 
+
+#ifdef _WIN32
+  #define WIN32_LEAN_AND_MEAN
+  #define _WINSOCK_DEPRECATED_NO_WARNINGS
+  #include <windows.h>
+  #include <winsock2.h>
+  #include <ws2tcpip.h>
+  #pragma comment(lib, "Ws2_32.lib")
+#endif
+
+
+#ifdef _WIN32
+  DWORD WINAPI recvdata(LPVOID);
+  #define close closesocket      // Used to resemble the linux close socket function on windows
+
+
+  
+#else
+  void* recvdata(void*);
+#endif
+
 #include <cstring>
 
 
