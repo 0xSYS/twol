@@ -55,7 +55,7 @@ void SPM_SocketIO::SndPowerAction(int actType, std::string target)
     {
       if(connect(sckt, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
       {
-        dbg.Log(SPMDebug::Err, "SndPowerAction", "Connection failed");
+        dbg.Log(SPMDebug::Err, "SndPowerAction", "Failed to connect to ", target);
       }
       else
       {
@@ -94,31 +94,34 @@ void SPM_SocketIO::SndCustomSettings(std::string target, ServerSettings ss)
   {
     dbg.Log(SPMDebug::Err, "SndCustomSettings", "Failed to create socket !!");
   }
-
-  serv_addr.sin_family = AF_INET;
-  serv_addr.sin_port = htons(DEFAULT_PORT);
-
-  if (inet_pton(AF_INET, target.c_str(), &serv_addr.sin_addr) <= 0)
-  {
-    dbg.Log(SPMDebug::Err, "SndCustomSettings", "Invalid address / Adress not supported !!");
-  }
   else
   {
-    if (connect(sckt, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(DEFAULT_PORT);
+
+    if (inet_pton(AF_INET, target.c_str(), &serv_addr.sin_addr) <= 0)
     {
-      dbg.Log(SPMDebug::Err, "SndCustomSettings", "Failed to connect to server");
+      dbg.Log(SPMDebug::Err, "SndCustomSettings", "Invalid address / Adress not supported !!");
     }
     else
     {
-      // Constructing the settings packet
-      serialSettings << "feedback="           << ss.feedback          << " allowSysInfo="  << ss.alowSysInfo;
-      serialSettings << " dbgLog="            << ss.debugLog          << " port="          << ss.listenPort;
-      serialSettings << " skipProcScan="      << ss.skipProcScan      << " stdoutCapture=" << ss.stdoutCapture;
-      serialSettings << " terminateProceses=" << ss.terminateProceses << " writeLogFiles=" << ss.writeLogFiles;
+      if (connect(sckt, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+      {
+        dbg.Log(SPMDebug::Err, "SndCustomSettings", "Failed to connect to ", target);
+      }
+      else
+      {
+        // Constructing the settings packet
+        serialSettings << "feedback="           << ss.feedback          << " allowSysInfo="  << ss.alowSysInfo;
+        serialSettings << " dbgLog="            << ss.debugLog          << " port="          << ss.listenPort;
+        serialSettings << " skipProcScan="      << ss.skipProcScan      << " stdoutCapture=" << ss.stdoutCapture;
+        serialSettings << " terminateProceses=" << ss.terminateProceses << " writeLogFiles=" << ss.writeLogFiles;
 
-      // Sending the packet to the desired target
-      send(sckt, serialSettings.str().c_str(), strlen(serialSettings.str().c_str()), 0);
-      close(sckt);
+        // Sending the packet to the desired target
+        send(sckt, serialSettings.str().c_str(), strlen(serialSettings.str().c_str()), 0);
+        close(sckt);
+      }
     }
   }
 }
@@ -133,25 +136,69 @@ void SPM_SocketIO::SndResetSettings(std::string target)
   {
     dbg.Log(SPMDebug::Err, "SndResetSettings", "Failed to create socket !!");
   }
-
-  serv_addr.sin_family = AF_INET;
-  serv_addr.sin_port = htons(DEFAULT_PORT);
-
-  // Convert IPv4 and IPv6 addresses from text to binary
-  if (inet_pton(AF_INET, target.c_str(), &serv_addr.sin_addr) <= 0)
+  else
   {
-    dbg.Log(SPMDebug::Err, "SndResetSettings" , "Invalid address / Address not supported !!");
+
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(DEFAULT_PORT);
+
+    // Convert IPv4 and IPv6 addresses from text to binary
+    if (inet_pton(AF_INET, target.c_str(), &serv_addr.sin_addr) <= 0)
+    {
+      dbg.Log(SPMDebug::Err, "SndResetSettings" , "Invalid address / Address not supported !!");
+    }
+    else
+    {
+
+      if (connect(sckt, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+      {
+        dbg.Log(SPMDebug::Err, "SndResetSettings", "Failed to connect to ", target);
+      }
+      else
+      {
+        send(sckt, "RstSettings", strlen("RstSettings"), 0);
+        // Todo: Get feddback check from server to spm client if this action executed successfully
+        dbg.Log(SPMDebug::Success, "SndResetSettings", "Server settings reset");
+        close(sckt);
+      }
+    }
   }
+}
 
-  if (connect(sckt, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+
+void SPM_SocketIO::SndClearLogs(std::string target)
+{
+  int sckt = 0;
+  struct sockaddr_in serv_addr;
+
+  sckt = socket(AF_INET, SOCK_STREAM, 0);
+  if(sckt < 0)
   {
-    dbg.Log(SPMDebug::Err, "SndResetSettings", "Failed to connect to server !!");
+    dbg.Log(SPMDebug::Err, "SndClearLogs", "Failed to create socket !!");
   }
   else
   {
-    send(sckt, "RstSettings", strlen("RstSettings"), 0);
-    // Todo: Get feddback check from server to spm client if this action executed successfully
-    dbg.Log(SPMDebug::Success, "SndResetSettings", "Server settings reset");
-    close(sckt);
+
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(DEFAULT_PORT);
+
+    if(inet_pton(AF_INET, target.c_str(), &serv_addr.sin_addr) <= 0)
+    {
+      dbg.Log(SPMDebug::Err, "SndClearLogs", "Invalid address / Address not suported !!");
+    }
+    else
+    {
+
+      if(connect(sckt, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) <= 0)
+      {
+        dbg.Log(SPMDebug::Err, "SndClearLogs", "Failed to connect to ", target);
+      }
+      else
+      {
+        send(sckt, "clrLogs", strlen("clrLogs"), 0);
+        dbg.Log(SPMDebug::Success, "SndClearLogs", "Sent clear logs");
+        close(sckt);
+      }
+    }
   }
 }
