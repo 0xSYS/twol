@@ -228,6 +228,7 @@ void SPM_SocketIO::SetCustomProcBlacklist(std::string target, std::string procNa
 {
   int sckt = 0;
   struct sockaddr_in serv_addr;
+  std::ostringstream packet;
 
   sckt = socket(AF_INET, SOCK_STREAM, 0);
   if(sckt < 0)
@@ -243,7 +244,12 @@ void SPM_SocketIO::SetCustomProcBlacklist(std::string target, std::string procNa
     {
       SPM_LOG(SPMDebug::Err, "Failed to connect to ", target);
     }
-
-    // To be continued...
+    else
+    {
+      packet << "NewBlacklistProc=" << procName;
+      send(sckt, packet.str().c_str(), strlen(packet.str().c_str()), 0);
+      SPM_LOG(SPMDebug::Success, "Custom process successfully sent to ", target);
+      close(sckt);
+    }
   }
 }

@@ -52,8 +52,17 @@ static SPM spm;
 
 
 
+#ifdef DEBUG_FN_CALLS
+  #if defined(_MSC_VER)
+    #define FN_SIGNATURE __FUNCSIG__
+  #else
+    #define FN_SIGNATURE __PRETTY_FUNCTION__
+  #endif
+#endif
 
-#define SPM_LOG(logType, ...) SPMDebug::Log(logType, __PRETTY_FUNCTION__, __FILE__, __LINE__, __VA_ARGS__)
+
+
+#define SPM_LOG(logType, ...) SPMDebug::Log(logType, FN_SIGNATURE, __FILE__, __LINE__, __VA_ARGS__)
 
 
 
