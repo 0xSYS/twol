@@ -2,6 +2,7 @@ add_rules("mode.debug", "mode.release")
 
 
 
+
 option("ansi-escapes")
        set_default(false)
        set_showmenu(true)
@@ -82,6 +83,26 @@ target("test")
     end
 
 target("spm-ui")
-    set_default(false)
+    -- set_default(false)
+    set_options("debug-function-calls")
+
+    if has_config("debug-function-calls") then
+       add_defines("DEBUG_FN_CALLS")
+    end
+
+    add_defines("wxDEBUG_LEVEL=2")
+    
     set_kind("binary")
+    --add_packages("wxwidgets")
+     -- Run wx-config to get flags
+    on_load(function (target)
+        local cxxflags = os.iorun("wx-config --cxxflags")
+        local ldflags  = os.iorun("wx-config --libs")
+
+        -- Apply the flags
+        target:add("cxxflags", cxxflags, {force = true})
+        target:add("ldflags", ldflags, {force = true})
+    end)
+
+    add_includedirs("externals/inc/")
     add_files("src/*.cpp", "src/frontend/frontend.cpp")
