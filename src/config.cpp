@@ -8,7 +8,7 @@
 
 
 #include "dbg_log.hpp"
-#include "inc/inifile-cpp/inicpp.h"
+#include <inifile-cpp/inicpp.h>
 
 #include "config.hpp"
 #include "utils.hpp"

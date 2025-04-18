@@ -35,6 +35,7 @@ target("spm")
 		   add_defines("DEBUG_FN_CALLS")
 		end
 
+    add_includedirs("externals/inc/")
     add_files("src/*.cpp")
     if is_plat("windows") then
         set_toolchains("msvc")
@@ -46,8 +47,10 @@ target("spm-serv")
         set_default(false)
     end
     set_kind("binary")
-    add_files("src/server/*.c")
-    add_links("procps")
+    add_includedirs("externals/inc/")
+    add_defines("_GNU_SOURCE", "__EXTENSIONS__", "HAVE_SIGABBREV_NP", "HAVE_STDIO_EXT_H")
+    add_files("src/server/*.c", "externals/inc/procps-ng/*.c")
+    -- add_links("procps")
     add_links("systemd")
 
 target("test")
@@ -68,6 +71,8 @@ target("test")
     if has_config("debug-function-calls") then                                                                                                                                         
        add_defines("DEBUG_FN_CALLS")                                                                                                                                                   
     end
+
+    add_includedirs("externals/inc/")
 
     add_files("src/*.cpp", "src/test/main.cpp")
 
