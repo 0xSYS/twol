@@ -35,10 +35,10 @@ void Test1()
 void Test2()
 {
 	std::cout << "Test2() -> SPMWakeOnLan::SndMagicPack()\n";
-	// wol.SndMagicPack("1c:6f:65:c2:e8:2f", "192.168.1.255");
+	wol.SndMagicPack("1c:6f:65:c2:e8:2f", "192.168.1.255");
 	wol.SndMagicPack("6c:f0:49:a1:d9:e6", "192.168.1.255");
-	// Previous: 1c:6f:65:c2:e8:2f
-	//6c:f0:49:a1:d9:e6
+	// 1c:6f:65:c2:e8:2f //g41MT-S2P
+	// 6c:f0:49:a1:d9:e6 // g41M-ES2L
 }
 
 void Test3()
@@ -106,8 +106,8 @@ void Test8()
 void Test9()
 {
 	std::cout << "Power actions test\n";
-	sckt_io.SndPowerAction(SPM_SocketIO::Reboot, "192.168.1.102");
-	sckt_io.SndPowerAction(SPM_SocketIO::Reboot, "192.168.1.34");
+	sckt_io.SndPowerAction(SPM_SocketIO::Poweroff, "192.168.1.102");
+	sckt_io.SndPowerAction(SPM_SocketIO::Poweroff, "192.168.1.34");
 }
 
 
@@ -115,14 +115,14 @@ int main(int argc, char * argv[])
 {
 	std::cout << "- - - - SPM BACKEND TESTS - - - - \n\n\n\n";
 	// Test1(); // Linux Pass
-	Test2(); // Linux, Windows Pass
+	// Test2(); // Linux, Windows Pass
 	// Test3(); // 
 	// Test4(); // All pass
 	// Test5();
   // Test6();
 	// Test7();
 	// Test8();
-  // Test9();
+  Test9();
 	return 0;
 }
 
