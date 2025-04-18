@@ -1,7 +1,6 @@
 
 
 
-#include <proc/readproc.h>
 #include <stdbool.h>
 #include <procps-ng/readproc.h>
 #include <stdio.h>
