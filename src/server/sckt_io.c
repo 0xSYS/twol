@@ -7,7 +7,6 @@
 
 
 
-#include "power_funcs.h"
 
 
 #ifndef EXIT_FAILURE
@@ -15,14 +14,126 @@
 #endif
 
 
+
 #include "sckt_io.h"
+#include "config.h"
+#include "power_funcs.h"
 #include "dbg.h"
+
+
+
+
+
+configuration SettingsUnpack(char s[])
+{
+  configuration cfg;
+  char * str_ptr;
+  char * tok;
+
+  int packetSz = strlen(s);
+  if(packetSz == 0)
+  {
+    Log(Info, "No settings to unpack");
+  }
+  else
+  {
+    tok = strtok_r(s, " ", &str_ptr);
+
+    while(tok != NULL)
+    {
+      if(strncmp(tok, "dbgLog=", 7) == 0)
+      {
+        char * end_ptr;
+        int errno = 0;
+        long tmp = strtol(tok + 7, &end_ptr, 10);
+        if(errno == 0 && *end_ptr == '\0')
+        {
+          cfg.dbg_log = (bool)tmp;
+        }
+      }
+      else if(strncmp(tok, "feedback=", 9) == 0)
+      {
+        char * end_ptr;
+        int errno = 0;
+        long tmp = strtol(tok + 9, &end_ptr, 10);
+        if(errno == 0 && *end_ptr == '\0')
+        {
+          cfg.feedback = (bool)tmp;
+        }
+      }
+      else if(strncmp(tok, "allowSysInfo=", 13) == 0)
+      {
+        char * end_ptr;
+        int errno = 0;
+        long tmp = strtol(tok + 13, &end_ptr, 10);
+        if(errno == 0 && *end_ptr == '\0')
+        {
+          cfg.allow_sys_info = (bool)tmp;
+        }
+      }
+      else if(strncmp(tok, "skipProcScan=", 13) == 0)
+      {
+        char * end_ptr;
+        int errno = 0;
+        long tmp = strtol(tok + 13, &end_ptr, 10);
+        if(errno == 0 && * end_ptr == '\0')
+        {
+          cfg.skip_proc_scan = (bool)tmp;
+        }
+      }
+      else if(strncmp(tok , "terminateProcesses=", 18) == 0)
+      {
+        char * end_ptr;
+        int errno = 0;
+        long tmp = strtol(tok + 18, &end_ptr, 10);
+        if(errno == 0 && *end_ptr == '\0')
+        {
+          cfg.terminate_processes = (bool)tmp;
+        }
+      }
+      else if(strncmp(tok , "stdoutCapture=", 14) == 0)
+      {
+        char * end_ptr;
+        int errno = 0;
+        long tmp = strtol(tok + 14, &end_ptr, 10);
+        if(errno == 0 && *end_ptr == '\0')
+        {
+          cfg.stdout_capture = (bool)tmp;
+        }
+      }
+      else if(strncmp(tok, "writeLogFiles=", 14) == 0)
+      {
+        char * end_ptr;
+        int errno = 0;
+        long tmp = strtol(tok + 14, &end_ptr, 10);
+        if(errno == 0 && *end_ptr == '\0')
+        {
+          cfg.write_log_file = (bool)tmp;
+        }
+      }
+      else if(strncmp(tok, "port=", 5) == 0)
+      {
+        char * end_ptr;
+        int errno = 0;
+        long tmp = strtol(tok + 5, &end_ptr, 10);
+        if(errno == 0 && *end_ptr == '\0')
+        {
+          cfg.port = (int)tmp;
+        }
+      }
+    }
+  }
+  return cfg;
+}
 
 
 void StartScktReception()
 {
   int serv_fd, sckt;
   struct sockaddr_in addr;
+
+
+  configuration newCfg;
 
 
   int opt = 1;
@@ -86,6 +197,26 @@ void StartScktReception()
   else if(strcmp(buffer, "frbt") == 0)
   {
     // Force reboot even when there's a process runing (Still very dangerous)
+  }
+  else if(strcmp(buffer, "RstSettings") == 0)
+  {
+    // ResetSettings();
+  }
+  else if(strcmp(buffer, "clrLogs") == 0)
+  {
+    // ClearLogs();
+  }
+  else if(strstr(buffer, "customSettings:"))
+  {
+    newCfg = SettingsUnpack(buffer);
+    /*
+    Todo:
+    Make WriteConfig() to work...
+    */
+  }
+  else if(strstr(buffer, "newBlackListProc="))
+  {
+    // NewBlacklistProcess(const char * procName);
   }
 
   // Close socket

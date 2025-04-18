@@ -11,7 +11,7 @@ void ReadConfig()
 	// gregreg
 }
 
-void WriteConfig()
+void WriteConfig(configuration cfg)
 {
 	// rergregeg
 }

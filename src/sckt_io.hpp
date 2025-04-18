@@ -8,7 +8,7 @@
 
 
 
-#define DEFAULT_PORT 8080
+#define DEFAULT_PORT 8085
 
 
 class SPM_SocketIO

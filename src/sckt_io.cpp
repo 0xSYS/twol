@@ -41,7 +41,6 @@
 
 
 
-static SPMDebug dbg;
 // static SPM spm;
 
 
@@ -134,10 +133,10 @@ void SPM_SocketIO::SndCustomSettings(std::string target, ServerSettings ss)
       else
       {
         // Constructing the settings packet
-        serialSettings << "feedback="           << ss.feedback          << " allowSysInfo="  << ss.alowSysInfo;
-        serialSettings << " dbgLog="            << ss.debugLog          << " port="          << ss.listenPort;
-        serialSettings << " skipProcScan="      << ss.skipProcScan      << " stdoutCapture=" << ss.stdoutCapture;
-        serialSettings << " terminateProceses=" << ss.terminateProceses << " writeLogFiles=" << ss.writeLogFiles;
+        serialSettings << "customSettings: feedback=" << ss.feedback          << " allowSysInfo="  << ss.alowSysInfo;
+        serialSettings << " dbgLog="                  << ss.debugLog          << " port="          << ss.listenPort;
+        serialSettings << " skipProcScan="            << ss.skipProcScan      << " stdoutCapture=" << ss.stdoutCapture;
+        serialSettings << " terminateProcesses="      << ss.terminateProceses << " writeLogFiles=" << ss.writeLogFiles;
 
         // Sending the packet to the desired target
         send(sckt, serialSettings.str().c_str(), strlen(serialSettings.str().c_str()), 0);

@@ -48,7 +48,6 @@ void SPM::Init()
   */
 
   SPMConfig::cfgStruct defaultConfig;
-  SPMDebug dbg;
 
 #if defined(_WIN32) || defined(_WIN64)
   spmUtils.SetWinTerm();

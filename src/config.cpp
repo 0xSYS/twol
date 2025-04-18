@@ -22,7 +22,6 @@ void SPMConfig::Write(cfgStruct cfg_out)
 {
   ini::IniFile config;
   std::ostringstream out_path;
-  SPMDebug dbg;
 
   // Structure filling
   config["Settings"]["pcStat"]  = cfg_out.pc_status_mpack;
@@ -46,7 +45,6 @@ SPMConfig::cfgStruct SPMConfig::Read()
   cfgStruct cfg_in; // Configuration structure
   ini::IniFile in_config;
   std::ostringstream in_path;
-  SPMDebug dbg;
 #ifdef __linux__
   in_path << SPMUtils::GetHomeDir() << "/.spm/spm.ini"; // Create the file location of the config file
 #endif

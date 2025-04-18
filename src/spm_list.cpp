@@ -13,7 +13,6 @@ SPMUtils temp;
 std::vector <SPMList::computer> SPMList::ReadComputerList()
 {
   computer in;
-  SPMDebug dbg;
 
   std::vector<computer> inList;
 
