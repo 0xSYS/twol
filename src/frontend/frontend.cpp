@@ -94,7 +94,7 @@ class MyWizard : public wxWizard
 {
 public:
     
-    MyWizard(const wxString& title);
+   MyWizard(const wxString& title);
 
 private:
 void Routine(wxWizardEvent& event);
