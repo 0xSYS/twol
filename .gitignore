@@ -1,7 +1,9 @@
 # Xmake cache
 .xmake/
 build/
-
+src/temp.txt
+src/temp2.txt
+src/.cache/*
 # MacOS Cache
 .DS_Store
 
