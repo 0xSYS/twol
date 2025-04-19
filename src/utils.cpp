@@ -102,9 +102,18 @@ bool SPMUtils::checkDir(std::string d)
  {
    SPMDebug dbg;
 #ifdef __linux__
-  return access(f.c_str(), F_OK);
-#endif
+  struct stat buf;
 
+  if(stat(f.c_str(), &buf) == 0)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+  
+#endif
 #if defined(_WIN32) || defined(_WIN64)
   std::wstring wstr(f.begin(), f.end());
   LPCWSTR temp = wstr.c_str();

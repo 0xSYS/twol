@@ -16,6 +16,8 @@ Main Source file of SPM library
 #include <sys/stat.h>
 #include <type_traits>
 
+#include <unistd.h>
+
 #if defined(_WIN32) || defined(_WIN64)
   #include <Windows.h>
   #include <direct.h>
@@ -54,12 +56,13 @@ void SPM::Init()
 #endif
 
   // Basic Logging test to stdout
+#ifndef SKIP_INITIAL_LOG_TEST
   SPM_LOG(SPMDebug::Info, "Info Test");
   SPM_LOG(SPMDebug::Success, "Success Test");
   SPM_LOG(SPMDebug::Warn, "Warning Test");
   SPM_LOG(SPMDebug::Err, "Error test");
-
   std::cout << "\n\n\n\n";
+#endif
 
   std::ostringstream mainDir;
 
@@ -109,12 +112,18 @@ void SPM::Init()
   mainDir.str("");
   mainDir.clear();
 #ifdef __linux__
-  mainDir << SPMUtils::GetHomeDir() << "/.spm/spm.ini";
+/*
+What an idiot.
+I spent almost 4 fucking hours trying to find out why my fronted wasn't working at all and I js foudn out I forgot to update the fucking file extensions (Down below)
+GOD DAMN
+*/
+  mainDir << SPMUtils::GetHomeDir() << "/.spm/spm.conf";
 #endif
 
 #if defined(_WIN32) || defined(_WIN64)
-  mainDir << SPMUtils::GetHomeDir() << "\\.spm\\spm.ini";
+  mainDir << SPMUtils::GetHomeDir() << "\\.spm\\spm.conf";
 #endif
+  SPM_LOG(SPMDebug::noType, "Main Directory: ", mainDir.str());
   if(!spmUtils.checkFile(mainDir.str()))
   {
 	  defaultConfig.restrict_mode = true;
@@ -125,7 +134,7 @@ void SPM::Init()
 	  defaultConfig.port = 8080;
 	  spmConf.Write(defaultConfig);
 	}
-	else
+	else if(spmUtils.checkFile(mainDir.str()) == true)
 	{
 	  SPM_LOG(SPMDebug::Success, "'.spm/spm.conf' found");
     // Once found read its settings and store them into the config structure
@@ -135,17 +144,25 @@ void SPM::Init()
 	mainDir.str("");
 	mainDir.clear();
 
-  /*
 
-  Temportarly deprecated due to future change of the list system
-  
-	mainDir << SPMUtils::GetHomeDir() << "/.spm/lists/main_list.ini";
-	dbg.Log(SPMDebug::noType, "File path to list: ", mainDir.str());
+#ifdef __linux__
+	mainDir << SPMUtils::GetHomeDir() << "/.spm/lists/main_list.sls";
+#endif
+
+#if defined(_WIN32) || defined(_WIN64)
+  mainDir << SPMUtils::GetHomeDir() << "\\.spm\\lists\\main_list.sls";
+#endif
+
+	SPM_LOG(SPMDebug::noType, "File path to list: ", mainDir.str());
 	if(spmUtils.checkFile(mainDir.str()) == false)
 	{
-	  dbg.Log(SPMDebug::Warn, "No list has been found");
+	  SPM_LOG(SPMDebug::Warn, "No main list has beed found");
 	}
-	*/
+	else
+	{
+	  // Parse the main list
+	}
+	
   
 }
 

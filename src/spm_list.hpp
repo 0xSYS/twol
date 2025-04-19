@@ -15,6 +15,7 @@ class SPMList
       std::string macAddr;
       std::string broadcastIP;
       std::string defaultIP;
+      std::string notes;
       bool restricred; 
     }computer;
 

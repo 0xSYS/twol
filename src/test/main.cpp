@@ -110,11 +110,25 @@ void Test9()
 	sckt_io.SndPowerAction(SPM_SocketIO::Poweroff, "192.168.1.34");
 }
 
+void Test10()
+{
+	std::string file = "/home/0xsys/.spm/spm.conf";
+
+	if(!spmUtils.checkFile(file))
+	{
+		SPM_LOG(SPMDebug::Err, "File not Found");
+	}
+	else
+	{
+		SPM_LOG(SPMDebug::Success, "File exists");
+	}
+}
+
 
 int main(int argc, char * argv[])
 {
 	std::cout << "- - - - SPM BACKEND TESTS - - - - \n\n\n\n";
-	// Test1(); // Linux Pass
+	Test1(); // Linux Pass
 	// Test2(); // Linux, Windows Pass
 	// Test3(); // 
 	// Test4(); // All pass
@@ -122,7 +136,8 @@ int main(int argc, char * argv[])
   // Test6();
 	// Test7();
 	// Test8();
-  Test9();
+  // Test9();
+  // Test10();
 	return 0;
 }
 

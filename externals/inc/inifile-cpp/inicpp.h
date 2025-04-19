@@ -731,8 +731,18 @@ namespace ini
           * @param fileName path to the file that should be loaded. */
         void load(const std::string &fileName)
         {
+            // Extra addition for checking file existance
             std::ifstream is(fileName.c_str());
-            decode(is);
+            if(is.fail())
+            {
+                std::stringstream ss;
+                ss << "'" << fileName << "' Not found !!!\n";
+                throw std::logic_error(ss.str());
+            }
+            else
+            {
+                decode(is);
+            }
         }
 
         /** Encodes this inifile object and writes the output to the given stream.

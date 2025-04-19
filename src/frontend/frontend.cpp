@@ -1,92 +1,53 @@
-/*
-The Code is ugly AF and it does not even work or compile at all ;(
-
-
-Rewrite in progress...
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #include <wx/wx.h>
 #include <wx/grid.h>
 #include <wx/toolbar.h>
 #include <wx/artprov.h>
-#include <vector>
-#include <string>
 #include <wx/spinctrl.h>
 #include <wx/wizard.h>
+
+#include <vector>
+#include <string>
+
+
 #include "../spm_list.hpp"
 #include "../spm.hpp"
 #include "../utils.hpp"
-// #include "../globals.hpp"
-// #include "socket.h" //server code
-// #include "socket2.h" //client code
+#include "../sckt_io.hpp"
+#include "../wol.hpp"
+#include "../config.hpp"
+#include "../dev_detect.hpp"
+#include "wx/event.h"
+
+
+
+
+
+SPMList spmList;
+SPM spm;
+SPMWakeOnLan wol;
+SPM_SocketIO sckt_io;
+
+
+
 int selrow;
 int selroutine;
-SPMList spmList;
-//SPMUtils spmUtils;
-SPM spm;
-wxRadioButton* diag_check;
-wxRadioButton* probe_check; 
 
+wxRadioButton* diag_check;
+wxRadioButton* probe_check;
 wxRadioButton* scan_check;
 wxRadioButton* info_check;
 wxRadioButton* activity_check;
 
-// wxBitmap bitmap1(wxT("banner.png"), wxBITMAP_TYPE_PNG);
+wxBitmap bitmap1(wxT("banner.png"), wxBITMAP_TYPE_PNG);
 class MyApp : public wxApp {
 public:
-    virtual bool OnInit() override
-    {
-        try {
-            // Attempt to initialize the frame
-            MyFrame* frame = new MyFrame("My Application");
-            frame->Show(true);
-        } catch (const std::exception& e) {
-            // Catch standard exceptions
-            wxLogError("Caught an exception: %s", e.what());
-            return false;  // Return false to indicate the app failed to start
-        } catch (...) {
-            // Catch all other exceptions
-            wxLogError("An unknown error occurred during initialization.");
-            return false;  // Return false to indicate the app failed to start
-        }
-        return true;
-    }
+    virtual bool OnInit();
 
 };
 
 class MyFrame : public wxFrame {
 public:
-    // wxTextCtrl* text = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxTE_MULTILINE | wxTE_RICH);
-
-
-    // wxPanel* panel = new wxPanel(this, wxID_ANY);
-
-    
-
-   wxTextCtrl* text;
-wxPanel* panel;
-
+    wxTextCtrl* text = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxTE_MULTILINE | wxTE_RICH);
 
    
 
@@ -95,6 +56,7 @@ wxPanel* panel;
 private:
     void CreateDeviceGrid();
     void OnRebootClick(wxCommandEvent& event);
+    void OnPoweroffClick(wxCommandEvent& event);
     void OnListening(wxCommandEvent&event);
     void GetRow(wxCommandEvent& event);
     void OnDiagnosis(wxCommandEvent& event);
@@ -102,10 +64,12 @@ private:
     void SendOnSignal(wxCommandEvent& event);
     void LogsToFile(wxCommandEvent& event);
     void ExportDeviceList(wxCommandEvent& event);
+    void AddNewDevice(wxCommandEvent& event);
+    void RemoveDevice(wxCommandEvent& event);
     void Exit(wxCommandEvent& event);
     void Settings(wxCommandEvent& event);
     
-    // wxPanel* panel;
+    wxPanel* panel;
     wxGrid* deviceGrid;
 
    /* 
@@ -256,8 +220,7 @@ MyWizardPage2::MyWizardPage2(wxWizard* parent)
 
 
 
-MyWizard::MyWizard(const wxString& title)
-    : wxWizard(NULL, wxID_ANY, title, NULL)
+MyWizard::MyWizard(const wxString& title) : wxWizard(NULL, wxID_ANY, title, bitmap1)
 {
     page1 = new MyWizardPage1(this);
     page2 = new MyWizardPage2(this);
@@ -358,8 +321,8 @@ class SettingsDialog : public wxDialog
 public:
     SettingsDialog(wxWindow* parent);
 };
-SettingsDialog::SettingsDialog(wxWindow* parent)
-    : wxDialog(parent, wxID_ANY, "Settings", wxDefaultPosition, wxSize(600, 400), wxBORDER_THEME){
+SettingsDialog::SettingsDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, "Settings", wxDefaultPosition, wxSize(600, 400))
+{
         wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
         wxBoxSizer* size_title = new wxBoxSizer(wxHORIZONTAL);
         wxBoxSizer* size_cli = new wxBoxSizer(wxHORIZONTAL);
@@ -430,23 +393,9 @@ bool MyApp::OnInit() {
     return true;
 }
 
-MyFrame::MyFrame(const wxString& title) : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(400, 300)) {
+MyFrame::MyFrame(const wxString& title) : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(800, 600)) {
     wxMenuBar* menuBar = new wxMenuBar();
-
-
-    panel = new wxPanel(panel, wxID_ANY); // must be here
-text = new wxTextCtrl(panel, wxID_ANY, wxEmptyString,
-                      wxDefaultPosition, wxSize(500, 200),
-                      wxTE_MULTILINE | wxTE_READONLY);
-
-    // Optional: redirect std::cout to it
-    new wxStreamToTextRedirector(text);
-
-    wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
-    sizer->Add(text, 1, wxEXPAND | wxALL, 5);
-
-    panel->SetSizer(sizer);
-
+    wxStreamToTextRedirector redirect(text);
     spm.Init();
     std::cout<<text;
     // Create menus
@@ -456,12 +405,15 @@ text = new wxTextCtrl(panel, wxID_ANY, wxEmptyString,
     wxMenu* setMenu = new wxMenu();
     wxMenu* exitMenu = new wxMenu();
 
-    signalMenu->Append(1, wxT("Send on/off signal to selected"));
+    signalMenu->Append(1, wxT("Send power on signal to selected"));
     signalMenu->Append(6, wxT("Send reboot signal to selected"));
+    signalMenu->Append(5, wxT("Send poweroff signal to selected"));
     signalMenu->Append(7, wxT("Open listening screen."));
     diagMenu->Append(wxID_YES, wxT("Routine to selected"));
     diagMenu->Append(wxID_HELP, wxT("Run RWSPM"));
 
+    fileMenu->Append(8, wxT("Add new device"));
+    fileMenu->Append(9, wxT("Remove device"));
     fileMenu->Append(wxID_OPEN, wxT("Import device list"));
     fileMenu->Append(wxID_SAVEAS, wxT("Export device list"));
     fileMenu->Append(wxID_SAVE, wxT("Write logs to file"));
@@ -483,10 +435,13 @@ text = new wxTextCtrl(panel, wxID_ANY, wxEmptyString,
     SetMenuBar(menuBar);
     Bind(wxEVT_TOOL, &MyFrame::SendOnSignal, this, 1);
     Bind(wxEVT_TOOL, &MyFrame::OnRebootClick, this, 6);
+    Bind(wxEVT_TOOL, &MyFrame::OnPoweroffClick, this, 5);
     Bind(wxEVT_TOOL, &MyFrame::OnListening, this, 7);
     Bind(wxEVT_TOOL, &MyFrame::OnWizardClick, this, wxID_HELP);
     Bind(wxEVT_TOOL, &MyFrame::LogsToFile, this, wxID_SAVE);
     Bind(wxEVT_TOOL, &MyFrame::ExportDeviceList, this, wxID_SAVEAS);
+    Bind(wxEVT_TOOL, &MyFrame::AddNewDevice, this, 8);
+    Bind(wxEVT_TOOL, &MyFrame::RemoveDevice, this, 9);
     Bind(wxEVT_TOOL, &MyFrame::Settings, this, wxID_ABOUT);
     Bind(wxEVT_TOOL, &MyFrame::Exit, this, wxID_EXIT);
     Bind(wxEVT_TOOL, &MyFrame::OnDiagnosis, this, wxID_YES);
@@ -507,7 +462,7 @@ void MyFrame::CreateDeviceGrid() {
     wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
   
     deviceGrid = new wxGrid(this, wxID_ANY);
-    deviceGrid->CreateGrid(devices.size(), 6); // 6 columns for name, type, status
+    deviceGrid->CreateGrid(devices.size(), 8); // 6 columns for name, type, status
 
     // Set column labels
     deviceGrid->SetColLabelValue(0, "Name");
@@ -517,12 +472,20 @@ void MyFrame::CreateDeviceGrid() {
     deviceGrid->SetColLabelValue(4, "Status");
     deviceGrid->SetColLabelValue(5, "Notes");
 
+    deviceGrid->SetColSize(0, 150);
+    deviceGrid->SetColSize(1, 150);
+    deviceGrid->SetColSize(2, 150);
+    deviceGrid->SetColSize(3, 210);
+    deviceGrid->SetColSize(4, 90);
+    deviceGrid->SetColSize(5, 480);
+
     // Populate the grid with device data
     for (size_t i = 0; i < devices.size(); ++i) {
         deviceGrid->SetCellValue(i, 0, devices[i].name);
         deviceGrid->SetCellValue(i, 1, devices[i].defaultIP);
         deviceGrid->SetCellValue(i, 2, devices[i].broadcastIP);
         deviceGrid->SetCellValue(i, 3, devices[i].macAddr);
+        deviceGrid->SetCellValue(i, 5, devices[i].notes);
     }
 
     // Set the text color for the entire grid   
@@ -547,11 +510,37 @@ void MyFrame::OnListening(wxCommandEvent& event) {
     dialog.Destroy();
 }
 
-void MyFrame::SendOnSignal(wxCommandEvent& event) {
+void MyFrame::SendOnSignal(wxCommandEvent& event)
+{
+    wxString broadcast_addr = deviceGrid->GetCellValue(selrow, 2);
+    wxString mac_addr = deviceGrid->GetCellValue(selrow, 3); 
+    wol.SndMagicPack(mac_addr.ToStdString(), broadcast_addr.ToStdString());
     wxMessageBox("Signal has been sent succesfully!", "Signal", wxOK | wxICON_INFORMATION);
 }
-void MyFrame::OnRebootClick(wxCommandEvent& event){
-    wxMessageBox("Signal has been sent succesfully!", "Signal reboot", wxOK | wxICON_INFORMATION);
+
+void MyFrame::OnPoweroffClick(wxCommandEvent& event)
+{
+    wxString dev_ip = deviceGrid->GetCellValue(selrow, 1);
+    sckt_io.SndPowerAction(SPM_SocketIO::Poweroff, dev_ip.ToStdString());
+    // wxMessageBox("Signal has been sent successfully !", "Signal poweroff", wxOK || wxICON_INFORMATION);
+}
+
+void MyFrame::OnRebootClick(wxCommandEvent& event)
+{
+    wxString dev_ip = deviceGrid->GetCellValue(selrow, 1);
+    std::cout << "IP: " << dev_ip.ToStdString() << "\n";
+    sckt_io.SndPowerAction(SPM_SocketIO::Reboot, dev_ip.ToStdString());
+    // wxMessageBox("Signal has been sent succesfully!", "Signal reboot", wxOK | wxICON_INFORMATION);
+}
+
+void MyFrame::AddNewDevice(wxCommandEvent& event)
+{
+    std::cout << "Add new Device...\n";
+}
+
+void MyFrame::RemoveDevice(wxCommandEvent& event)
+{
+    std::cout << "Remove Device...\n";
 }
 
 void MyFrame::OnWizardClick(wxCommandEvent& event){
@@ -569,7 +558,7 @@ void MyFrame::GetRow(wxCommandEvent& event){
     selrow = deviceGrid->GetGridCursorRow();
     wxString msg;
     msg<<selrow;
-    wxMessageBox(msg, "Signal reboot", wxOK | wxICON_INFORMATION);
+    // wxMessageBox(msg, "Signal reboot", wxOK | wxICON_INFORMATION);
 
     
 }
@@ -597,6 +586,5 @@ void MyFrame::Exit(wxCommandEvent& event) {
 
  ListeningDialog::MyThread::ExitCode ListeningDialog::MyThread::Entry() {
     // startServer();
-
     return (wxThread::ExitCode)0;
 }

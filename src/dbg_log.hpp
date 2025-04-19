@@ -197,9 +197,13 @@ class SPMDebug
     else if(logType == 0)
     {
 #ifdef DEBUG_FN_CALLS
-      std::cout << "libspm: {" << file << ":" << line << " | " << fnCall << "} [ - ] -> " << mainStr;
+#ifdef ANSI_ESCAPES
+      std::cout << "libspm: {" << file << ":" << line << " | \033[38;5;245m" << fnCall << "\033[0m} [ \033[38;5;105mcustom debug\033[0m ] -> " << mainStr;
 #else
-      std::cout << "libspm: [ - ] -> " << mainStr;
+      std::cout << "libspm: {" << file << ":" << line << " | " << fnCall << "} [ custom debug ] -> " << mainStr;
+#endif
+#else
+      std::cout << "libspm: [ custom debug ] -> " << mainStr;
 #endif
     }
     // Forgor to print the rest of the args XD

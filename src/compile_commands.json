@@ -1,0 +1,296 @@
+[
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fPIC", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/spm/linux/x86_64/debug/src/frotend2.cpp.o", "src/frotend2.cpp"],
+  "file": "src/frotend2.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fPIC", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/spm/linux/x86_64/debug/src/spm_api.cpp.o", "src/spm_api.cpp"],
+  "file": "src/spm_api.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fPIC", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/spm/linux/x86_64/debug/src/config.cpp.o", "src/config.cpp"],
+  "file": "src/config.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fPIC", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/spm/linux/x86_64/debug/src/dev_detect.cpp.o", "src/dev_detect.cpp"],
+  "file": "src/dev_detect.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fPIC", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/spm/linux/x86_64/debug/src/utils.cpp.o", "src/utils.cpp"],
+  "file": "src/utils.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fPIC", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/spm/linux/x86_64/debug/src/sckt_io.cpp.o", "src/sckt_io.cpp"],
+  "file": "src/sckt_io.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fPIC", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/spm/linux/x86_64/debug/src/wol.cpp.o", "src/wol.cpp"],
+  "file": "src/wol.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fPIC", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/spm/linux/x86_64/debug/src/spm_list.cpp.o", "src/spm_list.cpp"],
+  "file": "src/spm_list.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fPIC", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/spm/linux/x86_64/debug/src/spm.cpp.o", "src/spm.cpp"],
+  "file": "src/spm.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/test/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/test/linux/x86_64/debug/src/frotend2.cpp.o", "src/frotend2.cpp"],
+  "file": "src/frotend2.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/test/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/test/linux/x86_64/debug/src/spm_api.cpp.o", "src/spm_api.cpp"],
+  "file": "src/spm_api.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/test/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/test/linux/x86_64/debug/src/config.cpp.o", "src/config.cpp"],
+  "file": "src/config.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/test/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/test/linux/x86_64/debug/src/dev_detect.cpp.o", "src/dev_detect.cpp"],
+  "file": "src/dev_detect.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/test/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/test/linux/x86_64/debug/src/utils.cpp.o", "src/utils.cpp"],
+  "file": "src/utils.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/test/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/test/linux/x86_64/debug/src/sckt_io.cpp.o", "src/sckt_io.cpp"],
+  "file": "src/sckt_io.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/test/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/test/linux/x86_64/debug/src/wol.cpp.o", "src/wol.cpp"],
+  "file": "src/wol.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/test/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/test/linux/x86_64/debug/src/spm_list.cpp.o", "src/spm_list.cpp"],
+  "file": "src/spm_list.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/test/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/test/linux/x86_64/debug/src/spm.cpp.o", "src/spm.cpp"],
+  "file": "src/spm.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/test/linux/x86_64/debug/platform/windows/idl", "-DANSI_ESCAPES", "-DDEBUG_FN_CALLS", "-o", "build/.objs/test/linux/x86_64/debug/src/test/main.cpp.o", "src/test/main.cpp"],
+  "file": "src/test/main.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/src/server/sckt_io.c.o", "src/server/sckt_io.c"],
+  "file": "src/server/sckt_io.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/src/server/config.c.o", "src/server/config.c"],
+  "file": "src/server/config.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/src/server/proc_manager.c.o", "src/server/proc_manager.c"],
+  "file": "src/server/proc_manager.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/src/server/main.c.o", "src/server/main.c"],
+  "file": "src/server/main.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/src/server/power_funcs.c.o", "src/server/power_funcs.c"],
+  "file": "src/server/power_funcs.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/src/server/dbg.c.o", "src/server/dbg.c"],
+  "file": "src/server/dbg.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/stat.c.o", "externals/inc/procps-ng/stat.c"],
+  "file": "externals/inc/procps-ng/stat.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/vmstat.c.o", "externals/inc/procps-ng/vmstat.c"],
+  "file": "externals/inc/procps-ng/vmstat.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/wchan.c.o", "externals/inc/procps-ng/wchan.c"],
+  "file": "externals/inc/procps-ng/wchan.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/units.c.o", "externals/inc/procps-ng/units.c"],
+  "file": "externals/inc/procps-ng/units.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/meminfo.c.o", "externals/inc/procps-ng/meminfo.c"],
+  "file": "externals/inc/procps-ng/meminfo.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/escape.c.o", "externals/inc/procps-ng/escape.c"],
+  "file": "externals/inc/procps-ng/escape.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/numa.c.o", "externals/inc/procps-ng/numa.c"],
+  "file": "externals/inc/procps-ng/numa.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/version.c.o", "externals/inc/procps-ng/version.c"],
+  "file": "externals/inc/procps-ng/version.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/readproc.c.o", "externals/inc/procps-ng/readproc.c"],
+  "file": "externals/inc/procps-ng/readproc.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/strverscmp.c.o", "externals/inc/procps-ng/strverscmp.c"],
+  "file": "externals/inc/procps-ng/strverscmp.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/procio.c.o", "externals/inc/procps-ng/procio.c"],
+  "file": "externals/inc/procps-ng/procio.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/signals.c.o", "externals/inc/procps-ng/signals.c"],
+  "file": "externals/inc/procps-ng/signals.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/capname.c.o", "externals/inc/procps-ng/capname.c"],
+  "file": "externals/inc/procps-ng/capname.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/slabinfo.c.o", "externals/inc/procps-ng/slabinfo.c"],
+  "file": "externals/inc/procps-ng/slabinfo.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/pids.c.o", "externals/inc/procps-ng/pids.c"],
+  "file": "externals/inc/procps-ng/pids.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/signames.c.o", "externals/inc/procps-ng/signames.c"],
+  "file": "externals/inc/procps-ng/signames.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/strutils.c.o", "externals/inc/procps-ng/strutils.c"],
+  "file": "externals/inc/procps-ng/strutils.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/namespace.c.o", "externals/inc/procps-ng/namespace.c"],
+  "file": "externals/inc/procps-ng/namespace.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/uptime.c.o", "externals/inc/procps-ng/uptime.c"],
+  "file": "externals/inc/procps-ng/uptime.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/diskstats.c.o", "externals/inc/procps-ng/diskstats.c"],
+  "file": "externals/inc/procps-ng/diskstats.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/pwcache.c.o", "externals/inc/procps-ng/pwcache.c"],
+  "file": "externals/inc/procps-ng/pwcache.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/devname.c.o", "externals/inc/procps-ng/devname.c"],
+  "file": "externals/inc/procps-ng/devname.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/fileutils.c.o", "externals/inc/procps-ng/fileutils.c"],
+  "file": "externals/inc/procps-ng/fileutils.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-serv/linux/x86_64/debug/platform/windows/idl", "-D_GNU_SOURCE", "-D__EXTENSIONS__", "-DHAVE_SIGABBREV_NP", "-DHAVE_STDIO_EXT_H", "-o", "build/.objs/spm-serv/linux/x86_64/debug/externals/inc/procps-ng/sysinfo.c.o", "externals/inc/procps-ng/sysinfo.c"],
+  "file": "externals/inc/procps-ng/sysinfo.c"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-ui/linux/x86_64/debug/platform/windows/idl", "-DDEBUG_FN_CALLS", "-DwxDEBUG_LEVEL=2", "-I/usr/lib/wx/include/gtk3-unicode-3.2", "-I/usr/include/wx-3.2", "-DWXUSINGDLL", "-D__WXGTK3__", "-D__WXGTK__", "-D_FILE_OFFSET_BITS=64", "-o", "build/.objs/spm-ui/linux/x86_64/debug/src/frotend2.cpp.o", "src/frotend2.cpp"],
+  "file": "src/frotend2.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-ui/linux/x86_64/debug/platform/windows/idl", "-DDEBUG_FN_CALLS", "-DwxDEBUG_LEVEL=2", "-I/usr/lib/wx/include/gtk3-unicode-3.2", "-I/usr/include/wx-3.2", "-DWXUSINGDLL", "-D__WXGTK3__", "-D__WXGTK__", "-D_FILE_OFFSET_BITS=64", "-o", "build/.objs/spm-ui/linux/x86_64/debug/src/spm_api.cpp.o", "src/spm_api.cpp"],
+  "file": "src/spm_api.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-ui/linux/x86_64/debug/platform/windows/idl", "-DDEBUG_FN_CALLS", "-DwxDEBUG_LEVEL=2", "-I/usr/lib/wx/include/gtk3-unicode-3.2", "-I/usr/include/wx-3.2", "-DWXUSINGDLL", "-D__WXGTK3__", "-D__WXGTK__", "-D_FILE_OFFSET_BITS=64", "-o", "build/.objs/spm-ui/linux/x86_64/debug/src/config.cpp.o", "src/config.cpp"],
+  "file": "src/config.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-ui/linux/x86_64/debug/platform/windows/idl", "-DDEBUG_FN_CALLS", "-DwxDEBUG_LEVEL=2", "-I/usr/lib/wx/include/gtk3-unicode-3.2", "-I/usr/include/wx-3.2", "-DWXUSINGDLL", "-D__WXGTK3__", "-D__WXGTK__", "-D_FILE_OFFSET_BITS=64", "-o", "build/.objs/spm-ui/linux/x86_64/debug/src/dev_detect.cpp.o", "src/dev_detect.cpp"],
+  "file": "src/dev_detect.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-ui/linux/x86_64/debug/platform/windows/idl", "-DDEBUG_FN_CALLS", "-DwxDEBUG_LEVEL=2", "-I/usr/lib/wx/include/gtk3-unicode-3.2", "-I/usr/include/wx-3.2", "-DWXUSINGDLL", "-D__WXGTK3__", "-D__WXGTK__", "-D_FILE_OFFSET_BITS=64", "-o", "build/.objs/spm-ui/linux/x86_64/debug/src/utils.cpp.o", "src/utils.cpp"],
+  "file": "src/utils.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-ui/linux/x86_64/debug/platform/windows/idl", "-DDEBUG_FN_CALLS", "-DwxDEBUG_LEVEL=2", "-I/usr/lib/wx/include/gtk3-unicode-3.2", "-I/usr/include/wx-3.2", "-DWXUSINGDLL", "-D__WXGTK3__", "-D__WXGTK__", "-D_FILE_OFFSET_BITS=64", "-o", "build/.objs/spm-ui/linux/x86_64/debug/src/sckt_io.cpp.o", "src/sckt_io.cpp"],
+  "file": "src/sckt_io.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-ui/linux/x86_64/debug/platform/windows/idl", "-DDEBUG_FN_CALLS", "-DwxDEBUG_LEVEL=2", "-I/usr/lib/wx/include/gtk3-unicode-3.2", "-I/usr/include/wx-3.2", "-DWXUSINGDLL", "-D__WXGTK3__", "-D__WXGTK__", "-D_FILE_OFFSET_BITS=64", "-o", "build/.objs/spm-ui/linux/x86_64/debug/src/wol.cpp.o", "src/wol.cpp"],
+  "file": "src/wol.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-ui/linux/x86_64/debug/platform/windows/idl", "-DDEBUG_FN_CALLS", "-DwxDEBUG_LEVEL=2", "-I/usr/lib/wx/include/gtk3-unicode-3.2", "-I/usr/include/wx-3.2", "-DWXUSINGDLL", "-D__WXGTK3__", "-D__WXGTK__", "-D_FILE_OFFSET_BITS=64", "-o", "build/.objs/spm-ui/linux/x86_64/debug/src/spm_list.cpp.o", "src/spm_list.cpp"],
+  "file": "src/spm_list.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-ui/linux/x86_64/debug/platform/windows/idl", "-DDEBUG_FN_CALLS", "-DwxDEBUG_LEVEL=2", "-I/usr/lib/wx/include/gtk3-unicode-3.2", "-I/usr/include/wx-3.2", "-DWXUSINGDLL", "-D__WXGTK3__", "-D__WXGTK__", "-D_FILE_OFFSET_BITS=64", "-o", "build/.objs/spm-ui/linux/x86_64/debug/src/spm.cpp.o", "src/spm.cpp"],
+  "file": "src/spm.cpp"
+},
+{
+  "directory": "/home/0xsys/spm",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-Iexternals/inc", "-Ibuild/.gens/spm-ui/linux/x86_64/debug/platform/windows/idl", "-DDEBUG_FN_CALLS", "-DwxDEBUG_LEVEL=2", "-I/usr/lib/wx/include/gtk3-unicode-3.2", "-I/usr/include/wx-3.2", "-DWXUSINGDLL", "-D__WXGTK3__", "-D__WXGTK__", "-D_FILE_OFFSET_BITS=64", "-o", "build/.objs/spm-ui/linux/x86_64/debug/src/frontend/frontend.cpp.o", "src/frontend/frontend.cpp"],
+  "file": "src/frontend/frontend.cpp"
+}]
